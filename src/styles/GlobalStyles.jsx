@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     font-family: "Nunito Sans", sans-serif;
-    margin: 0;
+    background-color: var(--body-bg);
   }
 `;
 

@@ -4,6 +4,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import QuestionsPage from './components/pages/QuestionsPage';
 import Header from './components/organisms/Header';
 import Login from './components/pages/Login';
+import Footer from './components/organisms/Footer';
 
 const App = () => {
 	return (
@@ -16,6 +17,7 @@ const App = () => {
 					<Route path='/login' element={<Login />} />
 				</Routes>
 			</main>
+			<Footer />
 		</>
 	);
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Button from '../atoms/Button';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { PrimaryTitle } from '../atoms/Typography';
 
 const StyledHeader = styled.header`
@@ -37,6 +37,7 @@ const StyledHeader = styled.header`
 
 const Header = () => {
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	return (
 		<StyledHeader>
@@ -47,7 +48,11 @@ const Header = () => {
 			</div>
 			<PrimaryTitle>{location.pathname === '/' && 'Questions'}</PrimaryTitle>
 			<div>
-				<Button text='Sign In' theme='primary' />
+				<Button
+					text='Sign In'
+					theme='primary'
+					onClickF={() => navigate('/login')}
+				/>
 				<Button text='Register' theme='secondary' />
 			</div>
 		</StyledHeader>

@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 :root {
     --body-bg: #fafafa;
+    --header-bg: #fff;
     --text-grey: #808080;
     --accent-orange: #F48023;
     --accent-blue: #1682FD;

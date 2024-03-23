@@ -5,48 +5,60 @@ import { useNavigate } from 'react-router-dom';
 const initialState = {
 	users: [],
 	user: null,
-	error: null
+	error: null,
+	loading: false
 };
 
-const userActionTypes = {
+const usersActionTypes = {
 	GET_USERS: 'GET_USERS',
 	LOGIN: 'LOGIN',
 	REGISTER: 'REGISTER',
 	FAILURE: 'FAILURE',
-	LOGOUT: 'LOGOUT'
+	LOGOUT: 'LOGOUT',
+	REQUEST: 'REQUEST'
 };
 
-const UserContext = createContext();
+const UsersContext = createContext();
 
 const reducer = (state, action) => {
 	switch (action.type) {
-		case userActionTypes.GET_USERS:
+		case usersActionTypes.REQUEST:
+			return {
+				...state,
+				loading: true
+			};
+		case usersActionTypes.GET_USERS:
 			return {
 				...state,
 				users: action.payload,
+				loading: false,
 				error: null
 			};
-		case userActionTypes.LOGIN:
+		case usersActionTypes.LOGIN:
 			return {
 				...state,
 				user: action.payload,
+				loading: false,
 				error: null
 			};
-		case userActionTypes.REGISTER:
+		case usersActionTypes.REGISTER:
 			return {
 				users: [...state.users, action.payload],
 				user: action.payload,
+				loading: false,
 				error: null
 			};
-		case userActionTypes.FAILURE:
+		case usersActionTypes.FAILURE:
 			return {
 				...state,
-				error: action.payload
+				error: action.payload,
+				loading: false
 			};
-		case userActionTypes.LOGOUT:
+		case usersActionTypes.LOGOUT:
 			return {
 				...state,
 				user: null,
+				loading: false,
 				error: null
 			};
 		default:
@@ -54,48 +66,49 @@ const reducer = (state, action) => {
 	}
 };
 
-const UserContextProvider = ({ children }) => {
+const UsersContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const navigate = useNavigate();
 
 	useEffect(() => {
+		dispatch({ type: usersActionTypes.REQUEST });
 		fetch(`http://localhost:8080/users`)
 			.then(res => res.json())
 			.then(data =>
-				dispatch({ type: userActionTypes.GET_USERS, payload: data })
+				dispatch({ type: usersActionTypes.GET_USERS, payload: data })
 			)
 			.catch(error =>
-				dispatch({ type: userActionTypes.FAILURE, payload: error })
+				dispatch({ type: usersActionTypes.FAILURE, payload: error })
 			);
 	}, []);
 
-	const login = credentials => {
+	const login = (username, password) => {
+		dispatch({ type: usersActionTypes.REQUEST });
 		const user = state.users.find(
-			el =>
-				el.username === credentials.username &&
-				el.password === credentials.password
+			el => el.username === username && el.password === password
 
 			//bcrypt.compareSync(credentials.password, user.password)
 		);
 
 		if (user) {
-			dispatch({ type: userActionTypes.LOGIN, payload: user });
+			dispatch({ type: usersActionTypes.LOGIN, payload: user });
 			navigate('/');
 		} else {
 			dispatch({
-				type: userActionTypes.FAILURE,
+				type: usersActionTypes.FAILURE,
 				payload: 'Wrong credentials'
 			});
 		}
 	};
 
 	const register = newUser => {
+		dispatch({ type: usersActionTypes.REQUEST });
 		const sameError = state.users.find(
 			user => user.username === newUser.username
 		);
 		if (sameError) {
 			dispatch({
-				type: userActionTypes.FAILURE,
+				type: usersActionTypes.FAILURE,
 				payload: 'Username already exists'
 			});
 			return;
@@ -107,7 +120,7 @@ const UserContextProvider = ({ children }) => {
 		//     email: credentials.email,
 		//     photoUrl: credentials.photoUrl
 		// };
-		dispatch({ type: userActionTypes.REGISTER, payload: newUser });
+		dispatch({ type: usersActionTypes.REGISTER, payload: newUser });
 		fetch(`http://localhost:8080/users`, {
 			method: 'POST',
 			headers: {
@@ -118,12 +131,12 @@ const UserContextProvider = ({ children }) => {
 	};
 
 	return (
-		<UserContext.Provider value={{ state, login, register }}>
+		<UsersContext.Provider value={{ state, login, register }}>
 			{children}
-		</UserContext.Provider>
+		</UsersContext.Provider>
 	);
 };
 
-export default UserContext;
+export default UsersContext;
 
-export { UserContextProvider };
+export { UsersContextProvider, usersActionTypes };

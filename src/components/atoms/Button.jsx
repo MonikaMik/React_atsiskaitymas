@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-	background-color: var(--accent-orange);
+	background-color: ${props =>
+		props.$theme === 'primary' ? 'var(--accent-orange)' : 'var(--accent-grey)'};
 	border: none;
 	border-radius: 5px;
-	color: white;
+	color: ${props =>
+		props.$theme === 'primary' ? 'white' : 'var(--accent-blue)'};
 	padding-block: 8px;
 	padding-inline: 16px;
 	&:hover {
@@ -13,7 +15,11 @@ const StyledButton = styled.button`
 	}
 `;
 
-const Button = ({ text, onClickF }) => {
-	return <StyledButton onClick={onClickF}>{text}</StyledButton>;
+const Button = ({ text, onClickF, theme }) => {
+	return (
+		<StyledButton onClick={onClickF} $theme={theme}>
+			{text}
+		</StyledButton>
+	);
 };
 export default Button;

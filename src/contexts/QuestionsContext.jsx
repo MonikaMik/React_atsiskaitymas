@@ -111,7 +111,7 @@ const QuestionsContextProvider = ({ children }) => {
 
 	const removeQuestion = questionId => {
 		dispatch({ type: questionsActionTypes.REQUEST });
-		fetch(`http://localhost:8080/questionss/${questionId}`, {
+		fetch(`http://localhost:8080/questions/${questionId}`, {
 			method: 'DELETE'
 		})
 			.then(() => {

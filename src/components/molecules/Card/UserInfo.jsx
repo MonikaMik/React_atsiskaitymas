@@ -13,14 +13,15 @@ const StyledUserInfo = styled.div`
 `;
 
 const UserInfo = ({ creator, created }) => {
-	const creationDate = new Date(created);
-	const timeAgo = formatDistanceToNow(creationDate, { addSuffix: true });
+	const timeAgo = created
+		? formatDistanceToNow(new Date(created), { addSuffix: true })
+		: null;
 	return (
 		<StyledUserInfo>
 			<Avatar src={creator.photoUrl} title='User Avatar' />
 			<div>
 				<p>{creator.username}</p>
-				<FaintText>{timeAgo}</FaintText>
+				{created && <FaintText>{timeAgo}</FaintText>}
 			</div>
 		</StyledUserInfo>
 	);

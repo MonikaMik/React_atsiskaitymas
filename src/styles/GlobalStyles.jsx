@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     --orange-bg: #FCF4EC;
     --accent-orange-faint: #f4812380;
     --accent-blue-faint: #1682fd85;
-    --border-grey: #C4C4C4;
+    --border-grey: #d0d0d0;
     --card-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.15);
   }
   body {

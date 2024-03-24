@@ -4,6 +4,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import QuestionsPage from './components/pages/QuestionsPage';
 import Header from './components/organisms/Header';
 import Login from './components/pages/Login';
+import Register from './components/pages/Register';
 import Footer from './components/organisms/Footer';
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
 				<Routes>
 					<Route path='/' element={<QuestionsPage />} />
 					<Route path='/login' element={<Login />} />
+					<Route path='/register' element={<Register />} />
 				</Routes>
 			</main>
 			<Footer />

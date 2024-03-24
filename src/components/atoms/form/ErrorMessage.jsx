@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledErrorMessage = styled.span`
-	color: var(--important-color);
+	color: var(--accent-red);
 `;
 
 const ErrorMessage = ({ error }) => {

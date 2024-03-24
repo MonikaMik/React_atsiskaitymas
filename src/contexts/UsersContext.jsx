@@ -1,6 +1,7 @@
 import { useReducer, createContext, useEffect } from 'react';
 import bcrypt from 'bcryptjs';
 import { useNavigate } from 'react-router-dom';
+import { c } from 'tar';
 
 const initialState = {
 	users: [],
@@ -85,9 +86,8 @@ const UsersContextProvider = ({ children }) => {
 	const login = (username, password) => {
 		dispatch({ type: usersActionTypes.REQUEST });
 		const user = state.users.find(
-			el => el.username === username && el.password === password
-
-			//bcrypt.compareSync(credentials.password, user.password)
+			el =>
+				el.username === username && bcrypt.compareSync(password, el.password)
 		);
 
 		if (user) {
@@ -102,7 +102,6 @@ const UsersContextProvider = ({ children }) => {
 	};
 
 	const register = newUser => {
-		dispatch({ type: usersActionTypes.REQUEST });
 		const sameError = state.users.find(
 			user => user.username === newUser.username
 		);
@@ -113,25 +112,42 @@ const UsersContextProvider = ({ children }) => {
 			});
 			return;
 		}
-		// const newUser = {
-		//     id: uuidv4(),
-		//     username: credentials.username,
-		//     password: bcrypt.hashSync(credentials.password, 10),
-		//     email: credentials.email,
-		//     photoUrl: credentials.photoUrl
-		// };
-		dispatch({ type: usersActionTypes.REGISTER, payload: newUser });
+		dispatch({ type: usersActionTypes.REQUEST });
 		fetch(`http://localhost:8080/users`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(newUser)
-		});
+		})
+			.then(response => {
+				if (!response.ok) {
+					dispatch({
+						type: usersActionTypes.FAILURE,
+						payload: 'Failed to register user'
+					});
+				}
+				return response.json();
+			})
+			.then(data => {
+				dispatch({ type: usersActionTypes.REGISTER, payload: data });
+				navigate('/');
+			})
+			.catch(error => {
+				dispatch({
+					type: usersActionTypes.FAILURE,
+					payload: error.message
+				});
+			});
+	};
+
+	const logout = () => {
+		dispatch({ type: usersActionTypes.LOGOUT });
+		navigate('/');
 	};
 
 	return (
-		<UsersContext.Provider value={{ state, login, register }}>
+		<UsersContext.Provider value={{ state, login, register, logout }}>
 			{children}
 		</UsersContext.Provider>
 	);

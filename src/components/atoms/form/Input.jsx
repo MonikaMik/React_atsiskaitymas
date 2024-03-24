@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
-	border: 1px solid var(--primary-color);
+	border: 1px solid var(--border-grey);
 	border-radius: 5px;
 	padding: 0.5rem;
 	flex: 1;

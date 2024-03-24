@@ -1,11 +1,12 @@
-import styled from 'styled-components';
 import { useContext } from 'react';
 import UsersContext from '../../contexts/UsersContext';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import InputField from '../molecules/InputField';
+import SubmitButton from '../atoms/form/SubmitButton';
+import FormErrorMessage from '../atoms/form/FormErrorMessage';
 
-const Login = () => {
+const LoginForm = () => {
 	const {
 		login,
 		state: { error }
@@ -26,31 +27,34 @@ const Login = () => {
 	});
 
 	return (
-		<form onSubmit={formik.handleSubmit}>
-			<InputField
-				id='username'
-				onChangeF={formik.handleChange}
-				onBlurF={formik.handleBlur}
-				value={formik.values.username}
-				error={{
-					touched: formik.touched.username,
-					message: formik.errors.username
-				}}
-			/>
-			<InputField
-				id='password'
-				type='password'
-				onChangeF={formik.handleChange}
-				onBlurF={formik.handleBlur}
-				value={formik.values.password}
-				error={{
-					touched: formik.touched.password,
-					message: formik.errors.password
-				}}
-			/>
-			{error && <p>{error}</p>}
-			<input type='submit' value='Log In' />
-		</form>
+		<>
+			<form onSubmit={formik.handleSubmit}>
+				<InputField
+					id='username'
+					onChangeF={formik.handleChange}
+					onBlurF={formik.handleBlur}
+					value={formik.values.username}
+					error={{
+						touched: formik.touched.username,
+						message: formik.errors.username
+					}}
+				/>
+				<InputField
+					id='password'
+					type='password'
+					onChangeF={formik.handleChange}
+					onBlurF={formik.handleBlur}
+					value={formik.values.password}
+					error={{
+						touched: formik.touched.password,
+						message: formik.errors.password
+					}}
+				/>
+
+				<SubmitButton text='Sign In' />
+			</form>
+			{error && <FormErrorMessage>{error}</FormErrorMessage>}
+		</>
 	);
 };
-export default Login;
+export default LoginForm;

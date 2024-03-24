@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledLabel = styled.label``;
+const StyledLabel = styled.label`
+	color: var(--text-grey);
+`;
 
 const Label = ({ htmlFor }) => {
 	return (

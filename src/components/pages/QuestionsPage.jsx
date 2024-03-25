@@ -15,25 +15,26 @@ const StyledQuestionsPage = styled.section`
 const QuestionsPage = () => {
 	const { state: questionsState } = useContext(QuestionsContext);
 	const { state: usersState } = useContext(UsersContext);
-	console.log(usersState.user);
-	return questionsState.loading && usersState.users.length === 0 ? (
-		<p>Loading...</p>
-	) : (
-		<StyledQuestionsPage>
-			<div>
-				<FilterButton />
-			</div>
 
-			{questionsState.questions.map(question => (
-				<QuestionCard
-					key={question.id}
-					question={question}
-					creator={usersState.users.find(
-						user => user.id === question.creatorId
-					)}
-				/>
-			))}
-		</StyledQuestionsPage>
+	return (
+		!questionsState.loading &&
+		!usersState.loading && (
+			<StyledQuestionsPage>
+				<div>
+					<FilterButton />
+				</div>
+				{questionsState.questions.map(question => (
+					<QuestionCard
+						key={question.id}
+						question={question}
+						user={usersState.user}
+						creator={usersState.users.find(
+							user => user.id === question.creatorId
+						)}
+					/>
+				))}
+			</StyledQuestionsPage>
+		)
 	);
 };
 export default QuestionsPage;

@@ -10,13 +10,23 @@ const StyledFormField = styled.div`
 	margin-bottom: 1rem;
 `;
 
-const InputField = ({ id, type, onChangeF, onBlurF, value, error }) => (
+const InputField = ({
+	id,
+	type,
+	onChangeF,
+	onBlurF,
+	value,
+	placeholder,
+	label = true,
+	error
+}) => (
 	<StyledFormField>
-		<Label htmlFor={id}></Label>
+		{label && <Label htmlFor={id}>{label}</Label>}
 		<Input
 			id={id}
 			type={type}
 			name={id}
+			placeholder={placeholder}
 			onChangeF={onChangeF}
 			onBlurF={onBlurF}
 			value={value}

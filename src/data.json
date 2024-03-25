@@ -2,56 +2,56 @@
   "questions": [
     {
       "id": "1",
-      "creatorId": "user1",
-      "text": "I have a dog that keeps barking at night. What can I do to make it stop?",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "text": "I have a dog that keeps barking at night. What can I do to make it stop? I have a dog that keeps barking at night. What can I do to make it stop? I have a dog that keeps barking at night. What can I do to make it stop?",
       "title": "Dog barking at night",
-      "likes": 10,
-      "edited": "2022-01-01",
+      "likes": 22,
+      "edited": "2022-01-01T00:00:00",
       "created": "2024-03-01T12:00:00"
     },
     {
       "id": "2",
       "creatorId": "user2",
-      "text": "My dog is afraid of thunderstorms. How can I help it overcome this fear?",
+      "text": "My dog is afraid of thunderstorms. How can I help it overcome this fear? My dog is afraid of thunderstorms. How can I help it overcome this fear? My dog is afraid of thunderstorms. How can I help it overcome this fear?",
       "title": "Dog afraid of thunderstorms",
-      "likes": 5,
-      "edited": "2022-01-02",
+      "likes": 11,
+      "edited": false,
       "created": "2024-03-02T12:00:00"
     },
     {
       "id": "3",
       "creatorId": "user3",
-      "text": "What are some good toys for dogs to keep them entertained?",
+      "text": "What are some good toys for dogs to keep them entertained? What are some good toys for dogs to keep them entertained? What are some good toys for dogs to keep them entertained?",
       "title": "Toys for dogs",
-      "likes": 8,
-      "edited": "2022-01-03",
+      "likes": 12,
+      "edited": "2022-01-03T00:00:00",
       "created": "2024-03-03T12:00:00"
     },
     {
       "id": "4",
       "creatorId": "user1",
-      "text": "My dog keeps chewing on furniture. How can I stop this behavior?",
+      "text": "My dog keeps chewing on furniture. How can I stop this behavior? My dog keeps chewing on furniture. How can I stop this behavior? My dog keeps chewing on furniture. How can I stop this behavior?",
       "title": "Dog chewing on furniture",
-      "likes": 12,
-      "edited": "2022-01-04",
+      "likes": 14,
+      "edited": false,
       "created": "2024-03-04T12:00:00"
     },
     {
       "id": "5",
       "creatorId": "user2",
-      "text": "What are some good training techniques for teaching a dog to sit?",
+      "text": "What are some good training techniques for teaching a dog to sit? What are some good training techniques for teaching a dog to sit? What are some good training techniques for teaching a dog to sit?",
       "title": "Training a dog to sit",
       "likes": 6,
-      "edited": "2022-01-05",
+      "edited": "2022-01-05T00:00:00",
       "created": "2024-03-05T12:00:00"
     },
     {
       "id": "6",
       "creatorId": "user3",
-      "text": "How often should I bathe my dog?",
+      "text": "How often should I bathe my dog? How often should I bathe my dog? How often should I bathe my dog?",
       "title": "Dog bathing frequency",
-      "likes": 3,
-      "edited": "2022-01-06",
+      "likes": 4,
+      "edited": "2022-01-06T00:00:00",
       "created": "2024-03-06T12:00:00"
     }
   ],
@@ -61,9 +61,8 @@
       "creatorId": "user1",
       "questionId": "1",
       "text": "You can try using white noise machines or calming music to drown out external noises that may be triggering your dog's barking.",
-      "title": "Try white noise machines",
       "likes": 2,
-      "edited": "2022-01-01",
+      "edited": "2022-01-01T00:00:00",
       "created": "2022-01-01T12:00:00"
     },
     {
@@ -71,9 +70,8 @@
       "creatorId": "user2",
       "questionId": "1",
       "text": "Make sure your dog gets enough exercise during the day to tire them out and reduce their energy levels at night.",
-      "title": "Exercise your dog",
       "likes": 1,
-      "edited": "2022-01-02",
+      "edited": "2022-01-02T00:00:00",
       "created": "2022-01-02T12:00:00"
     },
     {
@@ -81,9 +79,8 @@
       "creatorId": "user3",
       "questionId": "2",
       "text": "Create a safe and comfortable space for your dog during thunderstorms, such as a cozy den or a crate covered with blankets.",
-      "title": "Create a safe space",
       "likes": 3,
-      "edited": "2022-01-03",
+      "edited": "2022-01-03T00:00:00",
       "created": "2022-01-03T12:00:00"
     },
     {
@@ -91,90 +88,134 @@
       "creatorId": "user1",
       "questionId": "2",
       "text": "Consider using anxiety-reducing products like thunder shirts or calming pheromone sprays to help your dog feel more secure during thunderstorms.",
-      "title": "Try anxiety-reducing products",
       "likes": 2,
-      "edited": "2022-01-04",
+      "edited": "2022-01-04T00:00:00",
       "created": "2022-01-04T12:00:00"
     },
     {
       "id": "5",
       "creatorId": "user2",
-      "questionId": "3",
-      "text": "Interactive puzzle toys and treat-dispensing toys are great options to keep dogs mentally stimulated and entertained.",
-      "title": "Try interactive puzzle toys",
-      "likes": 4,
-      "edited": "2022-01-05",
-      "created": "2022-01-05T12:00:00"
+      "questionId": "1",
+      "text": "Make sure your dog gets enough exercise during the day to tire them out and reduce their energy levels at night.",
+      "title": "Exercise your dog",
+      "likes": 0
     },
     {
-      "id": "6",
-      "creatorId": "user3",
-      "questionId": "3",
-      "text": "Consider getting toys that are designed to withstand heavy chewing, such as Kong toys or durable rubber toys.",
-      "title": "Get durable chew toys",
-      "likes": 1,
-      "edited": "2022-01-06",
-      "created": "2022-01-06T12:00:00"
-    },
-    {
-      "id": "7",
+      "id": "199f2c31-c3b1-4d75-9ecc-12fbc0bbe940",
       "creatorId": "user1",
-      "questionId": "3",
-      "text": "Provide your dog with appropriate chew toys and redirect their chewing behavior to those toys whenever you catch them chewing on furniture.",
-      "title": "Provide chew toys",
-      "likes": 5,
-      "edited": "2022-01-01",
-      "created": "2022-01-01T12:00:00"
+      "questionId": "1",
+      "text": "do smth ",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T08:33:27.711Z"
     },
     {
-      "id": "8",
-      "creatorId": "user2",
+      "id": "0c1ca6d6-3e1a-46a8-8460-50e650f19fdf",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "1",
+      "text": "testas",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T09:33:47.707Z"
+    },
+    {
+      "id": "1cc69346-a57c-4129-950d-d8b79d722079",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "1",
+      "text": "testas",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T09:36:29.344Z"
+    },
+    {
+      "id": "e64f8a46-ebdb-454b-b035-e114a8395281",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "1",
+      "text": "fefe",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T09:40:04.201Z"
+    },
+    {
+      "id": "5eb36c17-cad8-4387-93c1-84ad231b1c45",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "1",
+      "text": "ef",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T09:47:47.012Z"
+    },
+    {
+      "id": "cbbe0088-2be7-4edf-be7b-8c80c0d028d6",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "1",
+      "text": "wddw",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T09:53:55.890Z"
+    },
+    {
+      "id": "2f957cbf-8edc-446c-9003-94f85e8cb620",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "questionId": "2",
-      "text": "Use bitter apple spray or other taste deterrents on the furniture to discourage your dog from chewing on it.",
-      "title": "Try taste deterrents",
-      "likes": 3,
-      "edited": "2022-01-02",
-      "created": "2022-01-02T12:00:00"
+      "text": "as",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T09:58:05.044Z"
     },
     {
-      "id": "9",
-      "creatorId": "user3",
-      "questionId": "5",
-      "text": "Start by luring your dog into a sitting position with a treat, and then reward them with the treat when they successfully sit.",
-      "title": "Use treat luring",
-      "likes": 2,
-      "edited": "2022-01-03",
-      "created": "2022-01-03T12:00:00"
+      "id": "fc632641-8789-46e6-a513-fcc92c7e3d07",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "2",
+      "text": "asas",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T10:04:56.376Z"
     },
     {
-      "id": "10",
-      "creatorId": "user1",
-      "questionId": "5",
-      "text": "Consistency is key. Practice the sit command with your dog regularly and reward them every time they respond correctly.",
-      "title": "Be consistent",
-      "likes": 4,
-      "edited": "2022-01-04",
-      "created": "2022-01-04T12:00:00"
+      "id": "4c7be41b-37e7-4390-ac83-183604eb2eea",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "2",
+      "text": "test",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T10:05:48.353Z"
     },
     {
-      "id": "11",
-      "creatorId": "user2",
-      "questionId": "6",
-      "text": "The frequency of bathing depends on your dog's breed, coat type, and activity level. Generally, bathing once every 4-6 weeks is sufficient for most dogs.",
-      "title": "Bathing frequency",
-      "likes": 1,
-      "edited": "2022-01-05",
-      "created": "2022-01-05T12:00:00"
+      "id": "7b9b17bd-cbbd-45cc-be76-adc7c991ab56",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "4",
+      "text": "cdd",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T10:21:56.305Z"
     },
     {
-      "id": "12",
-      "creatorId": "user3",
-      "questionId": "6",
-      "text": "Avoid over-bathing your dog as it can strip their skin of natural oils. Regular brushing can help keep their coat clean and healthy between baths.",
-      "title": "Avoid over-bathing",
-      "likes": 2,
-      "edited": "2022-01-06",
-      "created": "2022-01-06T12:00:00"
+      "id": "f0e0a69d-705f-4342-96fe-96f5f93ca0f0",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "3",
+      "text": "AS",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T10:26:57.941Z"
+    },
+    {
+      "id": "4524ce07-4c41-4d93-8406-a01a87d025a4",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "4",
+      "text": "test",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T10:29:03.463Z"
+    },
+    {
+      "id": "13d34f19-8792-456d-859c-db33ff35ca11",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "1",
+      "text": "hthrth",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-25T15:40:59.477Z"
     }
   ],
   "users": [
@@ -183,35 +224,66 @@
       "username": "doglover123",
       "email": "doglover123@example.com",
       "password": "password123",
-      "photoUrl": "https://i.pinimg.com/736x/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg"
+      "photoUrl": "https://i.pinimg.com/736x/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg",
+      "likedQuestions": [
+        "1"
+      ],
+      "dislikedQuestions": [
+        "2",
+        "3"
+      ]
     },
     {
       "id": "user2",
       "username": "pawsome22",
       "email": "pawsome22@example.com",
       "password": "password456",
-      "photoUrl": "https://i.pinimg.com/originals/e8/b2/71/e8b271169214323595f5155a649884d2.jpg"
+      "photoUrl": "https://i.pinimg.com/originals/e8/b2/71/e8b271169214323595f5155a649884d2.jpg",
+      "likedQuestions": [
+        "2"
+      ],
+      "dislikedQuestions": [
+        "1",
+        "4"
+      ]
     },
     {
       "id": "user3",
       "username": "furryfriend",
       "email": "furryfriend@example.com",
       "password": "password789",
-      "photoUrl": "https://www.gravatar.com/avatar/1b8fabaa8d66250a7049bdb9ecf44397?s=250&d=mm&r=x"
+      "photoUrl": "https://www.gravatar.com/avatar/1b8fabaa8d66250a7049bdb9ecf44397?s=250&d=mm&r=x",
+      "likedQuestions": [
+        "3"
+      ],
+      "dislikedQuestions": [
+        "1",
+        "2"
+      ]
     },
     {
       "id": "0874e890-1993-40e6-8937-e1f8f8597c18",
       "username": "wr3wr",
       "email": "r3wr@e",
       "password": "$2a$10$LnqpD2kpabLT6slLczlVc.xwUdLAhBiGEJVI7xEU9DehfPz4jIGqi",
-      "photoUrl": "https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg"
+      "photoUrl": "https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg",
+      "likedQuestions": [],
+      "dislikedQuestions": []
     },
     {
       "id": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "username": "Monika",
       "email": "monikacibirauskaite@yahoo.com",
       "password": "$2a$10$tXYhIctuihLVffT/aFQo7uAS/lW1SQYUs74N4M9LhrG77kc9pp4.2",
-      "photoUrl": "https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg"
+      "photoUrl": "https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg",
+      "likedQuestions": [
+        "5",
+        "6"
+      ],
+      "dislikedQuestions": [
+        "4",
+        "1"
+      ]
     }
   ]
 }

@@ -1,13 +1,19 @@
 import styled from 'styled-components';
-import { BoldText, ThinText } from '../../atoms/Typography';
+import { BoldText, ThinTextTwoLines } from '../../atoms/Typography';
 
-const StyledQuestionInfo = styled.div``;
+const StyledQuestionInfo = styled.div`
+	&:hover {
+		.bold-text {
+			color: var(--accent-blue);
+		}
+	}
+`;
 
 const QuestionInfo = ({ title, body }) => {
 	return (
 		<StyledQuestionInfo>
-			<BoldText>{title}</BoldText>
-			<ThinText>{body}</ThinText>
+			<BoldText className='bold-text'>{title}</BoldText>
+			<ThinTextTwoLines>{body}</ThinTextTwoLines>
 		</StyledQuestionInfo>
 	);
 };

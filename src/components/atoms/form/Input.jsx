@@ -9,18 +9,27 @@ const StyledInput = styled.input`
 	max-height: 1.1rem;
 `;
 const StyledTextarea = styled.textarea`
-	border: 1px solid var(--primary-color);
+	border: 1px solid var(--border-grey);
 	border-radius: 5px;
 	padding: 0.5rem;
 	flex: 1;
+	resize: vertical;
 `;
 
-const Input = ({ id, type = 'text', onChangeF, onBlurF, value }) => (
+const Input = ({
+	id,
+	type = 'text',
+	onChangeF,
+	onBlurF,
+	placeholder,
+	value
+}) => (
 	<>
 		{type === 'textarea' ? (
 			<StyledTextarea
 				id={id}
 				name={id}
+				placeholder={placeholder}
 				onChange={onChangeF}
 				onBlur={onBlurF}
 				value={value}
@@ -30,6 +39,7 @@ const Input = ({ id, type = 'text', onChangeF, onBlurF, value }) => (
 				id={id}
 				type={type}
 				name={id}
+				placeholder={placeholder}
 				onChange={onChangeF}
 				onBlur={onBlurF}
 				value={value}

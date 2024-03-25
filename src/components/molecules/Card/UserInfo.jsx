@@ -10,9 +10,12 @@ const StyledUserInfo = styled.div`
 	> div p {
 		margin-block: 8px;
 	}
+	> i {
+		align-self: flex-start;
+	}
 `;
 
-const UserInfo = ({ creator, created }) => {
+const UserInfo = ({ creator, created, edited }) => {
 	const timeAgo = created
 		? formatDistanceToNow(new Date(created), { addSuffix: true })
 		: null;
@@ -23,6 +26,18 @@ const UserInfo = ({ creator, created }) => {
 				<p>{creator.username}</p>
 				{created && <FaintText>{timeAgo}</FaintText>}
 			</div>
+
+			{edited && (
+				<i>
+					<FaintText>
+						- edited {new Date(edited).toLocaleDateString()},{' '}
+						{new Date(edited).toLocaleTimeString([], {
+							hour: '2-digit',
+							minute: '2-digit'
+						})}
+					</FaintText>
+				</i>
+			)}
 		</StyledUserInfo>
 	);
 };

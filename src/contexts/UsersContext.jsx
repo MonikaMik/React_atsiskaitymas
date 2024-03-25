@@ -1,13 +1,12 @@
 import { useReducer, createContext, useEffect } from 'react';
 import bcrypt from 'bcryptjs';
 import { useNavigate } from 'react-router-dom';
-import { c } from 'tar';
 
 const initialState = {
 	users: [],
 	user: null,
 	error: null,
-	loading: false
+	loading: true
 };
 
 const usersActionTypes = {
@@ -16,7 +15,11 @@ const usersActionTypes = {
 	REGISTER: 'REGISTER',
 	FAILURE: 'FAILURE',
 	LOGOUT: 'LOGOUT',
-	REQUEST: 'REQUEST'
+	REQUEST: 'REQUEST',
+	ADD_LIKED_QUESTION: 'ADD_LIKED_QUESTION',
+	REMOVE_LIKED_QUESTION: 'REMOVE_LIKED_QUESTION',
+	ADD_DISLIKED_QUESTION: 'ADD_DISLIKED_QUESTION',
+	REMOVE_DISLIKED_QUESTION: 'REMOVE_DISLIKED_QUESTION'
 };
 
 const UsersContext = createContext();
@@ -60,6 +63,46 @@ const reducer = (state, action) => {
 				...state,
 				user: null,
 				loading: false,
+				error: null
+			};
+		case usersActionTypes.ADD_LIKED_QUESTION:
+			return {
+				...state,
+				user: {
+					...state.user,
+					likedQuestions: [...state.user.likedQuestions, action.payload]
+				},
+				error: null
+			};
+		case usersActionTypes.REMOVE_LIKED_QUESTION:
+			return {
+				...state,
+				user: {
+					...state.user,
+					likedQuestions: state.user.likedQuestions.filter(
+						id => id !== action.payload
+					)
+				},
+				error: null
+			};
+		case usersActionTypes.ADD_DISLIKED_QUESTION:
+			return {
+				...state,
+				user: {
+					...state.user,
+					dislikedQuestions: [...state.user.dislikedQuestions, action.payload]
+				},
+				error: null
+			};
+		case usersActionTypes.REMOVE_DISLIKED_QUESTION:
+			return {
+				...state,
+				user: {
+					...state.user,
+					dislikedQuestions: state.user.dislikedQuestions.filter(
+						id => id !== action.payload
+					)
+				},
 				error: null
 			};
 		default:
@@ -146,8 +189,58 @@ const UsersContextProvider = ({ children }) => {
 		navigate('/');
 	};
 
+	const updateQuestion = (type, questionId, likedOrDisliked) => {
+		dispatch({
+			type: type,
+			payload: questionId
+		});
+		fetch(`http://localhost:8080/users/${state.user.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ [likedOrDisliked]: state.user[likedOrDisliked] })
+		});
+	};
+
+	const addLikedQuestion = questionId =>
+		updateQuestion(
+			usersActionTypes.ADD_LIKED_QUESTION,
+			questionId,
+			'likedQuestions'
+		);
+	const addDislikedQuestion = questionId =>
+		updateQuestion(
+			usersActionTypes.ADD_DISLIKED_QUESTION,
+			questionId,
+			'dislikedQuestions'
+		);
+	const removeLikedQuestion = questionId =>
+		updateQuestion(
+			usersActionTypes.REMOVE_LIKED_QUESTION,
+			questionId,
+			'likedQuestions'
+		);
+	const removeDislikedQuestion = questionId =>
+		updateQuestion(
+			usersActionTypes.REMOVE_DISLIKED_QUESTION,
+			questionId,
+			'dislikedQuestions'
+		);
+
 	return (
-		<UsersContext.Provider value={{ state, login, register, logout }}>
+		<UsersContext.Provider
+			value={{
+				state,
+				login,
+				register,
+				logout,
+				addLikedQuestion,
+				removeLikedQuestion,
+				addDislikedQuestion,
+				removeDislikedQuestion
+			}}
+		>
 			{children}
 		</UsersContext.Provider>
 	);

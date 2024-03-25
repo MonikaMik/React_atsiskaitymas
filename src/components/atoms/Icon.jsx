@@ -11,8 +11,15 @@ const StyledIcon = styled.i`
 	}
 `;
 
-const Icon = ({ iconClass, size = '1em', color = 'black' }) => {
-	return <StyledIcon className={`${iconClass}`} size={size} color={color} />;
+const Icon = ({ iconClass, size = '1em', color = 'black', onClickF }) => {
+	return (
+		<StyledIcon
+			className={`${iconClass}`}
+			size={size}
+			color={color}
+			onClick={onClickF}
+		/>
+	);
 };
 
 export default Icon;

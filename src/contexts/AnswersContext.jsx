@@ -1,7 +1,7 @@
 import { createContext, useReducer, useEffect } from 'react';
 
 const InitialState = {
-	loading: false,
+	loading: true,
 	answers: [],
 	error: null
 };
@@ -40,8 +40,8 @@ const reducer = (state, action) => {
 		case answersActionTypes.ADD_ANSWER:
 			return {
 				...state,
+				answers: [...state.answers, action.payload],
 				loading: false,
-				answers: [...state.answers, action.payload.answer],
 				error: null
 			};
 		case answersActionTypes.REMOVE_ANSWER:

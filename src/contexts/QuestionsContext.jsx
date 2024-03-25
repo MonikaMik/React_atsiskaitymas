@@ -13,6 +13,7 @@ const questionsActionTypes = {
 	ADD_QUESTION: 'ADD_QUESTION',
 	REMOVE_QUESTION: 'REMOVE_QUESTION',
 	EDIT_QUESTION: 'EDIT_QUESTION',
+	CHANGE_LIKES: 'CHANGE_LIKES',
 	REQUEST: 'REQUEST',
 	FAILURE: 'FAILURE'
 };
@@ -62,6 +63,18 @@ const reducer = (state, action) => {
 				),
 				error: null
 			};
+		case questionsActionTypes.CHANGE_LIKES: {
+			return {
+				...state,
+				loading: false,
+				questions: state.questions.map(question =>
+					question.id === action.payload.id
+						? { ...question, likes: question.likes + action.payload.like }
+						: question
+				),
+				error: null
+			};
+		}
 		default:
 			return state;
 	}
@@ -110,7 +123,6 @@ const QuestionsContextProvider = ({ children }) => {
 	};
 
 	const removeQuestion = questionId => {
-		dispatch({ type: questionsActionTypes.REQUEST });
 		fetch(`http://localhost:8080/questions/${questionId}`, {
 			method: 'DELETE'
 		})
@@ -152,9 +164,34 @@ const QuestionsContextProvider = ({ children }) => {
 			});
 	};
 
+	const changeLikes = (question, like) => {
+		fetch(`http://localhost:8080/questions/${question.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				likes: question.likes + like
+			})
+		})
+			.then(res => res.json())
+			.then(data => {
+				dispatch({
+					type: questionsActionTypes.CHANGE_LIKES,
+					payload: { id: question.id, like: like }
+				});
+			})
+			.catch(error => {
+				dispatch({
+					type: questionsActionTypes.FAILURE,
+					error: error.toString()
+				});
+			});
+	};
+
 	return (
 		<QuestionsContext.Provider
-			value={{ state, addQuestion, removeQuestion, editQuestion }}
+			value={{ state, addQuestion, removeQuestion, editQuestion, changeLikes }}
 		>
 			{children}
 		</QuestionsContext.Provider>

@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import Button from '../atoms/Button';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HeaderTitle } from '../atoms/Typography';
-import LogoText from '../atoms/LogoText';
 import Icon from '../atoms/Icon';
 import UserInfo from '../molecules/Card/UserInfo';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import UsersContext from '../../contexts/UsersContext';
 import FullLogo from '../molecules/FullLogo';
 
@@ -31,7 +30,8 @@ const UserActions = styled.div`
 
 const Header = () => {
 	const {
-		state: { user, logout }
+		state: { user },
+		logout
 	} = useContext(UsersContext);
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -54,14 +54,19 @@ const Header = () => {
 			<UserActions>
 				{user ? (
 					<>
+						<Button
+							text='Ask a question'
+							theme='primary'
+							onClickF={() => navigate('/login')}
+							icon='bi bi-plus'
+						/>
 						<UserInfo creator={user} />
-						<button onClick={logout()}>
-							<Icon
-								iconClass='bi bi-box-arrow-right'
-								size='2em'
-								color='var(--text-grey)'
-							/>
-						</button>
+						<Icon
+							iconClass='bi bi-box-arrow-right'
+							size='2em'
+							color='var(--text-grey)'
+							onClickF={() => logout()}
+						/>
 					</>
 				) : (
 					<>

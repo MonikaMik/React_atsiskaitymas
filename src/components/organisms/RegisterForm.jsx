@@ -51,7 +51,11 @@ const RegisterForm = () => {
 				username: values.username,
 				email: values.email,
 				password: bcrypt.hashSync(values.password, 10),
-				photoUrl: values.photoUrl
+				photoUrl: values.photoUrl,
+				likedAnswers: [],
+				dislikedAnswers: [],
+				likedQuestions: [],
+				dislikedQuestions: []
 			};
 			register(newUser);
 		}

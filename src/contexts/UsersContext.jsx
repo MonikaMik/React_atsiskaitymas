@@ -19,7 +19,11 @@ const usersActionTypes = {
 	ADD_LIKED_QUESTION: 'ADD_LIKED_QUESTION',
 	REMOVE_LIKED_QUESTION: 'REMOVE_LIKED_QUESTION',
 	ADD_DISLIKED_QUESTION: 'ADD_DISLIKED_QUESTION',
-	REMOVE_DISLIKED_QUESTION: 'REMOVE_DISLIKED_QUESTION'
+	REMOVE_DISLIKED_QUESTION: 'REMOVE_DISLIKED_QUESTION',
+	ADD_LIKED_ANSWER: 'ADD_LIKED_ANSWER',
+	REMOVE_LIKED_ANSWER: 'REMOVE_LIKED_ANSWER',
+	ADD_DISLIKED_ANSWER: 'ADD_DISLIKED_ANSWER',
+	REMOVE_DISLIKED_ANSWER: 'REMOVE_DISLIKED_ANSWER'
 };
 
 const UsersContext = createContext();
@@ -100,6 +104,47 @@ const reducer = (state, action) => {
 				user: {
 					...state.user,
 					dislikedQuestions: state.user.dislikedQuestions.filter(
+						id => id !== action.payload
+					)
+				},
+				error: null
+			};
+
+		case usersActionTypes.ADD_LIKED_ANSWER:
+			return {
+				...state,
+				user: {
+					...state.user,
+					likedAnswers: [...state.user.likedAnswers, action.payload]
+				},
+				error: null
+			};
+		case usersActionTypes.REMOVE_LIKED_ANSWER:
+			return {
+				...state,
+				user: {
+					...state.user,
+					likedAnswers: state.user.likedAnswers.filter(
+						id => id !== action.payload
+					)
+				},
+				error: null
+			};
+		case usersActionTypes.ADD_DISLIKED_ANSWER:
+			return {
+				...state,
+				user: {
+					...state.user,
+					dislikedAnswers: [...state.user.dislikedAnswers, action.payload]
+				},
+				error: null
+			};
+		case usersActionTypes.REMOVE_DISLIKED_ANSWER:
+			return {
+				...state,
+				user: {
+					...state.user,
+					dislikedAnswers: state.user.dislikedAnswers.filter(
 						id => id !== action.payload
 					)
 				},
@@ -228,6 +273,40 @@ const UsersContextProvider = ({ children }) => {
 			'dislikedQuestions'
 		);
 
+	const updateAnswer = (type, answerId, likedOrDisliked) => {
+		dispatch({
+			type: type,
+			payload: answerId
+		});
+		fetch(`http://localhost:8080/users/${state.user.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ [likedOrDisliked]: state.user[likedOrDisliked] })
+		});
+	};
+
+	const addLikedAnswer = answerId =>
+		updateQuestion(usersActionTypes.ADD_LIKED_ANSWER, answerId, 'likedAnswers');
+	const addDislikedAnswer = answerId =>
+		updateQuestion(
+			usersActionTypes.ADD_DISLIKED_ANSWER,
+			answerId,
+			'dislikedAnswers'
+		);
+	const removeLikedAnswer = answerId =>
+		updateQuestion(
+			usersActionTypes.REMOVE_LIKED_ANSWER,
+			answerId,
+			'likedAnswers'
+		);
+	const removeDislikedAnswer = answerId =>
+		updateQuestion(
+			usersActionTypes.REMOVE_DISLIKED_ANSWER,
+			answerId,
+			'dislikedAnswers'
+		);
 	return (
 		<UsersContext.Provider
 			value={{
@@ -238,7 +317,11 @@ const UsersContextProvider = ({ children }) => {
 				addLikedQuestion,
 				removeLikedQuestion,
 				addDislikedQuestion,
-				removeDislikedQuestion
+				removeDislikedQuestion,
+				addLikedAnswer,
+				removeLikedAnswer,
+				addDislikedAnswer,
+				removeDislikedAnswer
 			}}
 		>
 			{children}

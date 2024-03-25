@@ -14,7 +14,8 @@ const answersActionTypes = {
 	REMOVE_ANSWER: 'REMOVE_ANSWER',
 	EDIT_ANSWER: 'EDIT_ANSWER',
 	REQUEST: 'REQUEST',
-	FAILURE: 'FAILURE'
+	FAILURE: 'FAILURE',
+	CHANGE_LIKES: 'CHANGE_LIKES'
 };
 
 const reducer = (state, action) => {
@@ -60,6 +61,18 @@ const reducer = (state, action) => {
 				),
 				error: null
 			};
+		case answersActionTypes.CHANGE_LIKES: {
+			return {
+				...state,
+				loading: false,
+				answers: state.answers.map(answer =>
+					answer.id === action.payload.id
+						? { ...answer, likes: answer.likes + action.payload.like }
+						: answer
+				),
+				error: null
+			};
+		}
 		default:
 			return state;
 	}
@@ -84,7 +97,6 @@ const AnswersContextProvider = ({ children }) => {
 	}, []);
 
 	const addAnswer = newAnswer => {
-		dispatch({ type: answersActionTypes.REQUEST });
 		fetch('http://localhost:8080/answers', {
 			method: 'POST',
 			headers: {
@@ -108,7 +120,6 @@ const AnswersContextProvider = ({ children }) => {
 	};
 
 	const removeAnswer = answerId => {
-		dispatch({ type: answersActionTypes.REQUEST });
 		fetch(`http://localhost:8080/answers/${answerId}`, {
 			method: 'DELETE'
 		})
@@ -127,7 +138,6 @@ const AnswersContextProvider = ({ children }) => {
 	};
 
 	const editAnswer = answer => {
-		dispatch({ type: answersActionTypes.REQUEST });
 		fetch(`http://localhost:8080/answers/${answer.id}`, {
 			method: 'PUT',
 			headers: {
@@ -150,9 +160,34 @@ const AnswersContextProvider = ({ children }) => {
 			});
 	};
 
+	const changeLikes = (answer, like) => {
+		fetch(`http://localhost:8080/answers/${answer.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				likes: answer.likes + like
+			})
+		})
+			.then(res => res.json())
+			.then(data => {
+				dispatch({
+					type: answersActionTypes.CHANGE_LIKES,
+					payload: { id: answer.id, like: like }
+				});
+			})
+			.catch(error => {
+				dispatch({
+					type: answersActionTypes.FAILURE,
+					error: error.toString()
+				});
+			});
+	};
+
 	return (
 		<AnswersContext.Provider
-			value={{ state, addAnswer, removeAnswer, editAnswer }}
+			value={{ state, addAnswer, removeAnswer, editAnswer, changeLikes }}
 		>
 			{children}
 		</AnswersContext.Provider>

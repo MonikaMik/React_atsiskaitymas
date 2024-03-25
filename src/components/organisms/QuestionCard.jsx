@@ -6,13 +6,14 @@ import CardActions from '../molecules/Card/CardActions';
 import AnswersContext from '../../contexts/AnswersContext';
 import AnswersCount from '../molecules/Card/AnwersCount';
 import CardWrapper from '../atoms/CardWrapper';
+import QuestionsContext from '../../contexts/QuestionsContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 const StyledQuestionCard = styled(CardWrapper)`
 	border-left: ${props =>
 		props.$answers === 0
-			? '7px solid var(--accent-orange-faint)'
+			? '10px solid var(--accent-grey)'
 			: '1px solid var(--body-bg)'};
 `;
 const InfoContainer = styled.div`
@@ -36,6 +37,7 @@ const IconContainer = styled.div`
 
 const QuestionCard = ({ question, creator, user }) => {
 	const { state: answersState } = useContext(AnswersContext);
+	const { removeQuestion } = useContext(QuestionsContext);
 
 	const answerCount = answersState.answers.filter(
 		answer => answer.questionId === question.id
@@ -56,7 +58,7 @@ const QuestionCard = ({ question, creator, user }) => {
 			</InfoContainer>
 			<IconContainer>
 				{user && creator.id === user.id ? (
-					<CardActions id={question.id} />
+					<CardActions id={question.id} removeItem={removeQuestion} />
 				) : (
 					<div></div>
 				)}

@@ -3,8 +3,10 @@ import UserInfo from '../molecules/Card/UserInfo';
 import CardActions from '../molecules/Card/CardActions';
 import CardWrapper from '../atoms/CardWrapper';
 import { FaintText, ThinText } from '../atoms/Typography';
-import Icon from '../atoms/Icon';
+import { useContext } from 'react';
+import AnswersContext from '../../contexts/AnswersContext';
 import Divider from '../atoms/Divider';
+import AnswerCardMetadata from '../molecules/Card/AnswerCardMetadata';
 
 const StyledAnswerCard = styled(CardWrapper)`
 	flex-direction: column;
@@ -18,6 +20,8 @@ const StyledAnswerCard = styled(CardWrapper)`
 	border-left: ${props =>
 		props.$likes > 0
 			? '7px solid var(--accent-orange-faint)'
+			: props.$likes < 0
+			? '7px solid var(--accent-blue-faint)'
 			: '1px solid var(--body-bg)'};
 `;
 const InfoContainer = styled.div`
@@ -34,15 +38,11 @@ const IconContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	> div {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
 `;
 
-const AnswerCard = ({ answer, users }) => {
+const AnswerCard = ({ answer, users, user }) => {
 	const creator = users.find(user => user.id === answer.creatorId);
+	const { removeAnswer } = useContext(AnswersContext);
 
 	return (
 		<StyledAnswerCard $likes={answer.likes}>
@@ -63,12 +63,12 @@ const AnswerCard = ({ answer, users }) => {
 			<ThinText>{answer.text}</ThinText>
 			<Divider />
 			<IconContainer>
-				<div>
-					<Icon iconClass='bi-hand-thumbs-up' size='1rem' color='gray' />
-					<ThinText>{answer.likes}</ThinText>
-					<Icon iconClass='bi-hand-thumbs-down' size='1rem' color='gray' />
-				</div>
-				<CardActions />
+				<AnswerCardMetadata answer={answer} user={user} />
+				{user && creator.id === user.id ? (
+					<CardActions id={answer.id} removeItem={removeAnswer} />
+				) : (
+					<div></div>
+				)}
 			</IconContainer>
 		</StyledAnswerCard>
 	);

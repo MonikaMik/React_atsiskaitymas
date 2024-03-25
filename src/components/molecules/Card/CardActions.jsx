@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Icon from '../../atoms/Icon';
-import { useContext } from 'react';
-import QuestionsContext from '../../../contexts/QuestionsContext';
+import { useNavigate } from 'react-router';
 
 const IconContainer = styled.div`
 	display: flex;
@@ -13,13 +12,17 @@ const IconContainer = styled.div`
 	}
 `;
 
-const CardActions = ({ id }) => {
-	const { removeQuestion } = useContext(QuestionsContext);
-
+const CardActions = ({ id, removeItem, navigate = false }) => {
+	const navigateTo = useNavigate();
 	return (
 		<IconContainer>
 			<Icon iconClass='bi-pencil' size='1.3em' color='gray' />
-			<button onClick={() => removeQuestion(id)}>
+			<button
+				onClick={() => {
+					removeItem(id);
+					navigate && navigateTo('/');
+				}}
+			>
 				<Icon iconClass='bi-trash' size='1.3em' color='gray' />
 			</button>
 		</IconContainer>

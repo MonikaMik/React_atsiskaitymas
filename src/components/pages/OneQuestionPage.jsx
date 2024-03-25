@@ -5,13 +5,16 @@ import UsersContext from '../../contexts/UsersContext';
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import OneQuestionPageCard from '../organisms/OneQuestionPageCard';
-import { HeaderTitle } from '../atoms/Typography';
+import { HeaderTitle, ThinText } from '../atoms/Typography';
 import AnswerForm from '../organisms/AnswerForm';
 import CardWrapper from '../atoms/CardWrapper';
 import AnswerCard from '../organisms/AnswerCard';
 
 const StyledOneQuestionPage = styled.section`
 	padding: 2rem 15%;
+	> h1 {
+		margin-block: 1.5rem;
+	}
 `;
 const StyledAnswerForm = styled(CardWrapper)`
 	display: block;
@@ -21,6 +24,9 @@ const StyledAnswerSection = styled.section`
 	flex-direction: column;
 	gap: 1.5rem;
 	margin-top: 1.5rem;
+	> p {
+		text-align: center;
+	}
 `;
 
 const OneQuestionPage = () => {
@@ -39,7 +45,7 @@ const OneQuestionPage = () => {
 		return <div>Loading...</div>;
 	}
 	const question = questions.find(question => question.id === id);
-	console.log(answers);
+	const answersForQuestion = answers.filter(answer => answer.questionId === id);
 	return (
 		<StyledOneQuestionPage>
 			<OneQuestionPageCard question={question} />
@@ -50,11 +56,18 @@ const OneQuestionPage = () => {
 				</StyledAnswerForm>
 			)}
 			<StyledAnswerSection>
-				{answers
-					.filter(answer => answer.questionId === question.id)
-					.map(answer => (
-						<AnswerCard key={answer.id} answer={answer} users={users} />
-					))}
+				{answersForQuestion.length ? (
+					answersForQuestion.map(answer => (
+						<AnswerCard
+							key={answer.id}
+							answer={answer}
+							users={users}
+							user={user}
+						/>
+					))
+				) : (
+					<ThinText>No answers yet...</ThinText>
+				)}
 			</StyledAnswerSection>
 		</StyledOneQuestionPage>
 	);

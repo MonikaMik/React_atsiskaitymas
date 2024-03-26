@@ -6,9 +6,9 @@ import CardActions from '../molecules/Card/CardActions';
 import AnswersContext from '../../contexts/AnswersContext';
 import AnswersCount from '../molecules/Card/AnwersCount';
 import CardWrapper from '../atoms/CardWrapper';
-import QuestionsContext from '../../contexts/QuestionsContext';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import EditQuestionModal from '../organisms/EditQuestionModal';
 
 const StyledQuestionCard = styled(CardWrapper)`
 	border-left: ${props =>
@@ -35,9 +35,22 @@ const IconContainer = styled.div`
 	}
 `;
 
+const StyledDialog = styled.dialog`
+	width: 100%;
+`;
+
 const QuestionCard = ({ question, creator, user }) => {
 	const { state: answersState } = useContext(AnswersContext);
-	const { removeQuestion } = useContext(QuestionsContext);
+
+	const editDialogRef = useRef(null);
+
+	const showForm = () => {
+		editDialogRef.current.showModal();
+	};
+
+	const hideForm = () => {
+		editDialogRef.current.close();
+	};
 
 	const answerCount = answersState.answers.filter(
 		answer => answer.questionId === question.id
@@ -58,7 +71,7 @@ const QuestionCard = ({ question, creator, user }) => {
 			</InfoContainer>
 			<IconContainer>
 				{user && creator.id === user.id ? (
-					<CardActions id={question.id} removeItem={removeQuestion} />
+					<CardActions question={question} showForm={showForm} />
 				) : (
 					<div></div>
 				)}
@@ -66,6 +79,9 @@ const QuestionCard = ({ question, creator, user }) => {
 					<AnswersCount answerCount={answerCount} />
 				</Link>
 			</IconContainer>
+			<dialog ref={editDialogRef}>
+				<EditQuestionModal question={question} hideForm={hideForm} />
+			</dialog>
 		</StyledQuestionCard>
 	);
 };

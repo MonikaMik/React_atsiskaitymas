@@ -9,19 +9,27 @@ const StyledButton = styled.button`
 		props.$theme === 'primary' ? 'white' : 'var(--accent-blue)'};
 	padding-block: 8px;
 	padding-inline: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
 	> i {
 		margin-right: 5px;
 		font-size: 1.2em;
 	}
 	&:hover {
-		background-color: orange;
+		background-color: ${props =>
+			props.$theme === 'primary'
+				? 'var(--hover-orange)'
+				: 'var(--accent-blue)'};
 		cursor: pointer;
+		color: white;
 	}
 `;
 
-const Button = ({ text, onClickF, theme, icon }) => {
+const Button = ({ type, text, onClickF, theme, icon }) => {
 	return (
-		<StyledButton onClick={onClickF} $theme={theme}>
+		<StyledButton type={type} onClick={onClickF} $theme={theme}>
 			{icon && <i className={icon}></i>}
 			{text}
 		</StyledButton>

@@ -6,7 +6,8 @@ import * as Yup from 'yup';
 import InputField from '../molecules/InputField';
 import SubmitButton from '../atoms/form/SubmitButton';
 import FormErrorMessage from '../atoms/form/FormErrorMessage';
-import { v4 as uuidv4 } from 'uuid';
+import ButtonWrapper from '../atoms/ButtonWrapper';
+import Button from '../atoms/Button';
 
 const StyledAnswerForm = styled.form`
 	display: flex;
@@ -19,48 +20,51 @@ const StyledAnswerForm = styled.form`
 	}
 `;
 
-const AnswerForm = ({ questionId, user }) => {
-	const { addAnswer, error } = useContext(AnswersContext);
+const EditAnswerForm = ({ answer, hideForm }) => {
+	const { editAnswer, error } = useContext(AnswersContext);
 
 	const formik = useFormik({
 		initialValues: {
-			answer: ''
+			text: answer.text
 		},
 		validationSchema: Yup.object({
-			answer: Yup.string().required('Answer must not be empty').trim()
+			text: Yup.string().required('Answer must not be empty').trim()
 		}),
 		onSubmit: values => {
-			const newAnswer = {
-				id: uuidv4(),
-				creatorId: user.id,
-				questionId: questionId,
-				text: values.answer,
-				likes: 0,
-				edited: false,
-				created: new Date().toISOString()
-			};
-			addAnswer(newAnswer);
+			editAnswer(values, answer.id);
+			formik.resetForm();
+			hideForm();
 		}
 	});
 
 	return (
 		<StyledAnswerForm onSubmit={formik.handleSubmit}>
 			<InputField
-				id='answer'
+				id='text'
 				type='textarea'
 				onChangeF={formik.handleChange}
 				onBlurF={formik.handleBlur}
-				value={formik.values.answer}
+				value={formik.values.text}
 				placeholder='Type your wise suggestion here...'
 				label={false}
 				error={{
-					touched: formik.touched.answer,
-					message: formik.errors.answer
+					touched: formik.touched.text,
+					message: formik.errors.text
 				}}
 			/>
-			<SubmitButton text='Submit' icon={true} />
+			<ButtonWrapper>
+				<Button
+					type='button'
+					text='Cancel'
+					onClickF={() => {
+						formik.resetForm();
+						hideForm();
+					}}
+				/>
+				<SubmitButton text='Submit' icon={true} />
+			</ButtonWrapper>
 			{error && <FormErrorMessage>{error}</FormErrorMessage>}
 		</StyledAnswerForm>
 	);
 };
-export default AnswerForm;
+export default EditAnswerForm;

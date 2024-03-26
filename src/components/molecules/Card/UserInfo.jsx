@@ -19,9 +19,14 @@ const UserInfo = ({ creator, created, edited }) => {
 	const timeAgo = created
 		? formatDistanceToNow(new Date(created), { addSuffix: true })
 		: null;
+
 	return (
 		<StyledUserInfo>
-			<Avatar src={creator.photoUrl} title='User Avatar' />
+			<Avatar
+				src={creator.photoUrl}
+				title='User Avatar'
+				size={created ? 'large' : 'small'}
+			/>
 			<div>
 				<p>{creator.username}</p>
 				{created && <FaintText>{timeAgo}</FaintText>}

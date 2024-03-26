@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
     --header-bg: #fff;
     --text-grey: #808080;
     --accent-orange: #F48023;
+    --hover-orange: #de5c00;
     --accent-blue: #1682FD;
     --accent-grey: #EAEAEA;
     --accent-green: #17A100;
@@ -15,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     --accent-blue-faint: #1682fd85;
     --border-grey: #d0d0d0;
     --card-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.15);
+    --placeholder: #afafaf;
   }
   body {
     font-family: "Nunito Sans", sans-serif;

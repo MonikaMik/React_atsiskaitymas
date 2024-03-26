@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const HeaderTitle = styled.h1`
 	font-size: 24px;
 	color: var(--text-grey);
-	text-align: center;
+	/* text-align: center; */
 	&:hover {
 		color: black;
 	}

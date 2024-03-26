@@ -8,6 +8,8 @@ import CardWrapper from '../atoms/CardWrapper';
 import QuestionsContext from '../../contexts/QuestionsContext';
 import CardActions from '../molecules/Card/CardActions';
 import CardMetadata from '../molecules/Card/CardMetadata';
+import DialogContext from '../../contexts/DialogContext';
+import EditQuestionModal from './EditQuestionModal';
 
 const StyledOneQuestionPageCard = styled(CardWrapper)`
 	gap: 0;
@@ -16,6 +18,7 @@ const StyledOneQuestionPageCard = styled(CardWrapper)`
 const StyledCardInfo = styled.div`
 	flex-direction: column;
 	gap: 0;
+	flex-grow: 1;
 	> div {
 		display: flex;
 		justify-content: space-between;
@@ -25,36 +28,41 @@ const StyledCardInfo = styled.div`
 
 const OneQuestionPageCard = ({ question }) => {
 	const { state: usersState } = useContext(UsersContext);
-	const { state: questionsState, removeQuestion } =
-		useContext(QuestionsContext);
+	const { state: questionsState } = useContext(QuestionsContext);
+	const { editDialogRef, showForm, hideForm } = useContext(DialogContext);
 
 	return (
 		(!usersState.loading || !questionsState.loading) && (
-			<StyledOneQuestionPageCard>
-				<CardMetadata question={question} user={usersState.user} />
-				<StyledCardInfo>
-					<div>
-						<UserInfo
-							creator={usersState.users.find(
-								user => user.id === question.creatorId
-							)}
-							created={question.created}
-							edited={question.edited}
-						/>
-						{usersState.user && question.creatorId === usersState.user.id ? (
-							<CardActions
-								id={question.id}
-								removeItem={removeQuestion}
-								navigate={true}
+			<>
+				<StyledOneQuestionPageCard>
+					<CardMetadata question={question} user={usersState.user} />
+					<StyledCardInfo>
+						<div>
+							<UserInfo
+								creator={usersState.users.find(
+									user => user.id === question.creatorId
+								)}
+								created={question.created}
+								edited={question.edited}
 							/>
-						) : (
-							<div></div>
-						)}
-					</div>
-					<BoldTextLarge>{question.title}</BoldTextLarge>
-					<ThinText>{question.text}</ThinText>
-				</StyledCardInfo>
-			</StyledOneQuestionPageCard>
+							{usersState.user && question.creatorId === usersState.user.id ? (
+								<CardActions
+									question={question}
+									navigate={true}
+									showForm={showForm}
+								/>
+							) : (
+								<div></div>
+							)}
+						</div>
+						<BoldTextLarge>{question.title}</BoldTextLarge>
+						<ThinText>{question.text}</ThinText>
+					</StyledCardInfo>
+				</StyledOneQuestionPageCard>
+				<dialog ref={editDialogRef}>
+					<EditQuestionModal question={question} hideForm={hideForm} />
+				</dialog>
+			</>
 		)
 	);
 };

@@ -7,9 +7,10 @@ import UserInfo from '../molecules/Card/UserInfo';
 import { useContext } from 'react';
 import UsersContext from '../../contexts/UsersContext';
 import FullLogo from '../molecules/FullLogo';
+import ButtonWrapper from '../atoms/ButtonWrapper';
 
 const StyledHeader = styled.header`
-	height: 70px;
+	height: 80px;
 	background-color: var(--header-bg);
 	border-bottom: 1px solid var(--accent-grey);
 	display: flex;
@@ -38,7 +39,9 @@ const Header = () => {
 
 	return (
 		<StyledHeader>
-			<FullLogo />
+			<Link to='/'>
+				<FullLogo />
+			</Link>
 			<Link to='/'>
 				<HeaderTitle>
 					{location.pathname === '/' ? (
@@ -57,7 +60,7 @@ const Header = () => {
 						<Button
 							text='Ask a question'
 							theme='primary'
-							onClickF={() => navigate('/login')}
+							onClickF={() => navigate('/add')}
 							icon='bi bi-plus'
 						/>
 						<UserInfo creator={user} />
@@ -69,18 +72,19 @@ const Header = () => {
 						/>
 					</>
 				) : (
-					<>
+					<ButtonWrapper>
+						<Button
+							text='Register'
+							theme='secondary'
+							onClickF={() => navigate('/register')}
+							icon='bi bi-person-plus'
+						/>
 						<Button
 							text='Sign In'
 							theme='primary'
 							onClickF={() => navigate('/login')}
 						/>
-						<Button
-							text='Register'
-							theme='secondary'
-							onClickF={() => navigate('/register')}
-						/>
-					</>
+					</ButtonWrapper>
 				)}
 			</UserActions>
 		</StyledHeader>

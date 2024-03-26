@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { UsersContextProvider } from './contexts/UsersContext';
 import { QuestionsContextProvider } from './contexts/QuestionsContext';
 import { AnswersContextProvider } from './contexts/AnswersContext';
+import { DialogProvider } from './contexts/DialogContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +13,9 @@ root.render(
 		<UsersContextProvider>
 			<QuestionsContextProvider>
 				<AnswersContextProvider>
-					<App />
+					<DialogProvider>
+						<App />
+					</DialogProvider>
 				</AnswersContextProvider>
 			</QuestionsContextProvider>
 		</UsersContextProvider>

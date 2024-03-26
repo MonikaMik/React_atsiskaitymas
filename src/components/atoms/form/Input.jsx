@@ -7,13 +7,19 @@ const StyledInput = styled.input`
 	padding: 0.5rem;
 	flex: 1;
 	max-height: 1.1rem;
+	&::placeholder {
+		color: var(--placeholder);
+	}
 `;
 const StyledTextarea = styled.textarea`
 	border: 1px solid var(--border-grey);
 	border-radius: 5px;
 	padding: 0.5rem;
-	flex: 1;
+	/* flex: 1; */
 	resize: vertical;
+	&::placeholder {
+		color: var(--placeholder);
+	}
 `;
 
 const Input = ({

@@ -1,21 +1,31 @@
 import { createContext, useReducer, useEffect } from 'react';
+import UsersContext from '../contexts/UsersContext';
+import { v4 as uuidv4 } from 'uuid';
+import { useContext } from 'react';
 
 const InitialState = {
 	loading: false,
 	questions: [],
-	error: null
+	originalQuestions: [],
+	error: null,
+	isSortedByDate: false,
+	isSortedByAnswers: false,
+	isFiltered: false
 };
 
 const QuestionsContext = createContext();
 
 const questionsActionTypes = {
 	FETCH_QUESTIONS: 'FETCH_QUESTIONS',
+	SET_ORIGINAL_QUESTIONS: 'SET_ORIGINAL_QUESTIONS',
 	ADD_QUESTION: 'ADD_QUESTION',
 	REMOVE_QUESTION: 'REMOVE_QUESTION',
 	EDIT_QUESTION: 'EDIT_QUESTION',
 	CHANGE_LIKES: 'CHANGE_LIKES',
 	REQUEST: 'REQUEST',
-	FAILURE: 'FAILURE'
+	FAILURE: 'FAILURE',
+	SORT: 'SORT',
+	FILTER: 'FILTER'
 };
 
 const reducer = (state, action) => {
@@ -42,7 +52,8 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				loading: false,
-				questions: [...state.questions, action.payload.question],
+				questions: [...state.questions, action.payload],
+				originalQuestions: [...state.originalQuestions, action.payload],
 				error: null
 			};
 		case questionsActionTypes.REMOVE_QUESTION:
@@ -52,6 +63,9 @@ const reducer = (state, action) => {
 				questions: state.questions.filter(
 					question => question.id !== action.payload
 				),
+				originalQuestions: state.originalQuestions.filter(
+					question => question.id !== action.payload
+				),
 				error: null
 			};
 		case questionsActionTypes.EDIT_QUESTION:
@@ -59,7 +73,24 @@ const reducer = (state, action) => {
 				...state,
 				loading: false,
 				questions: state.questions.map(question =>
-					question.id === action.payload.id ? action.payload : question
+					question.id === action.payload.id
+						? {
+								...question,
+								title: action.payload.question.title,
+								text: action.payload.question.text,
+								edited: action.payload.question.edited
+						  }
+						: question
+				),
+				originalQuestions: state.originalQuestions.map(question =>
+					question.id === action.payload.id
+						? {
+								...question,
+								title: action.payload.question.title,
+								text: action.payload.question.text,
+								edited: action.payload.question.edited
+						  }
+						: question
 				),
 				error: null
 			};
@@ -72,9 +103,85 @@ const reducer = (state, action) => {
 						? { ...question, likes: question.likes + action.payload.like }
 						: question
 				),
+				originalQuestions: state.originalQuestions.map(question =>
+					question.id === action.payload.id
+						? { ...question, likes: question.likes + action.payload.like }
+						: question
+				),
 				error: null
 			};
 		}
+		case questionsActionTypes.SET_ORIGINAL_QUESTIONS:
+			return {
+				...state,
+				originalQuestions: action.payload
+			};
+		case questionsActionTypes.SORT:
+			const questionsWithAnswerCount = state.originalQuestions.map(question => {
+				const answerCount = action.payload.answers.filter(
+					answer => answer.questionId === question.id
+				).length;
+				return { ...question, answerCount };
+			});
+			if (action.payload.sortType === 'answerCount') {
+				if (state.isSortedByAnswers) {
+					return {
+						...state,
+						questions: state.originalQuestions,
+						isSortedByAnswers: false
+					};
+				}
+				let sortedQuestions = [...questionsWithAnswerCount].sort(
+					(a, b) => b.answerCount - a.answerCount
+				);
+				return {
+					...state,
+					questions: sortedQuestions,
+					isSortedByAnswers: true,
+					isSortedByDate: false,
+					isFiltered: false
+				};
+			} else if (action.payload.sortType === 'created') {
+				if (state.isSortedByDate) {
+					return {
+						...state,
+						questions: state.originalQuestions,
+						isSortedByDate: false
+					};
+				}
+				let sortedQuestions = [...questionsWithAnswerCount].sort(
+					(a, b) => new Date(b.created) - new Date(a.created)
+				);
+				return {
+					...state,
+					questions: sortedQuestions,
+					isSortedByDate: true,
+					isSortedByAnswers: false,
+					isFiltered: false
+				};
+			}
+		case questionsActionTypes.FILTER:
+			if (state.isFiltered) {
+				return {
+					...state,
+					questions: state.originalQuestions,
+					isFiltered: false
+				};
+			} else {
+				const filteredQuestions = state.questions.filter(question => {
+					const answerCount = action.payload.answers.filter(
+						answer => answer.questionId === question.id
+					).length;
+					return answerCount === 0;
+				});
+				return {
+					...state,
+					questions: filteredQuestions,
+					isFiltered: true,
+					isSortedByDate: false,
+					isSortedByAnswers: false
+				};
+			}
 		default:
 			return state;
 	}
@@ -82,6 +189,9 @@ const reducer = (state, action) => {
 
 const QuestionsContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, InitialState);
+	const {
+		state: { user }
+	} = useContext(UsersContext);
 
 	useEffect(() => {
 		dispatch({ type: questionsActionTypes.REQUEST });
@@ -89,6 +199,10 @@ const QuestionsContextProvider = ({ children }) => {
 			.then(res => res.json())
 			.then(data => {
 				dispatch({ type: questionsActionTypes.FETCH_QUESTIONS, payload: data });
+				dispatch({
+					type: questionsActionTypes.SET_ORIGINAL_QUESTIONS,
+					payload: data
+				});
 			})
 			.catch(error => {
 				dispatch({
@@ -98,8 +212,16 @@ const QuestionsContextProvider = ({ children }) => {
 			});
 	}, []);
 
-	const addQuestion = newQuestion => {
-		dispatch({ type: questionsActionTypes.REQUEST });
+	const addQuestion = values => {
+		const newQuestion = {
+			id: uuidv4(),
+			creatorId: user.id,
+			text: values.text,
+			title: values.title,
+			likes: 0,
+			edited: false,
+			created: new Date().toISOString()
+		};
 		fetch('http://localhost:8080/questions', {
 			method: 'POST',
 			headers: {
@@ -113,6 +235,7 @@ const QuestionsContextProvider = ({ children }) => {
 					type: questionsActionTypes.ADD_QUESTION,
 					payload: newQuestion
 				});
+				console.log('ADDING', state.questions);
 			})
 			.catch(error => {
 				dispatch({
@@ -140,20 +263,25 @@ const QuestionsContextProvider = ({ children }) => {
 			});
 	};
 
-	const editQuestion = question => {
-		dispatch({ type: questionsActionTypes.REQUEST });
-		fetch(`http://localhost:8080/questions/${question.id}`, {
-			method: 'PUT',
+	const editQuestion = (values, id) => {
+		const editedQuestion = {
+			title: values.title,
+			text: values.text,
+			edited: new Date().toISOString()
+		};
+		console.log('EDITING', editedQuestion);
+		fetch(`http://localhost:8080/questions/${id}`, {
+			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(question)
+			body: JSON.stringify(editedQuestion)
 		})
 			.then(res => res.json())
 			.then(data => {
 				dispatch({
 					type: questionsActionTypes.EDIT_QUESTION,
-					payload: question
+					payload: { id: id, question: editedQuestion }
 				});
 			})
 			.catch(error => {
@@ -191,7 +319,14 @@ const QuestionsContextProvider = ({ children }) => {
 
 	return (
 		<QuestionsContext.Provider
-			value={{ state, addQuestion, removeQuestion, editQuestion, changeLikes }}
+			value={{
+				state,
+				addQuestion,
+				removeQuestion,
+				editQuestion,
+				changeLikes,
+				dispatch
+			}}
 		>
 			{children}
 		</QuestionsContext.Provider>

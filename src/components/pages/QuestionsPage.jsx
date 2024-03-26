@@ -4,6 +4,7 @@ import UsersContext from '../../contexts/UsersContext';
 import QuestionCard from '../organisms/QuestionCard';
 import styled from 'styled-components';
 import FilterButton from '../atoms/FilterButton';
+import AnswersContext from '../../contexts/AnswersContext';
 
 const StyledQuestionsPage = styled.section`
 	padding: 2rem 15%;
@@ -12,25 +13,68 @@ const StyledQuestionsPage = styled.section`
 	gap: 2rem;
 `;
 
+const FilterButtons = styled.div`
+	display: flex;
+	gap: 1rem;
+`;
+
 const QuestionsPage = () => {
-	const { state: questionsState } = useContext(QuestionsContext);
-	const { state: usersState } = useContext(UsersContext);
+	const {
+		state: { questions, isSortedByDate, isSortedByAnswers, isFiltered },
+		dispatch
+	} = useContext(QuestionsContext);
+	const {
+		state: { user, users }
+	} = useContext(UsersContext);
+	const {
+		state: { answers }
+	} = useContext(AnswersContext);
 
 	return (
-		!questionsState.loading &&
-		!usersState.loading && (
+		questions.length &&
+		users.length && (
 			<StyledQuestionsPage>
-				<div>
-					<FilterButton />
-				</div>
-				{questionsState.questions.map(question => (
+				<FilterButtons>
+					<FilterButton
+						onClickF={() => {
+							dispatch({
+								type: 'SORT',
+								payload: { answers: answers, sortType: 'created' }
+							});
+						}}
+						icon='bi bi-clock'
+						text='Latest'
+						isSorted={isSortedByDate}
+					/>
+					<FilterButton
+						onClickF={() => {
+							dispatch({
+								type: 'SORT',
+								payload: { answers: answers, sortType: 'answerCount' }
+							});
+						}}
+						icon='bi bi-sort-up'
+						text='Most answers'
+						isSorted={isSortedByAnswers}
+					/>
+					<FilterButton
+						onClickF={() => {
+							dispatch({
+								type: 'FILTER',
+								payload: { answers: answers }
+							});
+						}}
+						icon='bi bi-funnel'
+						text='Not answered'
+						isSorted={isFiltered}
+					/>
+				</FilterButtons>
+				{questions.map(question => (
 					<QuestionCard
 						key={question.id}
 						question={question}
-						user={usersState.user}
-						creator={usersState.users.find(
-							user => user.id === question.creatorId
-						)}
+						user={user}
+						creator={users.find(user => user.id === question.creatorId)}
 					/>
 				))}
 			</StyledQuestionsPage>

@@ -3,10 +3,10 @@ import UserInfo from '../molecules/Card/UserInfo';
 import CardActions from '../molecules/Card/CardActions';
 import CardWrapper from '../atoms/CardWrapper';
 import { FaintText, ThinText } from '../atoms/Typography';
-import { useContext } from 'react';
-import AnswersContext from '../../contexts/AnswersContext';
+import { useRef } from 'react';
 import Divider from '../atoms/Divider';
 import AnswerCardMetadata from '../molecules/Card/AnswerCardMetadata';
+import EditQuestionModal from './EditQuestionModal';
 
 const StyledAnswerCard = styled(CardWrapper)`
 	flex-direction: column;
@@ -42,7 +42,16 @@ const IconContainer = styled.div`
 
 const AnswerCard = ({ answer, users, user }) => {
 	const creator = users.find(user => user.id === answer.creatorId);
-	const { removeAnswer } = useContext(AnswersContext);
+
+	const editDialogRef = useRef(null);
+
+	const showForm = () => {
+		editDialogRef.current.showModal();
+	};
+
+	const hideForm = () => {
+		editDialogRef.current.close();
+	};
 
 	return (
 		<StyledAnswerCard $likes={answer.likes}>
@@ -65,11 +74,14 @@ const AnswerCard = ({ answer, users, user }) => {
 			<IconContainer>
 				<AnswerCardMetadata answer={answer} user={user} />
 				{user && creator.id === user.id ? (
-					<CardActions id={answer.id} removeItem={removeAnswer} />
+					<CardActions showForm={showForm} answer={answer} />
 				) : (
 					<div></div>
 				)}
 			</IconContainer>
+			<dialog ref={editDialogRef}>
+				<EditQuestionModal answer={answer} hideForm={hideForm} />
+			</dialog>
 		</StyledAnswerCard>
 	);
 };

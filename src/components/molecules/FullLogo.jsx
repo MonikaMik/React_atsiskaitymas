@@ -2,11 +2,11 @@ import LogoText from '../atoms/LogoText';
 import styled from 'styled-components';
 
 const StyledFullLogo = styled.div`
-	height: 100%;
+	height: 70px;
 	display: flex;
 	align-items: center;
 	> img {
-		height: 50%;
+		height: 70%;
 		padding: 0 0.2rem;
 	}
 `;

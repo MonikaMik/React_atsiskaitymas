@@ -57,7 +57,13 @@ const reducer = (state, action) => {
 				...state,
 				loading: false,
 				answers: state.answers.map(answer =>
-					answer.id === action.payload.id ? action.payload : answer
+					answer.id === action.payload.id
+						? {
+								...answer,
+								text: action.payload.answer.text,
+								edited: action.payload.answer.edited
+						  }
+						: answer
 				),
 				error: null
 			};
@@ -137,19 +143,23 @@ const AnswersContextProvider = ({ children }) => {
 			});
 	};
 
-	const editAnswer = answer => {
-		fetch(`http://localhost:8080/answers/${answer.id}`, {
-			method: 'PUT',
+	const editAnswer = (values, id) => {
+		const editedAnswer = {
+			text: values.text,
+			edited: new Date().toISOString()
+		};
+		fetch(`http://localhost:8080/answers/${id}`, {
+			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(answer)
+			body: JSON.stringify(editedAnswer)
 		})
 			.then(res => res.json())
 			.then(data => {
 				dispatch({
 					type: answersActionTypes.EDIT_ANSWER,
-					payload: answer
+					payload: { id: id, answer: editedAnswer }
 				});
 			})
 			.catch(error => {

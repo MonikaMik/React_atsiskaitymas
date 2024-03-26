@@ -51,7 +51,9 @@ const RegisterForm = () => {
 				username: values.username,
 				email: values.email,
 				password: bcrypt.hashSync(values.password, 10),
-				photoUrl: values.photoUrl,
+				photoUrl:
+					values.photoUrl ||
+					'https://cdn-icons-png.freepik.com/256/1144/1144760.png',
 				likedAnswers: [],
 				dislikedAnswers: [],
 				likedQuestions: [],

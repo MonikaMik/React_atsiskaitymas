@@ -6,16 +6,16 @@
       "text": "Once upon a time, there was a dog named Max who was terrified of thunderstorms. Every time a storm rolled in, Max would hide under the bed, trembling with fear. His owner, Sarah, was determined to help Max overcome this fear and make him feel safe. She researched various techniques and consulted with a dog trainer. Sarah gradually introduced Max to the sound of thunder by playing recordings at a low volume and rewarding him with treats and praise for remaining calm. Over time, Max became less anxious and more comfortable during thunderstorms. Now, when a storm approaches, Max seeks comfort in his cozy den, knowing that he is safe and loved.",
       "title": "Dog afraid of thunderstorms",
       "likes": 12,
-      "edited": false,
+      "edited": "2024-03-26T10:41:21.666Z",
       "created": "2024-03-02T12:00:00"
     },
     {
       "id": "3",
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "text": "What are some good toys for dogs to keep them entertained? What are some good toys for dogs to keep them entertained? What are some good toys for dogs to keep them entertained?",
-      "title": "Toys for dogs",
+      "title": "Toys for doggies?",
       "likes": 15,
-      "edited": "2022-01-03T00:00:00",
+      "edited": "2024-03-26T11:13:34.691Z",
       "created": "2024-03-03T12:00:00"
     },
     {
@@ -41,9 +41,36 @@
       "creatorId": "user3",
       "text": "How often should I bathe my dog? How often should I bathe my dog? How often should I bathe my dog?",
       "title": "Dog bathing frequency",
-      "likes": 0,
+      "likes": 1,
       "edited": "2022-01-06T00:00:00",
       "created": "2024-03-06T12:00:00"
+    },
+    {
+      "id": "83ce4f41-aede-4ad1-9f1a-dfe71026b36f",
+      "creatorId": "4b23e3fe-e622-4a72-8010-e7ec0ff8b03e",
+      "text": "Please explain",
+      "title": "How are dogs so cute?",
+      "likes": 1,
+      "edited": false,
+      "created": "2024-03-26T11:39:15.946Z"
+    },
+    {
+      "id": "b0ef37ac-813e-46c4-bbff-3676654f0b2f",
+      "creatorId": "db6febc7-2161-43af-91fd-37ee11a38c7d",
+      "text": "an answer. 122323",
+      "title": "a uqestion",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-26T15:25:49.099Z"
+    },
+    {
+      "id": "5348eacd-f882-4712-b154-2161bc7782cb",
+      "creatorId": "4b23e3fe-e622-4a72-8010-e7ec0ff8b03e",
+      "text": "Aaaaaaaaaaaaa",
+      "title": "SUP BOI",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-26T15:34:53.948Z"
     }
   ],
   "answers": [
@@ -94,19 +121,37 @@
       "id": "4b257db4-acb6-4d1e-900c-dd1326cd2c5a",
       "creatorId": "4b23e3fe-e622-4a72-8010-e7ec0ff8b03e",
       "questionId": "2",
-      "text": "No",
-      "likes": -1,
-      "edited": false,
+      "text": "No Yes?\n",
+      "likes": 0,
+      "edited": "2024-03-26T11:38:21.792Z",
       "created": "2024-03-25T19:17:07.818Z"
     },
     {
-      "id": "8df84498-a541-429e-a6d2-32f019662c2b",
+      "id": "ce41770b-dd0e-420c-b149-3e94d62a8671",
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "questionId": "3",
-      "text": "idk",
+      "text": "Buy interesting toys",
+      "likes": 0,
+      "edited": "2024-03-26T11:17:16.151Z",
+      "created": "2024-03-26T10:43:00.583Z"
+    },
+    {
+      "id": "5fc391da-eb9b-4667-a316-13d1dfd57f92",
+      "creatorId": "4b23e3fe-e622-4a72-8010-e7ec0ff8b03e",
+      "questionId": "6",
+      "text": "HI!",
       "likes": 0,
       "edited": false,
-      "created": "2024-03-25T19:21:16.644Z"
+      "created": "2024-03-26T11:38:34.087Z"
+    },
+    {
+      "id": "82fc7865-8596-4511-b8ce-19a90d328a91",
+      "creatorId": "db6febc7-2161-43af-91fd-37ee11a38c7d",
+      "questionId": null,
+      "text": "SUPER GOOD",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-26T15:23:03.070Z"
     }
   ],
   "users": [
@@ -192,7 +237,8 @@
         "4",
         "1",
         "6",
-        "3"
+        "3",
+        "ec6e1d72-3ae7-4e85-bdfb-4fdbc77d048e"
       ],
       "likedAnswers": [],
       "dislikedAnswers": [
@@ -205,7 +251,7 @@
       "username": "RytisM$",
       "email": "rytis@rytis.lt",
       "password": "$2a$10$MY1gryOmEGMJDWsCT7qzr.MpH/ku4LSdffMrMtgiGi7aXgxbPo1BK",
-      "photoUrl": "",
+      "photoUrl": "https://cdn-icons-png.freepik.com/256/1144/1144760.png",
       "likedAnswers": [
         "3"
       ],
@@ -214,8 +260,22 @@
         "3"
       ],
       "dislikedQuestions": [
-        "2"
+        "2",
+        "5"
       ]
+    },
+    {
+      "id": "db6febc7-2161-43af-91fd-37ee11a38c7d",
+      "username": "Rytuxis",
+      "email": "labas@krabas.lt",
+      "password": "$2a$10$Vr4fdldSBmd5vmUo9ydNJ.cBPFoCHCSNIkdzwFH4S8Oi2F5VgkoVS",
+      "photoUrl": "https://cdn-icons-png.freepik.com/256/1144/1144760.png",
+      "likedAnswers": [],
+      "dislikedAnswers": [],
+      "likedQuestions": [
+        "1cf5abfa-a351-4871-ad21-981a0f5da7b6"
+      ],
+      "dislikedQuestions": []
     }
   ]
 }

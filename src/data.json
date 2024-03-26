@@ -71,6 +71,15 @@
       "likes": 0,
       "edited": false,
       "created": "2024-03-26T15:34:53.948Z"
+    },
+    {
+      "id": "160bcd0c-0b82-4838-acb6-1d8b39926228",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "text": "Every time i leave the house my dog cant stop barking. When i return he is super excited, which i love, but it seems as if i was gone for months. He is just too attached to me. What would you advise to help him enjoy being alone more? Also, i have two dogs and the other one is ok\n",
+      "title": "My dog has separation anxiety",
+      "likes": 1,
+      "edited": "2024-03-26T16:39:15.163Z",
+      "created": "2024-03-26T16:38:28.102Z"
     }
   ],
   "answers": [
@@ -152,6 +161,24 @@
       "likes": 0,
       "edited": false,
       "created": "2024-03-26T15:23:03.070Z"
+    },
+    {
+      "id": "5414277e-764c-4275-bbbe-61bf6583237d",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "4",
+      "text": "Idk, just dont beat the dog :(\n",
+      "likes": 1,
+      "edited": false,
+      "created": "2024-03-26T16:12:53.154Z"
+    },
+    {
+      "id": "413e5ed7-86c8-4f3c-ad45-672f5e562177",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "160bcd0c-0b82-4838-acb6-1d8b39926228",
+      "text": "nvm",
+      "likes": 1,
+      "edited": "2024-03-26T16:40:18.634Z",
+      "created": "2024-03-26T16:40:05.547Z"
     }
   ],
   "users": [
@@ -229,12 +256,12 @@
       "username": "Monika",
       "email": "monikacibirauskaite@yahoo.com",
       "password": "$2a$10$tXYhIctuihLVffT/aFQo7uAS/lW1SQYUs74N4M9LhrG77kc9pp4.2",
-      "photoUrl": "https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg",
+      "photoUrl": "https://scontent.fkun1-1.fna.fbcdn.net/v/t1.18169-9/12729383_10205563623078203_2527094782956208319_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=UndFo7NLw4MAX8QUY0O&_nc_oc=Adg5eqkqmVDN0Th0DKZA5gI6bbrzhlUi8y3fMW2AtC-NAQW4-Rh2itf3njElfyWglZuSlvVvt3qmZxg-_LBWEnZ7&_nc_ht=scontent.fkun1-1.fna&oh=00_AfCHJOP3itRd_L46yJoK7WUWW8PrHcfmT5gVqeBXMHJE-A&oe=662A557F",
       "likedQuestions": [
-        "2"
+        "2",
+        "4"
       ],
       "dislikedQuestions": [
-        "4",
         "1",
         "6",
         "3",
@@ -243,7 +270,8 @@
       "likedAnswers": [],
       "dislikedAnswers": [
         "4",
-        "3"
+        "3",
+        "413e5ed7-86c8-4f3c-ad45-672f5e562177"
       ]
     },
     {

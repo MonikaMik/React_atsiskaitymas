@@ -10,11 +10,11 @@ const HeaderTitle = styled.h1`
 `;
 const FaintText = styled.p`
 	color: var(--text-grey);
-	font-size: 12px;
+	font-size: 14px;
 `;
 const BoldText = styled.p`
 	font-weight: bold;
-	font-size: 1.05rem;
+	font-size: 1.15rem;
 `;
 const BoldTextLarge = styled.h3`
 	font-weight: bold;
@@ -24,6 +24,7 @@ const BoldTextLarge = styled.h3`
 const ThinTextTwoLines = styled.p`
 	font-weight: 200;
 	line-height: 1.5;
+	font-size: 1.05rem;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
@@ -33,6 +34,7 @@ const ThinTextTwoLines = styled.p`
 const ThinText = styled.p`
 	font-weight: 200;
 	line-height: 1.5;
+	font-size: 1.05rem;
 `;
 const PrimaryTitle = styled.p`
 	font-weight: 700;

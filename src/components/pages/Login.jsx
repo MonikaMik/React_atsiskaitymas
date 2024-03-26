@@ -29,7 +29,7 @@ const Login = () => {
 			<FormContainer>
 				<PrimaryTitle>We've Missed you!</PrimaryTitle>
 				<SecondaryTitle>
-					More than 150 questions are waiting for your wise suggestions!
+					Many questions are waiting for your wise suggestions!
 				</SecondaryTitle>
 				<LoginForm />
 			</FormContainer>

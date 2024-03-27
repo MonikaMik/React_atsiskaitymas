@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import ToastContext from './ToastContext';
 
 const InitialState = {
-	loading: false,
+	loading: true,
 	questions: [],
 	originalQuestions: [],
 	error: null,

@@ -12,6 +12,7 @@ const StyledNotFountSection = styled.section`
 		border-radius: 100%;
 		height: 40rem;
 		width: 40rem;
+		box-shadow: 5px 5px 10px 1px #0000002c;
 	}
 	> h2 {
 		font-size: 3rem;

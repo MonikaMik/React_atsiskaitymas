@@ -30,25 +30,27 @@ const UserInformation = styled.div`
 
 const UserPage = () => {
 	const {
-		state: { user, users }
+		state: { user, users, loading: usersLoading }
 	} = useContext(UsersContext);
 	const {
-		state: { questions }
+		state: { questions, loading: questionsLoading }
 	} = useContext(QuestionsContext);
 	const {
-		state: { answers }
+		state: { answers, loading: answersLoading }
 	} = useContext(AnswersContext);
 
-	const userQuestions =
-		user && questions.length
-			? questions.filter(question => question.creatorId === user.id).slice(0, 3)
-			: [];
-	const likedQuestions =
-		user && questions.length
-			? user.likedQuestions?.map(likedQuestionId =>
-					questions.find(question => question.id === likedQuestionId)
-			  )
-			: [];
+	if (questionsLoading || usersLoading || answersLoading) {
+		return <p>&nbsp; Loading...</p>;
+	}
+
+	const userQuestions = questions.length
+		? questions.filter(question => question.creatorId === user.id).slice(0, 3)
+		: [];
+	const likedQuestions = questions.length
+		? user.likedQuestions?.map(likedQuestionId =>
+				questions.find(question => question.id === likedQuestionId)
+		  )
+		: [];
 	const userKarmaScore =
 		questions
 			.filter(question => question.creatorId === user.id)

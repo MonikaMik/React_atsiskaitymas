@@ -83,7 +83,7 @@ const Aside = () => {
 				<>
 					<StyledUserInfo>
 						<img src={user.photoUrl} alt='user' />
-						<h2>Welcome, {user.username}</h2>
+						<h2>Welcome, @{user.username}</h2>
 						<p>{user.email}</p>
 					</StyledUserInfo>
 					<Divider />

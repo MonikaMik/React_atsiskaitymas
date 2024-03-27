@@ -5,6 +5,7 @@ import QuestionCard from '../organisms/QuestionCard';
 import styled from 'styled-components';
 import FilterButton from '../atoms/FilterButton';
 import AnswersContext from '../../contexts/AnswersContext';
+import Skeleton from '../atoms/Skeleton';
 
 const StyledQuestionsPage = styled.section`
 	flex-basis: 70%;
@@ -21,65 +22,74 @@ const FilterButtons = styled.div`
 
 const QuestionsPage = () => {
 	const {
-		state: { questions, isSortedByDate, isSortedByAnswers, isFiltered },
+		state: {
+			questions,
+			isSortedByDate,
+			isSortedByAnswers,
+			isFiltered,
+			loading: questionsLoading
+		},
 		dispatch
 	} = useContext(QuestionsContext);
 	const {
-		state: { user, users }
+		state: { user, users, loading: usersLoading }
 	} = useContext(UsersContext);
 	const {
-		state: { answers }
+		state: { answers, loading: answersLoading }
 	} = useContext(AnswersContext);
 
-	return (
-		questions.length &&
-		users.length && (
-			<StyledQuestionsPage>
-				<FilterButtons>
-					<FilterButton
-						onClickF={() => {
-							dispatch({
-								type: 'SORT',
-								payload: { answers: answers, sortType: 'created' }
-							});
-						}}
-						icon='bi bi-clock'
-						text='Latest'
-						isSorted={isSortedByDate}
-					/>
-					<FilterButton
-						onClickF={() => {
-							dispatch({
-								type: 'SORT',
-								payload: { answers: answers, sortType: 'answerCount' }
-							});
-						}}
-						icon='bi bi-sort-up'
-						text='Most answers'
-						isSorted={isSortedByAnswers}
-					/>
-					<FilterButton
-						onClickF={() => {
-							dispatch({
-								type: 'FILTER',
-								payload: { answers: answers }
-							});
-						}}
-						icon='bi bi-funnel'
-						text='Not answered'
-						isSorted={isFiltered}
-					/>
-				</FilterButtons>
-				{questions.map(question => (
-					<QuestionCard
-						key={question.id}
-						question={question}
-						user={user}
-						creator={users.find(user => user.id === question.creatorId)}
-					/>
-				))}
-			</StyledQuestionsPage>
-		)
+	return questions.length && users.length ? (
+		<StyledQuestionsPage>
+			<FilterButtons>
+				<FilterButton
+					onClickF={() => {
+						dispatch({
+							type: 'SORT',
+							payload: { answers: answers, sortType: 'created' }
+						});
+					}}
+					icon='bi bi-clock'
+					text='Latest'
+					isSorted={isSortedByDate}
+				/>
+				<FilterButton
+					onClickF={() => {
+						dispatch({
+							type: 'SORT',
+							payload: { answers: answers, sortType: 'answerCount' }
+						});
+					}}
+					icon='bi bi-sort-up'
+					text='Most answers'
+					isSorted={isSortedByAnswers}
+				/>
+				<FilterButton
+					onClickF={() => {
+						dispatch({
+							type: 'FILTER',
+							payload: { answers: answers }
+						});
+					}}
+					icon='bi bi-funnel'
+					text='Not answered'
+					isSorted={isFiltered}
+				/>
+			</FilterButtons>
+			{questions.map(question => (
+				<QuestionCard
+					key={question.id}
+					question={question}
+					user={user}
+					creator={users.find(user => user.id === question.creatorId)}
+				/>
+			))}
+		</StyledQuestionsPage>
+	) : questionsLoading || usersLoading || answersLoading ? (
+		<>
+			<Skeleton />
+		</>
+	) : (
+		<h2>&nbsp; No questions found...</h2>
 	);
 };
 export default QuestionsPage;

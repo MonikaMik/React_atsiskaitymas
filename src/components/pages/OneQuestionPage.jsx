@@ -55,7 +55,6 @@ const OneQuestionPage = () => {
 		<StyledOneQuestionPage>
 			<OneQuestionPageCard question={question} />
 			<HeaderTitle>Suggestions</HeaderTitle>
-
 			{user && (
 				<StyledAnswerForm>
 					<AnswerForm questionId={question.id} user={user} />

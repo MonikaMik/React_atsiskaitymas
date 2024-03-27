@@ -16,6 +16,7 @@ const StyledOneQuestionPageCard = styled(CardWrapper)`
 `;
 
 const StyledCardInfo = styled.div`
+	display: flex;
 	flex-direction: column;
 	gap: 0;
 	flex-grow: 1;
@@ -23,6 +24,13 @@ const StyledCardInfo = styled.div`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+	}
+	> img {
+		max-height: 15rem;
+		width: auto;
+		object-fit: cover;
+		border-radius: 0.5rem;
+		margin: 1rem auto;
 	}
 `;
 
@@ -53,6 +61,9 @@ const OneQuestionPageCard = ({ question }) => {
 						</div>
 						<BoldTextLarge>{question.title}</BoldTextLarge>
 						<ThinText>{question.text}</ThinText>
+						{question.photo && (
+							<img src={question.photo} alt={question.title} />
+						)}
 					</StyledCardInfo>
 				</StyledOneQuestionPageCard>
 				<dialog ref={editDialogRef}>

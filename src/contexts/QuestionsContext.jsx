@@ -57,8 +57,8 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				loading: false,
-				questions: [...state.questions, action.payload],
-				originalQuestions: [...state.originalQuestions, action.payload],
+				questions: [action.payload, ...state.questions],
+				originalQuestions: [action.payload, ...state.originalQuestions],
 				error: null
 			};
 		case questionsActionTypes.REMOVE_QUESTION:
@@ -84,6 +84,7 @@ const reducer = (state, action) => {
 								...question,
 								title: action.payload.question.title,
 								text: action.payload.question.text,
+								photo: action.payload.question.photo,
 								edited: action.payload.question.edited
 						  }
 						: question
@@ -94,6 +95,7 @@ const reducer = (state, action) => {
 								...question,
 								title: action.payload.question.title,
 								text: action.payload.question.text,
+								photo: action.payload.question.photo,
 								edited: action.payload.question.edited
 						  }
 						: question
@@ -227,10 +229,14 @@ const QuestionsContextProvider = ({ children }) => {
 		fetch('http://localhost:8080/questions')
 			.then(res => res.json())
 			.then(data => {
-				dispatch({ type: questionsActionTypes.FETCH_QUESTIONS, payload: data });
+				const sortedData = data.sort((a, b) => b.likes - a.likes);
+				dispatch({
+					type: questionsActionTypes.FETCH_QUESTIONS,
+					payload: sortedData
+				});
 				dispatch({
 					type: questionsActionTypes.SET_ORIGINAL_QUESTIONS,
-					payload: data
+					payload: sortedData
 				});
 			})
 			.catch(error => {
@@ -249,7 +255,8 @@ const QuestionsContextProvider = ({ children }) => {
 			title: values.title,
 			likes: 0,
 			edited: false,
-			created: new Date().toISOString()
+			created: new Date().toISOString(),
+			photo: values.photo
 		};
 		fetch('http://localhost:8080/questions', {
 			method: 'POST',
@@ -313,6 +320,7 @@ const QuestionsContextProvider = ({ children }) => {
 		const editedQuestion = {
 			title: values.title,
 			text: values.text,
+			photo: values.photo,
 			edited: new Date().toISOString()
 		};
 

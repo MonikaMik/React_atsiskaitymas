@@ -28,6 +28,8 @@ const IconContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
+	width: 4rem;
+	flex-shrink: 0;
 	> a {
 		text-decoration: none;
 		color: var(--text-grey);

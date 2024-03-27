@@ -33,7 +33,8 @@ const QuestionForm = () => {
 	const formik = useFormik({
 		initialValues: {
 			text: question ? question.text : '',
-			title: question ? question.title : ''
+			title: question ? question.title : '',
+			photo: question ? question.photo : ''
 		},
 		validationSchema: Yup.object({
 			title: Yup.string()
@@ -45,7 +46,12 @@ const QuestionForm = () => {
 				.min(10, 'Description must be at least 10 symbols long')
 				.max(1000, 'Description must be at most 1000 symbols long')
 				.required('Description is required')
-				.trim()
+				.trim(),
+			photo: Yup.string()
+				.url('Invalid URL')
+				.test('fileFormat', 'Image must end in .png or .jpg', value =>
+					['.png', '.jpg'].some(extension => (value || '').endsWith(extension))
+				)
 		}),
 		onSubmit: values => {
 			question ? editQuestion(values, question.id) : addQuestion(values);
@@ -79,6 +85,18 @@ const QuestionForm = () => {
 					error={{
 						touched: formik.touched.text,
 						message: formik.errors.text
+					}}
+				/>
+				<InputField
+					id='photo'
+					type='url'
+					onChangeF={formik.handleChange}
+					onBlurF={formik.handleBlur}
+					value={formik.values.photo}
+					placeholder={'Attach optional photo...'}
+					error={{
+						touched: formik.touched.photo,
+						message: formik.errors.photo
 					}}
 				/>
 				<ButtonWrapper>

@@ -32,7 +32,7 @@
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "text": "Every time i leave the house my dog cant stop barking. When i return he is super excited, which i love, but it seems as if i was gone for months. He is just too attached to me. What would you advise to help him enjoy being alone more? Also, i have two dogs and the other one is ok?\n",
       "title": "My dog has separation anxiety, please help",
-      "likes": 2,
+      "likes": 3,
       "edited": "2024-03-27T20:16:28.635Z",
       "created": "2024-03-26T16:38:28.102Z"
     },
@@ -68,7 +68,7 @@
       "creatorId": "06e491b5-c013-4a0a-9898-10710e098616",
       "text": "explain please !",
       "title": "How to play fetch?",
-      "likes": 1,
+      "likes": 0,
       "edited": "2024-03-27T20:49:26.750Z",
       "created": "2024-03-27T20:49:07.902Z"
     },
@@ -77,9 +77,19 @@
       "creatorId": "4b23e3fe-e622-4a72-8010-e7ec0ff8b03e",
       "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "title": "wwwwwwwwwwwww",
-      "likes": 1,
+      "likes": 0,
       "edited": false,
       "created": "2024-03-27T20:52:59.692Z"
+    },
+    {
+      "id": "d967dfd7-dce6-4228-a321-e7e873fea420",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "text": "Tell me if hes not the cutest uve seen",
+      "title": "My pom is so cute",
+      "likes": 2,
+      "edited": "2024-03-27T21:35:01.293Z",
+      "created": "2024-03-27T21:22:53.139Z",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Pomeranian.JPG/640px-Pomeranian.JPG"
     }
   ],
   "answers": [
@@ -194,7 +204,7 @@
       "creatorId": "4b23e3fe-e622-4a72-8010-e7ec0ff8b03e",
       "questionId": "4",
       "text": "Be good",
-      "likes": 0,
+      "likes": -1,
       "edited": false,
       "created": "2024-03-27T14:31:57.249Z"
     },
@@ -340,7 +350,7 @@
       "photoUrl": "https://scontent.fkun1-1.fna.fbcdn.net/v/t1.18169-9/12729383_10205563623078203_2527094782956208319_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=UndFo7NLw4MAX8QUY0O&_nc_oc=Adg5eqkqmVDN0Th0DKZA5gI6bbrzhlUi8y3fMW2AtC-NAQW4-Rh2itf3njElfyWglZuSlvVvt3qmZxg-_LBWEnZ7&_nc_ht=scontent.fkun1-1.fna&oh=00_AfCHJOP3itRd_L46yJoK7WUWW8PrHcfmT5gVqeBXMHJE-A&oe=662A557F",
       "likedQuestions": [
         "4",
-        "336388a9-27aa-4363-9e04-9c7cb23f2e30"
+        "d967dfd7-dce6-4228-a321-e7e873fea420"
       ],
       "dislikedQuestions": [
         "1",
@@ -348,7 +358,8 @@
         "ec6e1d72-3ae7-4e85-bdfb-4fdbc77d048e",
         "5",
         "2",
-        "c875a1c2-a4a1-4412-ab18-526ee09e5b8b"
+        "c875a1c2-a4a1-4412-ab18-526ee09e5b8b",
+        "4ffba627-e403-4dfe-a983-06f1f6134b25"
       ],
       "likedAnswers": [
         "3"

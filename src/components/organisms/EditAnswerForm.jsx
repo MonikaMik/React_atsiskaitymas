@@ -34,7 +34,11 @@ const EditAnswerForm = () => {
 			text: answer ? answer.text : ''
 		},
 		validationSchema: Yup.object({
-			text: Yup.string().required('Answer must not be empty').trim()
+			text: Yup.string()
+				.required('Answer must not be empty')
+				.min(10, 'Description must be at least 10 symbols long')
+				.max(1000, 'Description must be at most 1000 symbols long')
+				.trim()
 		}),
 		onSubmit: values => {
 			editAnswer(values, answer.id);

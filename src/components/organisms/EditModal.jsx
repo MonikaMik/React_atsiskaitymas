@@ -7,22 +7,22 @@ const StyledDialog = styled.div`
 	width: 50rem;
 `;
 
-const EditQuestionModal = ({ question, hideForm, answer }) => {
+const EditModal = ({ question, answer }) => {
 	return (
 		<StyledDialog>
 			{question && (
 				<>
 					<HeaderTitle>Edit Question</HeaderTitle>
-					<QuestionForm question={question} hideForm={hideForm} />
+					<QuestionForm />
 				</>
 			)}
 			{answer && (
 				<>
 					<HeaderTitle>Edit Answer</HeaderTitle>
-					<EditAnswerForm answer={answer} hideForm={hideForm} />
+					<EditAnswerForm />
 				</>
 			)}
 		</StyledDialog>
 	);
 };
-export default EditQuestionModal;
+export default EditModal;

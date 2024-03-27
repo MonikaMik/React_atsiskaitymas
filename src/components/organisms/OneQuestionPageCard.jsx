@@ -9,7 +9,7 @@ import QuestionsContext from '../../contexts/QuestionsContext';
 import CardActions from '../molecules/Card/CardActions';
 import CardMetadata from '../molecules/Card/CardMetadata';
 import DialogContext from '../../contexts/DialogContext';
-import EditQuestionModal from './EditQuestionModal';
+import EditModal from './EditModal';
 
 const StyledOneQuestionPageCard = styled(CardWrapper)`
 	gap: 0;
@@ -29,7 +29,7 @@ const StyledCardInfo = styled.div`
 const OneQuestionPageCard = ({ question }) => {
 	const { state: usersState } = useContext(UsersContext);
 	const { state: questionsState } = useContext(QuestionsContext);
-	const { editDialogRef, showForm, hideForm } = useContext(DialogContext);
+	const { editDialogRef } = useContext(DialogContext);
 
 	return (
 		(!usersState.loading || !questionsState.loading) && (
@@ -46,11 +46,7 @@ const OneQuestionPageCard = ({ question }) => {
 								edited={question.edited}
 							/>
 							{usersState.user && question.creatorId === usersState.user.id ? (
-								<CardActions
-									question={question}
-									navigate={true}
-									showForm={showForm}
-								/>
+								<CardActions question={question} navigate={true} />
 							) : (
 								<div></div>
 							)}
@@ -60,7 +56,7 @@ const OneQuestionPageCard = ({ question }) => {
 					</StyledCardInfo>
 				</StyledOneQuestionPageCard>
 				<dialog ref={editDialogRef}>
-					<EditQuestionModal question={question} hideForm={hideForm} />
+					<EditModal question={question} />
 				</dialog>
 			</>
 		)

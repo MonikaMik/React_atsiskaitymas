@@ -34,7 +34,7 @@ const App = () => {
 			<GlobalStyles />
 			<Header />
 			<StyledMain>
-				{showAside && <Aside />}
+				{showAside && <Aside location={{ ...location }} />}
 				<Routes>
 					<Route path='/' element={<QuestionsPage />} />
 					<Route path='/questions/:id' element={<OneQuestionPage />} />

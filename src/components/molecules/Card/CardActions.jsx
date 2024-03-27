@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 import Icon from '../../atoms/Icon';
 import { useNavigate } from 'react-router';
-import QuestionsContext from '../../../contexts/QuestionsContext';
-import AnswersContext from '../../../contexts/AnswersContext';
+import QuestionsContext, {
+	questionsActionTypes
+} from '../../../contexts/QuestionsContext';
+import AnswersContext, {
+	answersActionTypes
+} from '../../../contexts/AnswersContext';
+import DialogContext from '../../../contexts/DialogContext';
 import { useContext } from 'react';
 
 const IconContainer = styled.div`
@@ -18,18 +23,31 @@ const IconContainer = styled.div`
 const CardActions = ({
 	question = undefined,
 	answer = undefined,
-	navigate = false,
-	showForm
+	navigate = false
 }) => {
-	const { removeQuestion } = useContext(QuestionsContext);
-	const { removeAnswer } = useContext(AnswersContext);
+	const { removeQuestion, dispatch } = useContext(QuestionsContext);
+	const { removeAnswer, dispatch: answersDispatch } =
+		useContext(AnswersContext);
 	const navigateTo = useNavigate();
+	const { showForm, showAnswerForm } = useContext(DialogContext);
 
 	return (
 		<IconContainer>
 			<button
 				onClick={() => {
-					showForm();
+					if (question) {
+						dispatch({
+							type: questionsActionTypes.SET_EDITING_QUESTION,
+							payload: question
+						});
+						question && showForm();
+					} else if (answer) {
+						answersDispatch({
+							type: answersActionTypes.SET_EDITING_ANSWER,
+							payload: answer
+						});
+						answer && showAnswerForm();
+					}
 				}}
 			>
 				<Icon iconClass='bi-pencil' size='1.3em' color='gray' />

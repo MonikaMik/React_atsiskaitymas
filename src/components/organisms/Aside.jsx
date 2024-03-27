@@ -49,7 +49,7 @@ const StyledLinks = styled.nav`
 const StyledUserInfo = styled.div`
 	padding-inline: 3rem;
 `;
-const Aside = () => {
+const Aside = ({ location }) => {
 	const {
 		state: { user, loading: userLoading }
 	} = useContext(UsersContext);
@@ -90,7 +90,7 @@ const Aside = () => {
 					<Divider />
 				</>
 			)}
-			<SearchInput />
+			<SearchInput location={location} />
 			<Divider />
 			<StyledLinks>
 				<AsideLink link='/' text='Questions' icon='bi bi-list-ul' />

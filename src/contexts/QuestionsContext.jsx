@@ -11,7 +11,8 @@ const InitialState = {
 	error: null,
 	isSortedByDate: false,
 	isSortedByAnswers: false,
-	isFiltered: false
+	isFiltered: false,
+	editingQuestion: null
 };
 
 const QuestionsContext = createContext();
@@ -27,7 +28,9 @@ const questionsActionTypes = {
 	FAILURE: 'FAILURE',
 	SORT: 'SORT',
 	FILTER: 'FILTER',
-	SEARCH: 'SEARCH'
+	SEARCH: 'SEARCH',
+	RESET_SEARCH: 'RESET_SEARCH',
+	SET_EDITING_QUESTION: 'SET_EDITING_QUESTION'
 };
 
 const reducer = (state, action) => {
@@ -74,6 +77,7 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				loading: false,
+				editingQuestion: null,
 				questions: state.questions.map(question =>
 					question.id === action.payload.id
 						? {
@@ -96,7 +100,7 @@ const reducer = (state, action) => {
 				),
 				error: null
 			};
-		case questionsActionTypes.CHANGE_LIKES: {
+		case questionsActionTypes.CHANGE_LIKES:
 			return {
 				...state,
 				loading: false,
@@ -112,7 +116,6 @@ const reducer = (state, action) => {
 				),
 				error: null
 			};
-		}
 		case questionsActionTypes.SET_ORIGINAL_QUESTIONS:
 			return {
 				...state,
@@ -193,6 +196,19 @@ const reducer = (state, action) => {
 						question.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
 						question.text.toLowerCase().includes(searchQuery.toLowerCase())
 				)
+			};
+		case questionsActionTypes.RESET_SEARCH:
+			return {
+				...state,
+				questions: state.originalQuestions,
+				isFiltered: false,
+				isSortedByDate: false,
+				isSortedByAnswers: false
+			};
+		case questionsActionTypes.SET_EDITING_QUESTION:
+			return {
+				...state,
+				editingQuestion: action.payload
 			};
 		default:
 			return state;
@@ -299,7 +315,7 @@ const QuestionsContextProvider = ({ children }) => {
 			text: values.text,
 			edited: new Date().toISOString()
 		};
-		console.log('EDITING', editedQuestion);
+
 		fetch(`http://localhost:8080/questions/${id}`, {
 			method: 'PATCH',
 			headers: {

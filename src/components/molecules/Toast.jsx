@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Toast = styled.div`
+const Toast = styled(({ bgColor, ...props }) => <div {...props} />)`
 	position: fixed;
 	top: 10rem;
 	right: 0;

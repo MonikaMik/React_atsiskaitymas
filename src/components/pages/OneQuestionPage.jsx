@@ -9,6 +9,8 @@ import { HeaderTitle, ThinText } from '../atoms/Typography';
 import AnswerForm from '../organisms/AnswerForm';
 import CardWrapper from '../atoms/CardWrapper';
 import AnswerCard from '../organisms/AnswerCard';
+import EditModal from '../organisms/EditModal';
+import DialogContext from '../../contexts/DialogContext';
 
 const StyledOneQuestionPage = styled.section`
 	padding: 2rem 15% 2rem 5%;
@@ -32,7 +34,7 @@ const StyledAnswerSection = styled.section`
 
 const OneQuestionPage = () => {
 	const {
-		state: { questions, loading: questionsLoading }
+		state: { originalQuestions: questions, loading: questionsLoading }
 	} = useContext(QuestionsContext);
 	const {
 		state: { users, user, loading: usersLoading }
@@ -40,17 +42,20 @@ const OneQuestionPage = () => {
 	const {
 		state: { answers, loading: answersLoading }
 	} = useContext(AnswersContext);
+	const { answerEditDialogRef } = useContext(DialogContext);
 	const { id } = useParams();
 
 	if (questionsLoading || usersLoading || answersLoading) {
 		return <span className='loader'></span>;
 	}
+
 	const question = questions.find(question => question.id === id);
 	const answersForQuestion = answers.filter(answer => answer.questionId === id);
 	return (
 		<StyledOneQuestionPage>
 			<OneQuestionPageCard question={question} />
 			<HeaderTitle>Suggestions</HeaderTitle>
+
 			{user && (
 				<StyledAnswerForm>
 					<AnswerForm questionId={question.id} user={user} />
@@ -70,6 +75,9 @@ const OneQuestionPage = () => {
 					<ThinText>No answers yet...</ThinText>
 				)}
 			</StyledAnswerSection>
+			<dialog ref={answerEditDialogRef}>
+				<EditModal answer={{}} />
+			</dialog>
 		</StyledOneQuestionPage>
 	);
 };

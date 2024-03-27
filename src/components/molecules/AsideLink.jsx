@@ -10,6 +10,11 @@ const StyledAsideLink = styled.div`
 	> i {
 		margin-left: 3rem;
 	}
+	&:hover {
+		> i {
+			color: var(--accent-blue);
+		}
+	}
 	&:has(a.active) {
 		background-color: var(--accent-peach);
 		border-left: 6px solid var(--accent-orange);
@@ -22,6 +27,9 @@ const StyledAsideLink = styled.div`
 		text-decoration: none;
 		&:hover {
 			color: var(--accent-blue);
+			~ i {
+				color: var(--accent-blue);
+			}
 		}
 		&.active {
 			color: var(--accent-orange);

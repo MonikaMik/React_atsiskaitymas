@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import AnswersContext from '../../contexts/AnswersContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import InputField from '../molecules/InputField';
@@ -8,6 +8,7 @@ import SubmitButton from '../atoms/form/SubmitButton';
 import FormErrorMessage from '../atoms/form/FormErrorMessage';
 import ButtonWrapper from '../atoms/ButtonWrapper';
 import Button from '../atoms/Button';
+import DialogContext from '../../contexts/DialogContext';
 
 const StyledAnswerForm = styled.form`
 	display: flex;
@@ -20,12 +21,17 @@ const StyledAnswerForm = styled.form`
 	}
 `;
 
-const EditAnswerForm = ({ answer, hideForm }) => {
-	const { editAnswer, error } = useContext(AnswersContext);
+const EditAnswerForm = () => {
+	const {
+		editAnswer,
+		error,
+		state: { editingAnswer: answer }
+	} = useContext(AnswersContext);
+	const { hideAnswerForm } = useContext(DialogContext);
 
 	const formik = useFormik({
 		initialValues: {
-			text: answer.text
+			text: answer ? answer.text : ''
 		},
 		validationSchema: Yup.object({
 			text: Yup.string().required('Answer must not be empty').trim()
@@ -33,8 +39,9 @@ const EditAnswerForm = ({ answer, hideForm }) => {
 		onSubmit: values => {
 			editAnswer(values, answer.id);
 			formik.resetForm();
-			hideForm();
-		}
+			hideAnswerForm();
+		},
+		enableReinitialize: true
 	});
 
 	return (
@@ -58,7 +65,7 @@ const EditAnswerForm = ({ answer, hideForm }) => {
 					text='Cancel'
 					onClickF={() => {
 						formik.resetForm();
-						hideForm();
+						hideAnswerForm();
 					}}
 				/>
 				<SubmitButton text='Submit' icon={true} />

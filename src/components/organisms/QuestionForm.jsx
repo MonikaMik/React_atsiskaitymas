@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import Button from '../atoms/Button';
 import ButtonWrapper from '../atoms/ButtonWrapper';
 import { useNavigate } from 'react-router';
+import DialogContext from '../../contexts/DialogContext';
 
 const StyledForm = styled.form`
 	textarea {
@@ -17,15 +18,16 @@ const StyledForm = styled.form`
 	}
 `;
 
-const QuestionForm = ({ question = undefined, hideForm }) => {
+const QuestionForm = () => {
 	const {
 		addQuestion,
 		editQuestion,
-		state: { error }
+		state: { editingQuestion: question, error }
 	} = useContext(QuestionsContext);
 	const {
 		state: { user }
 	} = useContext(UsersContext);
+	const { hideForm } = useContext(DialogContext);
 	const navigate = useNavigate();
 
 	const formik = useFormik({
@@ -49,7 +51,8 @@ const QuestionForm = ({ question = undefined, hideForm }) => {
 			question ? editQuestion(values, question.id) : addQuestion(values);
 			formik.resetForm();
 			question ? hideForm() : navigate('/');
-		}
+		},
+		enableReinitialize: true
 	});
 
 	return (

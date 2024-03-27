@@ -1,11 +1,15 @@
-import { useContext } from 'react';
-import QuestionsContext from '../../contexts/QuestionsContext';
+import { useContext, useRef } from 'react';
+import QuestionsContext, {
+	questionsActionTypes
+} from '../../contexts/QuestionsContext';
 import UsersContext from '../../contexts/UsersContext';
 import QuestionCard from '../organisms/QuestionCard';
 import styled from 'styled-components';
 import FilterButton from '../atoms/FilterButton';
 import AnswersContext from '../../contexts/AnswersContext';
 import Skeleton from '../atoms/Skeleton';
+import EditModal from '../organisms/EditModal';
+import DialogContext from '../../contexts/DialogContext';
 
 const StyledQuestionsPage = styled.section`
 	flex-basis: 70%;
@@ -21,12 +25,15 @@ const FilterButtons = styled.div`
 `;
 
 const QuestionsPage = () => {
+	const { editDialogRef, showForm } = useContext(DialogContext);
+
 	const {
 		state: {
 			questions,
 			isSortedByDate,
 			isSortedByAnswers,
 			isFiltered,
+			editingQuestion,
 			loading: questionsLoading
 		},
 		dispatch
@@ -79,10 +86,14 @@ const QuestionsPage = () => {
 				<QuestionCard
 					key={question.id}
 					question={question}
+					showForm={showForm}
 					user={user}
 					creator={users.find(user => user.id === question.creatorId)}
 				/>
 			))}
+			<dialog ref={editDialogRef}>
+				<EditModal question={editingQuestion} />
+			</dialog>
 		</StyledQuestionsPage>
 	) : questionsLoading || usersLoading || answersLoading ? (
 		<>

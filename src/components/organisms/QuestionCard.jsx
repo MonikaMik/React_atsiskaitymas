@@ -8,7 +8,6 @@ import AnswersCount from '../molecules/Card/AnwersCount';
 import CardWrapper from '../atoms/CardWrapper';
 import { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import EditQuestionModal from '../organisms/EditQuestionModal';
 
 const StyledQuestionCard = styled(CardWrapper)`
 	border-left: ${props =>
@@ -39,18 +38,14 @@ const StyledDialog = styled.dialog`
 	width: 100%;
 `;
 
-const QuestionCard = ({ question, creator, user }) => {
+const QuestionCard = ({
+	question,
+	creator,
+	user,
+	showForm,
+	noEdit = false
+}) => {
 	const { state: answersState } = useContext(AnswersContext);
-
-	const editDialogRef = useRef(null);
-
-	const showForm = () => {
-		editDialogRef.current.showModal();
-	};
-
-	const hideForm = () => {
-		editDialogRef.current.close();
-	};
 
 	const answerCount = answersState.answers.filter(
 		answer => answer.questionId === question.id
@@ -70,7 +65,7 @@ const QuestionCard = ({ question, creator, user }) => {
 				</Link>
 			</InfoContainer>
 			<IconContainer>
-				{user && creator.id === user.id ? (
+				{!noEdit && user && creator.id === user.id ? (
 					<CardActions question={question} showForm={showForm} />
 				) : (
 					<div></div>
@@ -79,9 +74,6 @@ const QuestionCard = ({ question, creator, user }) => {
 					<AnswersCount answerCount={answerCount} />
 				</Link>
 			</IconContainer>
-			<dialog ref={editDialogRef}>
-				<EditQuestionModal question={question} hideForm={hideForm} />
-			</dialog>
 		</StyledQuestionCard>
 	);
 };

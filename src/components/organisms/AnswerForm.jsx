@@ -7,6 +7,8 @@ import InputField from '../molecules/InputField';
 import SubmitButton from '../atoms/form/SubmitButton';
 import FormErrorMessage from '../atoms/form/FormErrorMessage';
 import { v4 as uuidv4 } from 'uuid';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const StyledAnswerForm = styled.form`
 	display: flex;
@@ -21,13 +23,18 @@ const StyledAnswerForm = styled.form`
 
 const AnswerForm = ({ questionId, user }) => {
 	const { addAnswer, error } = useContext(AnswersContext);
+	const location = useLocation();
 
 	const formik = useFormik({
 		initialValues: {
 			answer: ''
 		},
 		validationSchema: Yup.object({
-			answer: Yup.string().required('Answer must not be empty').trim()
+			answer: Yup.string()
+				.required('Answer must not be empty')
+				.min(10, 'Description must be at least 10 symbols long')
+				.max(1000, 'Description must be at most 1000 symbols long')
+				.trim()
 		}),
 		onSubmit: values => {
 			const newAnswer = {
@@ -40,8 +47,14 @@ const AnswerForm = ({ questionId, user }) => {
 				created: new Date().toISOString()
 			};
 			addAnswer(newAnswer);
+			formik.resetForm();
 		}
 	});
+	useEffect(() => {
+		return () => {
+			formik.resetForm();
+		};
+	}, [location]);
 
 	return (
 		<StyledAnswerForm onSubmit={formik.handleSubmit}>

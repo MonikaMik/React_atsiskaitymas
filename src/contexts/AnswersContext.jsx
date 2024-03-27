@@ -4,7 +4,8 @@ import ToastContext from './ToastContext';
 const InitialState = {
 	loading: true,
 	answers: [],
-	error: null
+	error: null,
+	editingAnswer: null
 };
 
 const AnswersContext = createContext();
@@ -16,7 +17,8 @@ const answersActionTypes = {
 	EDIT_ANSWER: 'EDIT_ANSWER',
 	REQUEST: 'REQUEST',
 	FAILURE: 'FAILURE',
-	CHANGE_LIKES: 'CHANGE_LIKES'
+	CHANGE_LIKES: 'CHANGE_LIKES',
+	SET_EDITING_ANSWER: 'SET_EDITING_ANSWER'
 };
 
 const reducer = (state, action) => {
@@ -57,6 +59,7 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				loading: false,
+				editingAnswer: null,
 				answers: state.answers.map(answer =>
 					answer.id === action.payload.id
 						? {
@@ -80,6 +83,11 @@ const reducer = (state, action) => {
 				error: null
 			};
 		}
+		case answersActionTypes.SET_EDITING_ANSWER:
+			return {
+				...state,
+				editingAnswer: action.payload
+			};
 		default:
 			return state;
 	}
@@ -226,7 +234,14 @@ const AnswersContextProvider = ({ children }) => {
 
 	return (
 		<AnswersContext.Provider
-			value={{ state, addAnswer, removeAnswer, editAnswer, changeLikes }}
+			value={{
+				state,
+				addAnswer,
+				removeAnswer,
+				editAnswer,
+				changeLikes,
+				dispatch
+			}}
 		>
 			{children}
 		</AnswersContext.Provider>
@@ -234,4 +249,4 @@ const AnswersContextProvider = ({ children }) => {
 };
 
 export default AnswersContext;
-export { AnswersContextProvider };
+export { AnswersContextProvider, answersActionTypes };

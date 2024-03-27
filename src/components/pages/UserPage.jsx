@@ -33,7 +33,7 @@ const UserPage = () => {
 		state: { user, users, loading: usersLoading }
 	} = useContext(UsersContext);
 	const {
-		state: { questions, loading: questionsLoading }
+		state: { originalQuestions: questions, loading: questionsLoading }
 	} = useContext(QuestionsContext);
 	const {
 		state: { answers, loading: answersLoading }
@@ -43,20 +43,22 @@ const UserPage = () => {
 		return <span className='loader'></span>;
 	}
 
-	const userQuestions = questions.length
+	const userQuestions = questions?.length
 		? questions.filter(question => question.creatorId === user.id).slice(0, 3)
 		: [];
-	const likedQuestions = questions.length
-		? user.likedQuestions?.map(likedQuestionId =>
-				questions.find(question => question.id === likedQuestionId)
-		  )
+	const likedQuestions = questions?.length
+		? user.likedQuestions
+				.map(likedQuestionId =>
+					questions.find(question => question.id === likedQuestionId)
+				)
+				.filter(Boolean)
 		: [];
 	const userKarmaScore =
 		questions
-			.filter(question => question.creatorId === user.id)
+			?.filter(question => question.creatorId === user.id)
 			.reduce((total, question) => total + question.likes, 0) +
 		answers
-			.filter(answer => answer.creatorId === user.id)
+			?.filter(answer => answer.creatorId === user.id)
 			.reduce((total, answer) => total + answer.likes, 0);
 
 	return (
@@ -76,26 +78,36 @@ const UserPage = () => {
 				<Icon iconClass='bi bi-trophy' color='var(--text-gray)' size='24px' />
 				&nbsp; Your top questions:
 			</HeaderTitle>
-			{userQuestions.map(question => (
-				<QuestionCard
-					key={question.id}
-					question={question}
-					user={user}
-					creator={user}
-				/>
-			))}
+			{userQuestions.length ? (
+				userQuestions.map(question => (
+					<QuestionCard
+						key={question.id}
+						question={question}
+						user={user}
+						creator={user}
+						noEdit={true}
+					/>
+				))
+			) : (
+				<p>You haven't asked any questions yet...</p>
+			)}
 			<HeaderTitle>
 				<Icon iconClass='bi bi-heart' color='var(--text-gray)' size='24px' />
 				&nbsp; You liked these questions the most:{' '}
 			</HeaderTitle>
-			{likedQuestions.map(question => (
-				<QuestionCard
-					key={question.id}
-					question={question}
-					user={user}
-					creator={user}
-				/>
-			))}
+			{likedQuestions.length ? (
+				likedQuestions.map(question => (
+					<QuestionCard
+						key={question.id}
+						question={question}
+						user={user}
+						creator={users.find(user => user.id === question.creatorId)}
+						noEdit={true}
+					/>
+				))
+			) : (
+				<p>You haven't liked any questions yet...</p>
+			)}
 		</StyledUserPage>
 	);
 };

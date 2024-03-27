@@ -18,8 +18,13 @@ const StyledHeader = styled.header`
 	justify-content: space-between;
 	padding-inline: 5%;
 	gap: 2rem;
+	position: relative;
 	> a {
 		text-decoration: none;
+	}
+	> .link {
+		position: absolute;
+		margin-left: calc(20% - 2rem);
 	}
 `;
 
@@ -42,7 +47,7 @@ const Header = () => {
 			<Link to='/'>
 				<FullLogo />
 			</Link>
-			<Link to='/'>
+			<Link to='/' className='link'>
 				<HeaderTitle>
 					{location.pathname === '/' ? (
 						'Questions'

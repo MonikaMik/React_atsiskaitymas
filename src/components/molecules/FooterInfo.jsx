@@ -21,6 +21,8 @@ const IconContainer = styled.div`
 	gap: 3rem;
 	flex-grow: 0;
 	justify-self: center;
+	position: absolute;
+	left: 45%;
 `;
 
 const LogoSection = styled.div`

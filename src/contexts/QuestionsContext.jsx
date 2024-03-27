@@ -2,6 +2,7 @@ import { createContext, useReducer, useEffect } from 'react';
 import UsersContext from '../contexts/UsersContext';
 import { v4 as uuidv4 } from 'uuid';
 import { useContext } from 'react';
+import ToastContext from './ToastContext';
 
 const InitialState = {
 	loading: false,
@@ -25,7 +26,8 @@ const questionsActionTypes = {
 	REQUEST: 'REQUEST',
 	FAILURE: 'FAILURE',
 	SORT: 'SORT',
-	FILTER: 'FILTER'
+	FILTER: 'FILTER',
+	SEARCH: 'SEARCH'
 };
 
 const reducer = (state, action) => {
@@ -182,6 +184,16 @@ const reducer = (state, action) => {
 					isSortedByAnswers: false
 				};
 			}
+		case questionsActionTypes.SEARCH:
+			const searchQuery = action.payload;
+			return {
+				...state,
+				questions: state.originalQuestions.filter(
+					question =>
+						question.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+						question.text.toLowerCase().includes(searchQuery.toLowerCase())
+				)
+			};
 		default:
 			return state;
 	}
@@ -192,6 +204,7 @@ const QuestionsContextProvider = ({ children }) => {
 	const {
 		state: { user }
 	} = useContext(UsersContext);
+	const showToast = useContext(ToastContext);
 
 	useEffect(() => {
 		dispatch({ type: questionsActionTypes.REQUEST });
@@ -229,19 +242,25 @@ const QuestionsContextProvider = ({ children }) => {
 			},
 			body: JSON.stringify(newQuestion)
 		})
-			.then(res => res.json())
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('HTTP status ' + response.status);
+				}
+				return response.json();
+			})
 			.then(data => {
 				dispatch({
 					type: questionsActionTypes.ADD_QUESTION,
 					payload: newQuestion
 				});
-				console.log('ADDING', state.questions);
+				showToast('Question added successfully!', 'success');
 			})
 			.catch(error => {
 				dispatch({
 					type: questionsActionTypes.FAILURE,
 					error: error.toString()
 				});
+				showToast('Could not add question. Please try again later.', 'error');
 			});
 	};
 
@@ -249,17 +268,28 @@ const QuestionsContextProvider = ({ children }) => {
 		fetch(`http://localhost:8080/questions/${questionId}`, {
 			method: 'DELETE'
 		})
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('HTTP status ' + response.status);
+				}
+				return response;
+			})
 			.then(() => {
 				dispatch({
 					type: questionsActionTypes.REMOVE_QUESTION,
 					payload: questionId
 				});
+				showToast('Question removed successfully!', 'success');
 			})
 			.catch(error => {
 				dispatch({
 					type: questionsActionTypes.FAILURE,
 					error: error.toString()
 				});
+				showToast(
+					'Could not remove question. Please try again later.',
+					'error'
+				);
 			});
 	};
 
@@ -277,18 +307,25 @@ const QuestionsContextProvider = ({ children }) => {
 			},
 			body: JSON.stringify(editedQuestion)
 		})
-			.then(res => res.json())
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('HTTP status ' + response.status);
+				}
+				return response.json();
+			})
 			.then(data => {
 				dispatch({
 					type: questionsActionTypes.EDIT_QUESTION,
 					payload: { id: id, question: editedQuestion }
 				});
+				showToast('Question edited successfully!', 'success');
 			})
 			.catch(error => {
 				dispatch({
 					type: questionsActionTypes.FAILURE,
 					error: error.toString()
 				});
+				showToast('Could not edit question. Please try again later.', 'error');
 			});
 	};
 
@@ -334,4 +371,4 @@ const QuestionsContextProvider = ({ children }) => {
 };
 
 export default QuestionsContext;
-export { QuestionsContextProvider };
+export { QuestionsContextProvider, questionsActionTypes };

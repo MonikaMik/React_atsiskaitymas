@@ -40,6 +40,10 @@ const IconContainer = styled.div`
 	justify-content: space-between;
 `;
 
+const CardDivider = styled(Divider)`
+	margin: 0;
+`;
+
 const AnswerCard = ({ answer, users, user }) => {
 	const creator = users.find(user => user.id === answer.creatorId);
 
@@ -70,7 +74,7 @@ const AnswerCard = ({ answer, users, user }) => {
 				)}
 			</InfoContainer>
 			<ThinText>{answer.text}</ThinText>
-			<Divider />
+			<CardDivider />
 			<IconContainer>
 				<AnswerCardMetadata answer={answer} user={user} />
 				{user && creator.id === user.id ? (

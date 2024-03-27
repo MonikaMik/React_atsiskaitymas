@@ -4,9 +4,9 @@
       "id": "2",
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "text": "Once upon a time, there was a dog named Max who was terrified of thunderstorms. Every time a storm rolled in, Max would hide under the bed, trembling with fear. His owner, Sarah, was determined to help Max overcome this fear and make him feel safe. She researched various techniques and consulted with a dog trainer. Sarah gradually introduced Max to the sound of thunder by playing recordings at a low volume and rewarding him with treats and praise for remaining calm. Over time, Max became less anxious and more comfortable during thunderstorms. Now, when a storm approaches, Max seeks comfort in his cozy den, knowing that he is safe and loved.",
-      "title": "Dog afraid of thunderstorms",
-      "likes": 12,
-      "edited": "2024-03-26T10:41:21.666Z",
+      "title": "Dog afraid of thunderstorms?",
+      "likes": 11,
+      "edited": "2024-03-27T10:46:02.636Z",
       "created": "2024-03-02T12:00:00"
     },
     {
@@ -55,31 +55,22 @@
       "created": "2024-03-26T11:39:15.946Z"
     },
     {
-      "id": "b0ef37ac-813e-46c4-bbff-3676654f0b2f",
-      "creatorId": "db6febc7-2161-43af-91fd-37ee11a38c7d",
-      "text": "an answer. 122323",
-      "title": "a uqestion",
-      "likes": 0,
-      "edited": false,
-      "created": "2024-03-26T15:25:49.099Z"
-    },
-    {
-      "id": "5348eacd-f882-4712-b154-2161bc7782cb",
-      "creatorId": "4b23e3fe-e622-4a72-8010-e7ec0ff8b03e",
-      "text": "Aaaaaaaaaaaaa",
-      "title": "SUP BOI",
-      "likes": 0,
-      "edited": false,
-      "created": "2024-03-26T15:34:53.948Z"
-    },
-    {
       "id": "160bcd0c-0b82-4838-acb6-1d8b39926228",
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
-      "text": "Every time i leave the house my dog cant stop barking. When i return he is super excited, which i love, but it seems as if i was gone for months. He is just too attached to me. What would you advise to help him enjoy being alone more? Also, i have two dogs and the other one is ok\n",
+      "text": "Every time i leave the house my dog cant stop barking. When i return he is super excited, which i love, but it seems as if i was gone for months. He is just too attached to me. What would you advise to help him enjoy being alone more? Also, i have two dogs and the other one is ok?\n",
       "title": "My dog has separation anxiety",
       "likes": 1,
-      "edited": "2024-03-26T16:39:15.163Z",
+      "edited": "2024-03-27T06:15:27.493Z",
       "created": "2024-03-26T16:38:28.102Z"
+    },
+    {
+      "id": "336388a9-27aa-4363-9e04-9c7cb23f2e30",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "text": "I never realized how much of a problem my dog, Bruno's laziness could be until it nearly cost us a friendship. As his owner, I've always indulged his love for long naps under the apple tree in our yard, finding his disinterest in activities like fetching or running rather amusing. But when the town's annual race was announced, I saw it as a perfect opportunity to motivate him, perhaps a little selfishly, to showcase the spirit I believed he had inside.\n\nOn the race day, with the sun high and spirits higher, I watched as Bruno took his place among the eager participants, only to start at a trot that soon turned into a leisurely stroll. My heart sank. Around me, whispers and chuckles filled the air, my cheeks burning with embarrassment. It was then, amid the laughter, that I caught Bruno's eye, and something unspoken passed between us.",
+      "title": "My dogs are lazy",
+      "likes": 1,
+      "edited": false,
+      "created": "2024-03-27T07:42:44.655Z"
     }
   ],
   "answers": [
@@ -106,7 +97,7 @@
       "creatorId": "user3",
       "questionId": "2",
       "text": "Create a safe and comfortable space for your dog during thunderstorms, such as a cozy den or a crate covered with blankets.",
-      "likes": 2,
+      "likes": 6,
       "edited": "2022-01-03T00:00:00",
       "created": "2022-01-03T12:00:00"
     },
@@ -131,7 +122,7 @@
       "creatorId": "4b23e3fe-e622-4a72-8010-e7ec0ff8b03e",
       "questionId": "2",
       "text": "No Yes?\n",
-      "likes": 0,
+      "likes": -1,
       "edited": "2024-03-26T11:38:21.792Z",
       "created": "2024-03-25T19:17:07.818Z"
     },
@@ -179,6 +170,15 @@
       "likes": 1,
       "edited": "2024-03-26T16:40:18.634Z",
       "created": "2024-03-26T16:40:05.547Z"
+    },
+    {
+      "id": "152933dd-0501-4c28-a58f-4c54b226e376",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "83ce4f41-aede-4ad1-9f1a-dfe71026b36f",
+      "text": "Because they were born that way\n",
+      "likes": -1,
+      "edited": false,
+      "created": "2024-03-27T09:57:48.637Z"
     }
   ],
   "users": [
@@ -258,19 +258,21 @@
       "password": "$2a$10$tXYhIctuihLVffT/aFQo7uAS/lW1SQYUs74N4M9LhrG77kc9pp4.2",
       "photoUrl": "https://scontent.fkun1-1.fna.fbcdn.net/v/t1.18169-9/12729383_10205563623078203_2527094782956208319_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=UndFo7NLw4MAX8QUY0O&_nc_oc=Adg5eqkqmVDN0Th0DKZA5gI6bbrzhlUi8y3fMW2AtC-NAQW4-Rh2itf3njElfyWglZuSlvVvt3qmZxg-_LBWEnZ7&_nc_ht=scontent.fkun1-1.fna&oh=00_AfCHJOP3itRd_L46yJoK7WUWW8PrHcfmT5gVqeBXMHJE-A&oe=662A557F",
       "likedQuestions": [
-        "2",
         "4"
       ],
       "dislikedQuestions": [
         "1",
         "6",
         "3",
-        "ec6e1d72-3ae7-4e85-bdfb-4fdbc77d048e"
+        "ec6e1d72-3ae7-4e85-bdfb-4fdbc77d048e",
+        "5",
+        "2"
       ],
-      "likedAnswers": [],
+      "likedAnswers": [
+        "3"
+      ],
       "dislikedAnswers": [
         "4",
-        "3",
         "413e5ed7-86c8-4f3c-ad45-672f5e562177"
       ]
     },

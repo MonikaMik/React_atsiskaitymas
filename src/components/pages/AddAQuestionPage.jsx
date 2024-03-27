@@ -4,7 +4,8 @@ import CardWrapper from '../atoms/CardWrapper';
 import { HeaderTitle } from '../atoms/Typography';
 
 const StyledAddAQuestionPage = styled.section`
-	padding: 2rem 15%;
+	padding: 2rem 15% 2rem 5%;
+	width: 70%;
 `;
 const FormWrapper = styled(CardWrapper)`
 	flex-direction: column;

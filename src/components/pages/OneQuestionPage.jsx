@@ -11,7 +11,8 @@ import CardWrapper from '../atoms/CardWrapper';
 import AnswerCard from '../organisms/AnswerCard';
 
 const StyledOneQuestionPage = styled.section`
-	padding: 2rem 15%;
+	padding: 2rem 15% 2rem 5%;
+	width: 70%;
 	> h1 {
 		margin-block: 1.5rem;
 	}

@@ -5,6 +5,7 @@ const Divider = styled.div`
 	height: 1px;
 	background-color: var(--border-grey);
 	content: '';
+	margin-block: 2rem;
 `;
 
 export default Divider;

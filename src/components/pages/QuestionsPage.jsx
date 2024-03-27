@@ -7,7 +7,8 @@ import FilterButton from '../atoms/FilterButton';
 import AnswersContext from '../../contexts/AnswersContext';
 
 const StyledQuestionsPage = styled.section`
-	padding: 2rem 15%;
+	flex-basis: 70%;
+	padding: 2rem 15% 2rem 5%;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;

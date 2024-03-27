@@ -12,6 +12,13 @@ import UsersContext from './contexts/UsersContext';
 import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import Aside from './components/organisms/Aside';
+import styled from 'styled-components';
+import UserPage from './components/pages/UserPage';
+
+const StyledMain = styled.main`
+	min-height: calc(100vh - 71px - 4rem);
+	display: flex;
+`;
 
 const App = () => {
 	const {
@@ -25,7 +32,7 @@ const App = () => {
 		<>
 			<GlobalStyles />
 			<Header />
-			<main>
+			<StyledMain>
 				{showAside && <Aside />}
 				<Routes>
 					<Route path='/' element={<QuestionsPage />} />
@@ -36,9 +43,12 @@ const App = () => {
 					/>
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
+					<Route path='user'>
+						<Route path=':id' element={<UserPage />} />
+					</Route>
 					<Route path='*' element={<h1>Not Found</h1>} />
 				</Routes>
-			</main>
+			</StyledMain>
 			<Footer />
 		</>
 	);

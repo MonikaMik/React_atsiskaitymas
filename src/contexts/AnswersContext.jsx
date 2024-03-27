@@ -1,4 +1,5 @@
-import { createContext, useReducer, useEffect } from 'react';
+import { createContext, useReducer, useEffect, useContext } from 'react';
+import ToastContext from './ToastContext';
 
 const InitialState = {
 	loading: true,
@@ -86,6 +87,7 @@ const reducer = (state, action) => {
 
 const AnswersContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, InitialState);
+	const showToast = useContext(ToastContext);
 
 	useEffect(() => {
 		dispatch({ type: answersActionTypes.REQUEST });
@@ -110,18 +112,25 @@ const AnswersContextProvider = ({ children }) => {
 			},
 			body: JSON.stringify(newAnswer)
 		})
-			.then(res => res.json())
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('HTTP status ' + response.status);
+				}
+				return response.json();
+			})
 			.then(data => {
 				dispatch({
 					type: answersActionTypes.ADD_ANSWER,
 					payload: newAnswer
 				});
+				showToast('Answer added successfully!', 'success');
 			})
 			.catch(error => {
 				dispatch({
 					type: answersActionTypes.FAILURE,
 					error: error.toString()
 				});
+				showToast('Could not add answer. Please try again later.', 'error');
 			});
 	};
 
@@ -129,17 +138,25 @@ const AnswersContextProvider = ({ children }) => {
 		fetch(`http://localhost:8080/answers/${answerId}`, {
 			method: 'DELETE'
 		})
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('HTTP status ' + response.status);
+				}
+				return response;
+			})
 			.then(() => {
 				dispatch({
 					type: answersActionTypes.REMOVE_ANSWER,
 					payload: answerId
 				});
+				showToast('Answer removed successfully!', 'success');
 			})
 			.catch(error => {
 				dispatch({
 					type: answersActionTypes.FAILURE,
 					error: error.toString()
 				});
+				showToast('Could not remove answer. Please try again later.', 'error');
 			});
 	};
 
@@ -155,18 +172,25 @@ const AnswersContextProvider = ({ children }) => {
 			},
 			body: JSON.stringify(editedAnswer)
 		})
-			.then(res => res.json())
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('HTTP status ' + response.status);
+				}
+				return response.json();
+			})
 			.then(data => {
 				dispatch({
 					type: answersActionTypes.EDIT_ANSWER,
 					payload: { id: id, answer: editedAnswer }
 				});
+				showToast('Answer edited successfully!', 'success');
 			})
 			.catch(error => {
 				dispatch({
 					type: answersActionTypes.FAILURE,
 					error: error.toString()
 				});
+				showToast('Could not edit answer. Please try again later.', 'error');
 			});
 	};
 
@@ -180,7 +204,12 @@ const AnswersContextProvider = ({ children }) => {
 				likes: answer.likes + like
 			})
 		})
-			.then(res => res.json())
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('HTTP status ' + response.status);
+				}
+				return response.json();
+			})
 			.then(data => {
 				dispatch({
 					type: answersActionTypes.CHANGE_LIKES,

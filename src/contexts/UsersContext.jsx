@@ -288,21 +288,21 @@ const UsersContextProvider = ({ children }) => {
 	};
 
 	const addLikedAnswer = answerId =>
-		updateQuestion(usersActionTypes.ADD_LIKED_ANSWER, answerId, 'likedAnswers');
+		updateAnswer(usersActionTypes.ADD_LIKED_ANSWER, answerId, 'likedAnswers');
 	const addDislikedAnswer = answerId =>
-		updateQuestion(
+		updateAnswer(
 			usersActionTypes.ADD_DISLIKED_ANSWER,
 			answerId,
 			'dislikedAnswers'
 		);
 	const removeLikedAnswer = answerId =>
-		updateQuestion(
+		updateAnswer(
 			usersActionTypes.REMOVE_LIKED_ANSWER,
 			answerId,
 			'likedAnswers'
 		);
 	const removeDislikedAnswer = answerId =>
-		updateQuestion(
+		updateAnswer(
 			usersActionTypes.REMOVE_DISLIKED_ANSWER,
 			answerId,
 			'dislikedAnswers'

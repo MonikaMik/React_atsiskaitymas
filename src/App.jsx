@@ -14,6 +14,7 @@ import { useLocation } from 'react-router-dom';
 import Aside from './components/organisms/Aside';
 import styled from 'styled-components';
 import UserPage from './components/pages/UserPage';
+import NotFound from './components/pages/NotFound';
 
 const StyledMain = styled.main`
 	min-height: calc(100vh - 71px - 4rem);
@@ -46,7 +47,7 @@ const App = () => {
 					<Route path='user'>
 						<Route path=':id' element={<UserPage />} />
 					</Route>
-					<Route path='*' element={<h1>Not Found</h1>} />
+					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</StyledMain>
 			<Footer />

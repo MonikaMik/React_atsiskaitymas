@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import LoginForm from '../organisms/LoginForm';
 import { PrimaryTitle, SecondaryTitle } from '../atoms/Typography';
+import { useEffect } from 'react';
+import { usersActionTypes } from '../../contexts/UsersContext';
+import { useContext } from 'react';
+import UsersContext from '../../contexts/UsersContext';
 
 const StyledLogin = styled.section`
 	display: flex;
@@ -24,6 +28,14 @@ const FormContainer = styled.div`
 `;
 
 const Login = () => {
+	const { dispatch } = useContext(UsersContext);
+	useEffect(() => {
+		return () => {
+			dispatch({
+				type: usersActionTypes.CLEAR_ERROR
+			});
+		};
+	}, []);
 	return (
 		<StyledLogin>
 			<FormContainer>

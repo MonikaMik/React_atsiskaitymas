@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import RegisterForm from '../organisms/RegisterForm';
 import { PrimaryTitle, SecondaryTitle } from '../atoms/Typography';
+import { useEffect } from 'react';
+import { usersActionTypes } from '../../contexts/UsersContext';
+import { useContext } from 'react';
+import UsersContext from '../../contexts/UsersContext';
 
 const StyledRegister = styled.section`
 	display: flex;
@@ -24,6 +28,14 @@ const FormContainer = styled.div`
 `;
 
 const Register = () => {
+	const { dispatch } = useContext(UsersContext);
+	useEffect(() => {
+		return () => {
+			dispatch({
+				type: usersActionTypes.CLEAR_ERROR
+			});
+		};
+	}, []);
 	return (
 		<StyledRegister>
 			<FormContainer>

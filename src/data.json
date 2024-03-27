@@ -48,10 +48,10 @@
     {
       "id": "83ce4f41-aede-4ad1-9f1a-dfe71026b36f",
       "creatorId": "4b23e3fe-e622-4a72-8010-e7ec0ff8b03e",
-      "text": "Please explain",
+      "text": "Please explain NOW",
       "title": "How are dogs so cute?",
       "likes": 1,
-      "edited": false,
+      "edited": "2024-03-27T11:25:09.989Z",
       "created": "2024-03-26T11:39:15.946Z"
     },
     {
@@ -285,12 +285,14 @@
       "likedAnswers": [
         "3"
       ],
-      "dislikedAnswers": [],
+      "dislikedAnswers": [
+        "bbb854e8-86ba-4346-9cea-5c2da28f3cf1"
+      ],
       "likedQuestions": [
-        "3"
+        "3",
+        "2"
       ],
       "dislikedQuestions": [
-        "2",
         "5"
       ]
     },

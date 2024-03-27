@@ -16,6 +16,7 @@ const usersActionTypes = {
 	FAILURE: 'FAILURE',
 	LOGOUT: 'LOGOUT',
 	REQUEST: 'REQUEST',
+	CLEAR_ERROR: 'CLEAR_ERROR',
 	ADD_LIKED_QUESTION: 'ADD_LIKED_QUESTION',
 	REMOVE_LIKED_QUESTION: 'REMOVE_LIKED_QUESTION',
 	ADD_DISLIKED_QUESTION: 'ADD_DISLIKED_QUESTION',
@@ -67,6 +68,11 @@ const reducer = (state, action) => {
 				...state,
 				user: null,
 				loading: false,
+				error: null
+			};
+		case usersActionTypes.CLEAR_ERROR:
+			return {
+				...state,
 				error: null
 			};
 		case usersActionTypes.ADD_LIKED_QUESTION:
@@ -321,7 +327,8 @@ const UsersContextProvider = ({ children }) => {
 				addLikedAnswer,
 				removeLikedAnswer,
 				addDislikedAnswer,
-				removeDislikedAnswer
+				removeDislikedAnswer,
+				dispatch
 			}}
 		>
 			{children}

@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import UsersContext from '../../contexts/UsersContext';
 import { useContext } from 'react';
 import QuestionsContext from '../../contexts/QuestionsContext';
-import { ThinText } from '../atoms/Typography';
 import Divider from '../atoms/Divider';
-import Icon from '../atoms/Icon';
 import SearchInput from '../atoms/form/SearchInput';
 import { NavLink } from 'react-router-dom';
 import AsideLink from '../molecules/AsideLink';
@@ -53,11 +51,14 @@ const StyledUserInfo = styled.div`
 `;
 const Aside = () => {
 	const {
-		state: { user }
+		state: { user, loading: userLoading }
 	} = useContext(UsersContext);
 	const {
-		state: { originalQuestions }
+		state: { originalQuestions, loading: questionsLoading }
 	} = useContext(QuestionsContext);
+
+	if (userLoading || questionsLoading) return <span className='loader'></span>;
+
 	const userQuestions =
 		user &&
 		originalQuestions

@@ -43,7 +43,7 @@ const OneQuestionPage = () => {
 	const { id } = useParams();
 
 	if (questionsLoading || usersLoading || answersLoading) {
-		return <div>Loading...</div>;
+		return <span className='loader'></span>;
 	}
 	const question = questions.find(question => question.id === id);
 	const answersForQuestion = answers.filter(answer => answer.questionId === id);

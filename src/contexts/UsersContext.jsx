@@ -115,7 +115,6 @@ const reducer = (state, action) => {
 				},
 				error: null
 			};
-
 		case usersActionTypes.ADD_LIKED_ANSWER:
 			return {
 				...state,
@@ -166,6 +165,14 @@ const UsersContextProvider = ({ children }) => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
+		const user = localStorage.getItem('user');
+		if (user) {
+			const parsedUser = JSON.parse(user);
+			dispatch({ type: usersActionTypes.LOGIN, payload: parsedUser.user });
+		}
+	}, []);
+
+	useEffect(() => {
 		dispatch({ type: usersActionTypes.REQUEST });
 		fetch(`http://localhost:8080/users`)
 			.then(res => res.json())
@@ -177,13 +184,14 @@ const UsersContextProvider = ({ children }) => {
 			);
 	}, []);
 
-	const login = (username, password) => {
+	const login = (username, password, loggedIn) => {
 		dispatch({ type: usersActionTypes.REQUEST });
+
 		const user = state.users.find(
 			el =>
 				el.username === username && bcrypt.compareSync(password, el.password)
 		);
-
+		loggedIn && localStorage.setItem('user', JSON.stringify({ user }));
 		if (user) {
 			dispatch({ type: usersActionTypes.LOGIN, payload: user });
 			navigate('/');
@@ -236,6 +244,7 @@ const UsersContextProvider = ({ children }) => {
 	};
 
 	const logout = () => {
+		localStorage.removeItem('user');
 		dispatch({ type: usersActionTypes.LOGOUT });
 		navigate('/');
 	};

@@ -36,11 +36,13 @@ const UserActions = styled.div`
 
 const Header = () => {
 	const {
-		state: { user },
+		state: { user, loading },
 		logout
 	} = useContext(UsersContext);
 	const location = useLocation();
 	const navigate = useNavigate();
+
+	if (loading) return <span className='loader'></span>;
 
 	return (
 		<StyledHeader>

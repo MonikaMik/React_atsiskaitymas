@@ -40,7 +40,7 @@ const UserPage = () => {
 	} = useContext(AnswersContext);
 
 	if (questionsLoading || usersLoading || answersLoading) {
-		return <p>&nbsp; Loading...</p>;
+		return <span className='loader'></span>;
 	}
 
 	const userQuestions = questions.length

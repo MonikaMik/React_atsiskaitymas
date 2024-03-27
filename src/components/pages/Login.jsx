@@ -25,6 +25,36 @@ const FormContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	> form > .loggedIn {
+		margin-block: 1.3rem;
+		input[type='checkbox'] {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 16px;
+			height: 16px;
+			background-color: white;
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			position: relative;
+		}
+
+		input[type='checkbox']:checked {
+			background-color: var(--accent-orange);
+			border: none;
+		}
+
+		input[type='checkbox']:checked::after {
+			content: '';
+			position: absolute;
+			width: 5px;
+			height: 10px;
+			border: solid white;
+			border-width: 0 2px 2px 0;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+	}
 `;
 
 const Login = () => {

@@ -4,6 +4,7 @@ import QuestionsContext, {
 	questionsActionTypes
 } from '../../../contexts/QuestionsContext';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const StyledSearchInputContainer = styled.div`
 	position: relative;
@@ -28,6 +29,7 @@ const StyledInput = styled.input`
 
 const SearchInput = () => {
 	const { dispatch } = useContext(QuestionsContext);
+	const navigate = useNavigate();
 
 	const formik = useFormik({
 		initialValues: {
@@ -51,6 +53,7 @@ const SearchInput = () => {
 								type: questionsActionTypes.SEARCH,
 								payload: e.target.value
 							});
+							navigate('/');
 						}}
 						value={formik.values.search}
 					/>

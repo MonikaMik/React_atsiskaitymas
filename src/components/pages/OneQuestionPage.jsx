@@ -13,8 +13,8 @@ import EditModal from '../organisms/EditModal';
 import DialogContext from '../../contexts/DialogContext';
 
 const StyledOneQuestionPage = styled.section`
-	padding: 2rem 15% 2rem 5%;
-	width: 70%;
+	padding: 2rem 10% 2rem 5%;
+	width: 60%;
 	> h1 {
 		margin-block: 1.5rem;
 	}

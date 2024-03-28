@@ -17,7 +17,7 @@ import UserPage from './components/pages/UserPage';
 import NotFound from './components/pages/NotFound';
 
 const StyledMain = styled.main`
-	min-height: calc(100vh - 71px - 4rem);
+	min-height: calc(100vh - 146px);
 	display: flex;
 `;
 

@@ -24,7 +24,7 @@ const StyledHeader = styled.header`
 	}
 	> .link {
 		position: absolute;
-		margin-left: calc(20% - 2rem);
+		margin-left: 20%;
 	}
 	@media (max-width: 900px) {
 		width: 100%;

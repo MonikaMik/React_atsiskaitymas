@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import AnswersContext from '../../contexts/AnswersContext';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import InputField from '../molecules/InputField';

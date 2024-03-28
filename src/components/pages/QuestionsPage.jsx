@@ -10,8 +10,8 @@ import EditModal from '../organisms/EditModal';
 import DialogContext from '../../contexts/DialogContext';
 
 const StyledQuestionsPage = styled.section`
-	flex-basis: 70%;
-	padding: 2rem 5% 2rem 5%;
+	width: 60%;
+	padding: 2rem 10% 2rem 5%;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;

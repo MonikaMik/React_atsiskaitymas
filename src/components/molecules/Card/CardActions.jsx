@@ -79,7 +79,7 @@ const CardActions = ({
 					</button>
 				</>
 			)}
-			{answer && answer.type === 'answer' && (
+			{user && answer && answer.type === 'answer' && (
 				<button
 					onClick={() => {
 						answersDispatch({

@@ -15,7 +15,7 @@ const StyledAside = styled.aside`
 	padding-block: 4rem;
 	box-sizing: border-box;
 	background-color: white;
-	min-height: calc(100vh - 71px - 4rem);
+	min-height: calc(100vh - 146px);
 	> div > img {
 		border-radius: 100%;
 		height: 5rem;

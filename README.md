@@ -45,7 +45,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Main page prototype
 
-![Prototype main, user](./public/assets/prototypes/Prototype%20main,%20user.png)
+![Prototype_main_user](./public/assets/prototypes/Protorype_main_user.png)
 
 ### Contact
 

@@ -13,10 +13,14 @@ import DialogContext from '../../contexts/DialogContext';
 
 const StyledQuestionsPage = styled.section`
 	flex-basis: 70%;
-	padding: 2rem 15% 2rem 5%;
+	padding: 2rem 5% 2rem 5%;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+	@media (max-width: 900px) {
+		padding: 1rem;
+		flex-basis: 100%;
+	}
 `;
 
 const FilterButtons = styled.div`

@@ -26,6 +26,16 @@ const StyledHeader = styled.header`
 		position: absolute;
 		margin-left: calc(20% - 2rem);
 	}
+	@media (max-width: 900px) {
+		width: 100%;
+		height: 120px;
+		gap: 0;
+		flex-direction: column;
+		justify-content: center;
+		> .link {
+			display: none;
+		}
+	}
 `;
 
 const UserActions = styled.div`

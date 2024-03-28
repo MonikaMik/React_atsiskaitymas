@@ -10,8 +10,8 @@ import Icon from '../atoms/Icon';
 import { LinkNoHover } from '../atoms/Typography';
 
 const StyledAside = styled.aside`
-	width: 20%;
-	min-width: 25rem;
+	width: max(20%, 22rem);
+	min-width: 20rem;
 	padding-block: 4rem;
 	box-sizing: border-box;
 	background-color: white;
@@ -21,12 +21,15 @@ const StyledAside = styled.aside`
 		height: 5rem;
 		width: 5rem;
 	}
+	@media (max-width: 900px) {
+		display: none;
+	}
 `;
 
 const StyledLinks = styled.nav`
 	display: flex;
 	flex-direction: column;
-	padding-right: 1rem;
+	/* margin-right: 1rem; */
 	gap: 1rem;
 	::marker {
 		color: var(--accent-blue);

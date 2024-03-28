@@ -23,6 +23,9 @@ const IconContainer = styled.div`
 	justify-self: center;
 	position: absolute;
 	left: 45%;
+	@media (max-width: 900px) {
+		position: unset;
+	}
 `;
 
 const LogoSection = styled.div`

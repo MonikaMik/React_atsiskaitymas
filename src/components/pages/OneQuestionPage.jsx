@@ -18,6 +18,10 @@ const StyledOneQuestionPage = styled.section`
 	> h1 {
 		margin-block: 1.5rem;
 	}
+	@media (max-width: 900px) {
+		width: 100%;
+		padding: 2rem;
+	}
 `;
 const StyledAnswerForm = styled(CardWrapper)`
 	display: block;

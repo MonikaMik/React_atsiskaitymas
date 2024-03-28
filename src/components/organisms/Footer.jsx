@@ -14,6 +14,12 @@ const StyledFooter = styled.footer`
 		flex: 1;
 		text-align: center;
 	}
+	@media (max-width: 900px) {
+		flex-direction: column;
+		gap: 0;
+		width: 100%;
+		height: 10rem;
+	}
 `;
 
 const Footer = () => {

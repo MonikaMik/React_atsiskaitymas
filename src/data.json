@@ -5,7 +5,7 @@
       "creatorId": "user1",
       "text": "My dog keeps chewing on furniture. How can I stop this behavior? My dog keeps chewing on furniture. How can I stop this behavior? My dog keeps chewing on furniture. How can I stop this behavior?",
       "title": "Dog chewing on furniture",
-      "likes": 16,
+      "likes": 17,
       "edited": false,
       "created": "2024-03-04T12:00:00"
     },
@@ -14,7 +14,7 @@
       "creatorId": "user2",
       "text": "What are some good training techniques for teaching a dog to sit? What are some good training techniques for teaching a dog to sit? What are some good training techniques for teaching a dog to sit?",
       "title": "Training a dog to sit",
-      "likes": 7,
+      "likes": 8,
       "edited": "2022-01-05T00:00:00",
       "created": "2024-03-05T12:00:00"
     },
@@ -33,7 +33,7 @@
       "text": "Every time i leave the house my dog cant stop barking. When i return he is super excited, which i love, but it seems as if i was gone for months. He is just too attached to me. What would you advise to help him enjoy being alone more? Also, i have two dogs and the other one is ok?\n",
       "title": "My dog has separation anxiety",
       "likes": 3,
-      "edited": "2024-03-28T08:03:11.906Z",
+      "edited": "2024-03-28T08:37:25.517Z",
       "created": "2024-03-26T16:38:28.102Z"
     },
     {
@@ -50,7 +50,7 @@
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "text": "is it bad or nah is there too much love",
       "title": "I love my dog too much",
-      "likes": 2,
+      "likes": 3,
       "edited": "2024-03-27T18:41:52.035Z",
       "created": "2024-03-27T17:10:11.319Z"
     },
@@ -78,7 +78,7 @@
       "creatorId": "user1",
       "text": "What are the best toys for a teething puppy? What are the best toys for a teething puppy? What are the best toys for a teething puppy?",
       "title": "Toys for a teething puppy",
-      "likes": 1,
+      "likes": 2,
       "edited": false,
       "created": "2024-03-28T09:00:00"
     },
@@ -121,12 +121,22 @@
     {
       "id": "08f75078-de7f-4112-ace6-664b015d63fe",
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
-      "text": "rate him!!!!",
+      "text": "I remember the day I first saw Mochi, a fluffy Pomeranian with eyes full of mischief and a coat as soft as clouds. From that moment, I knew my life would never be the same. Mochi wasn't just a dog; he was a tiny bundle of joy, always ready to explore the world with his tiny paws.\n\nOur adventures began in the simplest of places – the local park. To others, it was just a patch of green, but to Mochi, it was a vast kingdom waiting to be explored. With each step, his excitement was palpable, sniffing every leaf and chasing every butterfly that dared to flutter too close. People couldn’t help but stop and smile, drawn to his infectious energy and undeniable charm.",
       "title": "No question, just wanted to show off my spitz",
-      "likes": 1,
-      "edited": "2024-03-28T08:03:00.588Z",
+      "likes": 2,
+      "edited": "2024-03-28T09:50:45.963Z",
       "created": "2024-03-28T08:02:21.331Z",
       "photo": "https://t3.ftcdn.net/jpg/02/50/26/42/360_F_250264245_DYqnTFTf4Xa7hG318yZrgd5hrco2gn4j.jpg"
+    },
+    {
+      "id": "866425c5-dd2b-4e58-b277-6dd3d0011400",
+      "creatorId": "0bac4faf-aefb-46ba-a512-6fcdffee69e6",
+      "text": "I think both a",
+      "title": "Is nyma cuter or Mupa?",
+      "likes": 0,
+      "edited": "2024-03-28T08:45:32.065Z",
+      "created": "2024-03-28T08:44:29.118Z",
+      "photo": ""
     }
   ],
   "answers": [
@@ -185,22 +195,11 @@
       "id": "39169674-dd28-41ae-b0de-80ac018efa40",
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "questionId": "4",
-      "text": "try something new",
+      "text": "try something new ok?\n",
       "likes": 0,
-      "edited": "2024-03-28T07:32:47.310Z",
+      "edited": "2024-03-28T08:50:33.219Z",
       "created": "2024-03-28T07:32:41.461Z",
       "type": "answer"
-    },
-    {
-      "id": "74ac8b0a-9ba0-48ce-9864-d8e7f0989897",
-      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
-      "questionId": "4",
-      "text": "maybe not....",
-      "likes": 0,
-      "edited": false,
-      "created": "2024-03-28T07:32:58.561Z",
-      "type": "reply",
-      "replyTo": "39169674-dd28-41ae-b0de-80ac018efa40"
     },
     {
       "id": "4b70488b-3151-4130-8c22-22eaddf6d97b",
@@ -234,6 +233,79 @@
       "created": "2024-03-28T07:56:28.203Z",
       "type": "reply",
       "replyTo": "bbb854e8-86ba-4346-9cea-5c2da28f3cf1"
+    },
+    {
+      "id": "bbbe2ad2-a872-43c5-9d0e-84f88e8d64c9",
+      "creatorId": "0bac4faf-aefb-46ba-a512-6fcdffee69e6",
+      "questionId": "866425c5-dd2b-4e58-b277-6dd3d0011400",
+      "text": "aaaaaaaaaa",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T08:45:16.502Z",
+      "type": "reply",
+      "replyTo": "ec21c899-633b-45f9-adb5-7d88c9765d7e"
+    },
+    {
+      "id": "8162f2ec-75bd-4080-8a26-39bee7cd19e5",
+      "creatorId": "0bac4faf-aefb-46ba-a512-6fcdffee69e6",
+      "questionId": "08f75078-de7f-4112-ace6-664b015d63fe",
+      "text": "10\n",
+      "likes": 1,
+      "edited": false,
+      "created": "2024-03-28T08:47:07.055Z",
+      "type": "answer"
+    },
+    {
+      "id": "731c9903-b825-4225-a0d4-641b0c5c3f39",
+      "creatorId": "0bac4faf-aefb-46ba-a512-6fcdffee69e6",
+      "questionId": "866425c5-dd2b-4e58-b277-6dd3d0011400",
+      "text": "agree",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T08:47:18.888Z",
+      "type": "answer"
+    },
+    {
+      "id": "481ac72a-35c7-4990-80c5-f4ef14785966",
+      "creatorId": "0bac4faf-aefb-46ba-a512-6fcdffee69e6",
+      "questionId": "4",
+      "text": "test",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T08:49:02.339Z",
+      "type": "reply",
+      "replyTo": "39169674-dd28-41ae-b0de-80ac018efa40"
+    },
+    {
+      "id": "3774bd9c-0972-4fea-a4aa-e51eb700cd01",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "f5ff9a81-b0fe-414b-b55f-abe1ec082abr",
+      "text": "maybe go on more walks",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T08:58:27.917Z",
+      "type": "answer"
+    },
+    {
+      "id": "7c046406-667f-4b45-822f-b27ca22730e8",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "945f131f-36c9-443a-b3e5-56cce83a8137",
+      "text": "you throw the ball. he brings",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T08:58:50.812Z",
+      "type": "answer"
+    },
+    {
+      "id": "b471e60f-ac60-4213-99b1-34475a7a7bf8",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "945f131f-36c9-443a-b3e5-56cce83a8137",
+      "text": "easy enough?",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T08:59:03.827Z",
+      "type": "reply",
+      "replyTo": "7c046406-667f-4b45-822f-b27ca22730e8"
     }
   ],
   "users": [
@@ -313,15 +385,17 @@
       "password": "$2a$10$tXYhIctuihLVffT/aFQo7uAS/lW1SQYUs74N4M9LhrG77kc9pp4.2",
       "photoUrl": "https://scontent.fkun1-1.fna.fbcdn.net/v/t1.18169-9/12729383_10205563623078203_2527094782956208319_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=UndFo7NLw4MAX8QUY0O&_nc_oc=Adg5eqkqmVDN0Th0DKZA5gI6bbrzhlUi8y3fMW2AtC-NAQW4-Rh2itf3njElfyWglZuSlvVvt3qmZxg-_LBWEnZ7&_nc_ht=scontent.fkun1-1.fna&oh=00_AfCHJOP3itRd_L46yJoK7WUWW8PrHcfmT5gVqeBXMHJE-A&oe=662A557F",
       "likedQuestions": [
-        "4"
+        "4",
+        "f5ff9a81-b0fe-414b-b55f-abe1ec082abf",
+        "08f75078-de7f-4112-ace6-664b015d63fe",
+        "336388a9-27aa-4363-9e04-9c7cb23f2e30"
       ],
       "dislikedQuestions": [
         "1",
         "6",
         "ec6e1d72-3ae7-4e85-bdfb-4fdbc77d048e",
         "5",
-        "2",
-        "c875a1c2-a4a1-4412-ab18-526ee09e5b8b"
+        "2"
       ],
       "likedAnswers": [
         "3",
@@ -392,6 +466,23 @@
         "4",
         "5"
       ]
+    },
+    {
+      "id": "0bac4faf-aefb-46ba-a512-6fcdffee69e6",
+      "username": "Nyma",
+      "email": "nyma@munis.lt",
+      "password": "$2a$10$kIpxfeCB6BQ93KbzPRQj8e1p.OuZYUmvobKQtkXjJpVbMldhgZmm.",
+      "photoUrl": "https://cdn-icons-png.freepik.com/256/1144/1144760.png",
+      "likedAnswers": [
+        "8162f2ec-75bd-4080-8a26-39bee7cd19e5",
+        "74ac8b0a-9ba0-48ce-9864-d8e7f0989897"
+      ],
+      "dislikedAnswers": [],
+      "likedQuestions": [
+        "866425c5-dd2b-4e58-b277-6dd3d0011400",
+        "4"
+      ],
+      "dislikedQuestions": []
     }
   ]
 }

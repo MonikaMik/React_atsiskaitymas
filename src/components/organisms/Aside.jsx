@@ -6,6 +6,8 @@ import Divider from '../atoms/Divider';
 import SearchInput from '../atoms/form/SearchInput';
 import { NavLink } from 'react-router-dom';
 import AsideLink from '../molecules/AsideLink';
+import Icon from '../atoms/Icon';
+import { LinkNoHover } from '../atoms/Typography';
 
 const StyledAside = styled.aside`
 	width: 20%;
@@ -24,6 +26,7 @@ const StyledAside = styled.aside`
 const StyledLinks = styled.nav`
 	display: flex;
 	flex-direction: column;
+	padding-right: 1rem;
 	gap: 1rem;
 	::marker {
 		color: var(--accent-blue);
@@ -95,7 +98,10 @@ const Aside = ({ location }) => {
 			<Divider />
 			<StyledLinks>
 				<AsideLink link='/' text='Questions' icon='bi bi-list-ul' />
-				<AsideLink link='/no' text='Trending' icon='bi bi-arrow-up-right' />
+				<LinkNoHover>
+					<Icon iconClass='bi bi-arrow-up-right' /> Trending
+				</LinkNoHover>
+				{/* <AsideLink link='/no' text='Trending' icon='bi bi-arrow-up-right' /> */}
 				<ul>
 					{trendingQuestions.map(question => (
 						<li key={question.id}>
@@ -113,10 +119,14 @@ const Aside = ({ location }) => {
 						<AsideLink link='/add' text='Ask a question' icon='bi bi-plus' />
 						<AsideLink
 							link={`/user/${user.id}`}
-							text='Your questions'
+							text='Your profile'
 							icon='bi bi-patch-question'
 						/>
-						<AsideLink link='/NotFound' text='Your likes' icon='bi bi-heart' />
+						<AsideLink
+							link={`/user/${user.id}#liked`}
+							text='Your likes'
+							icon='bi bi-heart'
+						/>
 					</StyledLinks>
 				</>
 			)}

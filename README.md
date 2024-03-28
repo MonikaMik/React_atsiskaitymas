@@ -43,6 +43,10 @@ These instructions will get you a copy of the project up and running on your loc
 
    The project will open on http://localhost:3000
 
+### Main page prototype
+
+![Prototype main, user](./public/assets/prototypes/Protorype main, user.png)
+
 ### Contact
 
 Email - monikamikalavicienel@gmail.com

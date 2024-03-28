@@ -34,7 +34,6 @@ const AnswerForm = ({ questionId, user }) => {
 		validationSchema: Yup.object({
 			text: Yup.string()
 				.required('Answer must not be empty')
-				.min(10, 'Description must be at least 10 symbols long')
 				.max(1000, 'Description must be at most 1000 symbols long')
 				.trim()
 		}),

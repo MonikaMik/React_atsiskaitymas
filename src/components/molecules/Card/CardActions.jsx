@@ -28,14 +28,24 @@ const CardActions = ({
 	navigate = false
 }) => {
 	const { removeQuestion, dispatch } = useContext(QuestionsContext);
-	const { removeAnswer, dispatch: answersDispatch } =
-		useContext(AnswersContext);
+	const {
+		state: { answers },
+		removeAnswer,
+		dispatch: answersDispatch
+	} = useContext(AnswersContext);
 	const navigateTo = useNavigate();
 	const { showForm, showAnswerForm } = useContext(DialogContext);
 	const {
 		state: { user }
 	} = useContext(UsersContext);
 
+	const answersForDeletedQuestion = question
+		? answers.filter(answer => answer.questionId === question?.id)
+		: [];
+	const removeQuestionWithAnswers = () => {
+		removeQuestion(question.id);
+		answersForDeletedQuestion.forEach(answer => removeAnswer(answer.id));
+	};
 	return (
 		<IconContainer>
 			{user && creatorId === user.id && (
@@ -61,7 +71,7 @@ const CardActions = ({
 					</button>
 					<button
 						onClick={() => {
-							answer ? removeAnswer(answer.id) : removeQuestion(question.id);
+							answer ? removeAnswer(answer.id) : removeQuestionWithAnswers();
 							question && navigate && navigateTo('/');
 						}}
 					>

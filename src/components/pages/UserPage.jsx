@@ -6,6 +6,8 @@ import QuestionCard from '../organisms/QuestionCard';
 import styled from 'styled-components';
 import { HeaderTitle } from '../atoms/Typography';
 import Icon from '../atoms/Icon';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const StyledUserPage = styled.section`
 	flex-basis: 70%;
@@ -38,13 +40,19 @@ const UserPage = () => {
 	const {
 		state: { answers, loading: answersLoading }
 	} = useContext(AnswersContext);
+	const location = useLocation();
+	useEffect(() => {
+		if (location.hash) {
+			let elem = document.getElementById(location.hash.slice(1));
+			if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [location]);
 
 	if (questionsLoading || usersLoading || answersLoading) {
 		return <span className='loader'></span>;
 	}
-
 	const userQuestions = questions?.length
-		? questions.filter(question => question.creatorId === user.id).slice(0, 3)
+		? questions.filter(question => question.creatorId === user.id).slice(0, 5)
 		: [];
 	const likedQuestions = questions?.length
 		? user.likedQuestions
@@ -52,6 +60,7 @@ const UserPage = () => {
 					questions.find(question => question.id === likedQuestionId)
 				)
 				.filter(Boolean)
+				.slice(0, 5)
 		: [];
 	const userKarmaScore =
 		questions
@@ -91,7 +100,7 @@ const UserPage = () => {
 			) : (
 				<p>You haven't asked any questions yet...</p>
 			)}
-			<HeaderTitle>
+			<HeaderTitle id='liked'>
 				<Icon iconClass='bi bi-heart' color='var(--text-gray)' size='24px' />
 				&nbsp; You liked these questions the most:{' '}
 			</HeaderTitle>

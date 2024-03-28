@@ -35,8 +35,12 @@ const Copyrights = styled.div`
 	gap: 2rem;
 	justify-content: flex-end;
 	align-items: center;
-	> p {
-		margin: 0;
+	> a {
+		text-decoration: none;
+		color: var(--text-grey);
+		&:hover {
+			color: var(--accent-blue);
+		}
 	}
 `;
 
@@ -52,8 +56,8 @@ const FooterInfo = () => {
 				<Icon iconClass={'bi bi-twitter'} size='1.5rem' />
 			</IconContainer>
 			<Copyrights>
-				<p>© AskAway. Vilnius, 2024</p>
-				<p>Terms & Conditions</p>
+				<a href='/'>© AskAway. Vilnius, 2024</a>
+				<a href='/'>Terms & Conditions</a>
 			</Copyrights>
 		</>
 	);

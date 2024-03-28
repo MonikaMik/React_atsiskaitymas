@@ -45,6 +45,18 @@ const SecondaryTitle = styled.p`
 	font-size: 1.3rem;
 	line-height: 1.5;
 `;
+const LinkNoHover = styled.p`
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding-block: 0.8rem;
+	padding-left: 3rem;
+	margin-block: 0;
+	color: var(--text-grey);
+	> i {
+		color: var(--text-grey);
+	}
+`;
 
 export {
 	PrimaryTitle,
@@ -54,5 +66,6 @@ export {
 	HeaderTitle,
 	SecondaryTitle,
 	ThinTextTwoLines,
-	BoldTextLarge
+	BoldTextLarge,
+	LinkNoHover
 };

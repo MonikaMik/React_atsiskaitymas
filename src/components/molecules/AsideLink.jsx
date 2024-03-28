@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Icon from '../atoms/Icon';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const StyledAsideLink = styled.div`
 	display: flex;
@@ -41,7 +41,11 @@ const AsideLink = ({ link, icon, text }) => {
 	return (
 		<StyledAsideLink>
 			<Icon iconClass={icon} color='var(--text-grey)' size='large' />
-			<NavLink to={link}>{text}</NavLink>
+			{text === 'Your likes' ? (
+				<Link to={link}>{text}</Link>
+			) : (
+				<NavLink to={link}>{text}</NavLink>
+			)}
 		</StyledAsideLink>
 	);
 };

@@ -37,7 +37,6 @@ const StyledHeader = styled.header`
 		}
 	}
 `;
-
 const UserActions = styled.div`
 	display: flex;
 	gap: 2rem;

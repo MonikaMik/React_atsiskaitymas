@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BoldText, ThinText } from '../atoms/Typography';
+import { ThinText } from '../atoms/Typography';
 import UserInfo from '../molecules/Card/UserInfo';
 import { BoldTextLarge } from '../atoms/Typography';
 import { useContext } from 'react';
@@ -14,7 +14,6 @@ import EditModal from './EditModal';
 const StyledOneQuestionPageCard = styled(CardWrapper)`
 	gap: 0;
 `;
-
 const StyledCardInfo = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -26,9 +25,10 @@ const StyledCardInfo = styled.div`
 		align-items: center;
 	}
 	> img {
-		max-height: 15rem;
-		width: auto;
+		max-height: 25rem;
+		width: 60%;
 		object-fit: cover;
+		object-position: center;
 		border-radius: 0.5rem;
 		margin: 1rem auto;
 	}

@@ -1,20 +1,6 @@
 import styled from 'styled-components';
-import Icon from '../atoms/Icon';
-import { BoldText, ThinText } from '../atoms/Typography';
-import LogoText from '../atoms/LogoText';
-
-const StyledFooterInfo = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding-inline: 5%;
-	padding-block: 0.5rem;
-	gap: 2rem;
-	> * {
-		flex: 1;
-		text-align: center;
-	}
-`;
+import Icon from '../../atoms/Icon';
+import LogoText from '../../atoms/LogoText';
 
 const IconContainer = styled.div`
 	display: flex;

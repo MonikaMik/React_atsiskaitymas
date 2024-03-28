@@ -16,7 +16,6 @@ const StyledUserPage = styled.section`
 	flex-direction: column;
 	gap: 2rem;
 `;
-
 const UserInformation = styled.div`
 	display: flex;
 	gap: 2rem;
@@ -41,6 +40,7 @@ const UserPage = () => {
 		state: { answers, loading: answersLoading }
 	} = useContext(AnswersContext);
 	const location = useLocation();
+
 	useEffect(() => {
 		if (location.hash) {
 			let elem = document.getElementById(location.hash.slice(1));

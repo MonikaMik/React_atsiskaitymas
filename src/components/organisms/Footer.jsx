@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FooterInfo from '../molecules/FooterInfo';
+import FooterInfo from '../molecules/Footer/FooterInfo';
 
 const StyledFooter = styled.footer`
 	background-color: white;

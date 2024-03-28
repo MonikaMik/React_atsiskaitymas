@@ -25,7 +25,6 @@ const StyledAside = styled.aside`
 		display: none;
 	}
 `;
-
 const StyledLinks = styled.nav`
 	display: flex;
 	flex-direction: column;
@@ -56,6 +55,7 @@ const StyledLinks = styled.nav`
 const StyledUserInfo = styled.div`
 	padding-inline: 3rem;
 `;
+
 const Aside = ({ location }) => {
 	const {
 		state: { user, loading: userLoading }
@@ -65,12 +65,6 @@ const Aside = ({ location }) => {
 	} = useContext(QuestionsContext);
 
 	if (userLoading || questionsLoading) return <span className='loader'></span>;
-
-	const userQuestions =
-		user &&
-		originalQuestions
-			.filter(question => question.creatorId === user.id)
-			.sort((a, b) => b.created - a.created);
 
 	const oneWeekAgo = new Date().getTime() - 7 * 24 * 60 * 60 * 1000;
 
@@ -104,7 +98,6 @@ const Aside = ({ location }) => {
 				<LinkNoHover>
 					<Icon iconClass='bi bi-arrow-up-right' /> Trending
 				</LinkNoHover>
-				{/* <AsideLink link='/no' text='Trending' icon='bi bi-arrow-up-right' /> */}
 				<ul>
 					{trendingQuestions.map(question => (
 						<li key={question.id}>

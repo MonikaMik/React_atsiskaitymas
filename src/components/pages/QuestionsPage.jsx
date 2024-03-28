@@ -1,7 +1,5 @@
-import { useContext, useRef } from 'react';
-import QuestionsContext, {
-	questionsActionTypes
-} from '../../contexts/QuestionsContext';
+import { useContext } from 'react';
+import QuestionsContext from '../../contexts/QuestionsContext';
 import UsersContext from '../../contexts/UsersContext';
 import QuestionCard from '../organisms/QuestionCard';
 import styled from 'styled-components';
@@ -22,7 +20,6 @@ const StyledQuestionsPage = styled.section`
 		flex-basis: 100%;
 	}
 `;
-
 const FilterButtons = styled.div`
 	display: flex;
 	gap: 1rem;

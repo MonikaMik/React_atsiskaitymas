@@ -6,7 +6,7 @@ import CardActions from '../molecules/Card/CardActions';
 import AnswersContext from '../../contexts/AnswersContext';
 import AnswersCount from '../molecules/Card/AnwersCount';
 import CardWrapper from '../atoms/CardWrapper';
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 const StyledQuestionCard = styled(CardWrapper)`
@@ -22,7 +22,6 @@ const InfoContainer = styled.div`
 		color: black;
 	}
 `;
-
 const IconContainer = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -34,10 +33,6 @@ const IconContainer = styled.div`
 		text-decoration: none;
 		color: var(--text-grey);
 	}
-`;
-
-const StyledDialog = styled.dialog`
-	width: 100%;
 `;
 
 const QuestionCard = ({

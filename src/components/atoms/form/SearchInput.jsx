@@ -57,7 +57,6 @@ const SearchInput = ({ location }) => {
 					onFocus={() => navigate('/')}
 					onChange={e => {
 						formik.handleChange(e);
-						console.log(e.target.value);
 						dispatch({
 							type: questionsActionTypes.SEARCH,
 							payload: e.target.value

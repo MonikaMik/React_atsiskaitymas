@@ -30,10 +30,10 @@
     {
       "id": "160bcd0c-0b82-4838-acb6-1d8b39926228",
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
-      "text": "Every time i leave the house my dog cant stop barking. When i return he is super excited, which i love, but it seems as if i was gone for months. He is just too attached to me. What would you advise to help him enjoy being alone more? Also, i have two dogs and the other one is ok?\n",
+      "text": "Every time i leave the house my dog cant stop barking. When i return he is super excited, which i love, but it seems as if i was gone for months. He is just too attached to me. What would you advise to help him enjoy being alone more? Also, i have two dogs and the other one is ok\n",
       "title": "My dog has separation anxiety",
       "likes": 3,
-      "edited": "2024-03-28T08:37:25.517Z",
+      "edited": "2024-03-28T14:40:05.935Z",
       "created": "2024-03-26T16:38:28.102Z"
     },
     {
@@ -41,7 +41,7 @@
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "text": "I never realized how much of a problem my dog, Bruno's laziness could be until it nearly cost us a friendship. As his owner, I've always indulged his love for long naps under the apple tree in our yard, finding his disinterest in activities like fetching or running rather amusing. But when the town's annual race was announced, I saw it as a perfect opportunity to motivate him, perhaps a little selfishly, to showcase the spirit I believed he had inside.\n\nOn the race day, with the sun high and spirits higher, I watched as Bruno took his place among the eager participants, only to start at a trot that soon turned into a leisurely stroll. My heart sank. Around me, whispers and chuckles filled the air, my cheeks burning with embarrassment. It was then, amid the laughter, that I caught Bruno's eye, and something unspoken passed between us.",
       "title": "My dogs are lazy",
-      "likes": 1,
+      "likes": 0,
       "edited": false,
       "created": "2024-03-27T07:42:44.655Z"
     },
@@ -59,7 +59,7 @@
       "creatorId": "06e491b5-c013-4a0a-9898-10710e098616",
       "text": "explain please !",
       "title": "How to play fetch?",
-      "likes": 0,
+      "likes": -1,
       "edited": "2024-03-27T20:49:26.750Z",
       "created": "2024-03-27T20:49:07.902Z"
     },
@@ -133,7 +133,7 @@
       "creatorId": "0bac4faf-aefb-46ba-a512-6fcdffee69e6",
       "text": "I think both a",
       "title": "Is nyma cuter or Mupa?",
-      "likes": 0,
+      "likes": -1,
       "edited": "2024-03-28T08:45:32.065Z",
       "created": "2024-03-28T08:44:29.118Z",
       "photo": ""
@@ -147,6 +147,16 @@
       "edited": "2024-03-28T12:51:02.412Z",
       "created": "2024-03-28T12:50:36.394Z",
       "photo": ""
+    },
+    {
+      "id": "eac91d24-572f-44f0-95fb-17dec1d75c60",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "text": "Look at these cute puppies i found on the internet, im jelous!",
+      "title": "Cute puppies i found",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T14:41:48.833Z",
+      "photo": "https://i.ytimg.com/vi/hvwaH3HH-AU/maxresdefault.jpg"
     }
   ],
   "answers": [
@@ -337,6 +347,59 @@
       "created": "2024-03-28T12:49:50.693Z",
       "type": "reply",
       "replyTo": "b142f1d0-2300-4f63-8213-95f04cf50032"
+    },
+    {
+      "id": "c131fc3d-c6cc-4e89-b6ba-08b82630cd16",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "5",
+      "text": "Give treats until it sits",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T14:32:13.654Z",
+      "type": "answer"
+    },
+    {
+      "id": "7db0dedb-04b8-4dfc-822a-f13d2a731453",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "d967dfd7-dce6-4228-a321-e7e873fea420",
+      "text": "he is 4 months old",
+      "likes": 0,
+      "edited": "2024-03-28T14:32:53.292Z",
+      "created": "2024-03-28T14:32:37.275Z",
+      "type": "reply",
+      "replyTo": "b142f1d0-2300-4f63-8213-95f04cf50032"
+    },
+    {
+      "id": "bea0cfea-5a93-436f-952b-9edcbd6b830b",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "d967dfd7-dce6-4228-a321-e7e873fea420",
+      "text": "But he looks younger",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T14:33:27.034Z",
+      "type": "reply",
+      "replyTo": "b142f1d0-2300-4f63-8213-95f04cf50032"
+    },
+    {
+      "id": "9f0a4122-a6c0-46f9-811a-479e71f6d63b",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "08f75078-de7f-4112-ace6-664b015d63fe",
+      "text": "thanks",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T14:38:39.837Z",
+      "type": "reply",
+      "replyTo": "8162f2ec-75bd-4080-8a26-39bee7cd19e5"
+    },
+    {
+      "id": "985e76e5-8a0c-4b81-bf66-19d6b5cef9ea",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "d58ba881-541e-4e61-b34f-55a028e8721b",
+      "text": "Hi, my name is Monika, i have 2 dogs",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-28T14:39:17.143Z",
+      "type": "answer"
     }
   ],
   "users": [
@@ -418,15 +481,15 @@
       "likedQuestions": [
         "4",
         "f5ff9a81-b0fe-414b-b55f-abe1ec082abf",
-        "08f75078-de7f-4112-ace6-664b015d63fe",
-        "336388a9-27aa-4363-9e04-9c7cb23f2e30"
+        "08f75078-de7f-4112-ace6-664b015d63fe"
       ],
       "dislikedQuestions": [
         "1",
         "6",
         "ec6e1d72-3ae7-4e85-bdfb-4fdbc77d048e",
         "5",
-        "2"
+        "2",
+        "945f131f-36c9-443a-b3e5-56cce83a8137"
       ],
       "likedAnswers": [
         "3",

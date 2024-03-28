@@ -53,11 +53,11 @@ const OneQuestionPageCard = ({ question }) => {
 								created={question.created}
 								edited={question.edited}
 							/>
-							{usersState.user && question.creatorId === usersState.user.id ? (
-								<CardActions question={question} navigate={true} />
-							) : (
-								<div></div>
-							)}
+							<CardActions
+								question={question}
+								navigate={true}
+								creatorId={question.creatorId}
+							/>
 						</div>
 						<BoldTextLarge>{question.title}</BoldTextLarge>
 						<ThinText>{question.text}</ThinText>

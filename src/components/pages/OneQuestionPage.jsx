@@ -50,7 +50,15 @@ const OneQuestionPage = () => {
 	}
 
 	const question = questions.find(question => question.id === id);
-	const answersForQuestion = answers.filter(answer => answer.questionId === id);
+	const answersForQuestion = answers?.filter(
+		answer => answer.questionId === question.id
+	);
+	const repliesForAnswer = answersForQuestion?.filter(
+		answer => answer.type === 'reply'
+	);
+	const answersWithoutReplies = answersForQuestion?.filter(
+		answer => answer.type === 'answer'
+	);
 	return (
 		<StyledOneQuestionPage>
 			<OneQuestionPageCard question={question} />
@@ -61,14 +69,21 @@ const OneQuestionPage = () => {
 				</StyledAnswerForm>
 			)}
 			<StyledAnswerSection>
-				{answersForQuestion.length ? (
-					answersForQuestion.map(answer => (
-						<AnswerCard
-							key={answer.id}
-							answer={answer}
-							users={users}
-							user={user}
-						/>
+				{answersWithoutReplies?.length ? (
+					answersWithoutReplies.map(answer => (
+						<div key={answer.id}>
+							<AnswerCard answer={answer} users={users} user={user} />
+							{repliesForAnswer
+								.filter(reply => reply.replyTo === answer.id)
+								.map(reply => (
+									<AnswerCard
+										key={reply.id}
+										answer={reply}
+										users={users}
+										user={user}
+									/>
+								))}
+						</div>
 					))
 				) : (
 					<ThinText>No answers yet...</ThinText>

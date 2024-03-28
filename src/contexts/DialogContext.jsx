@@ -7,6 +7,7 @@ const DialogContext = createContext();
 const DialogProvider = ({ children }) => {
 	const editDialogRef = useRef(null);
 	const answerEditDialogRef = useRef(null);
+	const replyDialogRef = useRef(null);
 	const { dispatch } = useContext(QuestionsContext);
 	const { dispatch: answersDispatch } = useContext(AnswersContext);
 
@@ -42,7 +43,8 @@ const DialogProvider = ({ children }) => {
 				showForm,
 				hideForm,
 				showAnswerForm,
-				hideAnswerForm
+				hideAnswerForm,
+				replyDialogRef
 			}}
 		>
 			{children}

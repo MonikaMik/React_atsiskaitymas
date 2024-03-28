@@ -50,7 +50,7 @@ const QuestionCard = ({
 	const { state: answersState } = useContext(AnswersContext);
 
 	const answerCount = answersState.answers.filter(
-		answer => answer.questionId === question.id
+		answer => answer.questionId === question.id && answer.type === 'answer'
 	).length;
 
 	return (
@@ -67,8 +67,12 @@ const QuestionCard = ({
 				</Link>
 			</InfoContainer>
 			<IconContainer>
-				{!noEdit && user && creator.id === user.id ? (
-					<CardActions question={question} showForm={showForm} />
+				{!noEdit ? (
+					<CardActions
+						question={question}
+						showForm={showForm}
+						creatorId={creator.id}
+					/>
 				) : (
 					<div></div>
 				)}

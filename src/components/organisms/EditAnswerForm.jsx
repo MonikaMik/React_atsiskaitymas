@@ -9,6 +9,7 @@ import FormErrorMessage from '../atoms/form/FormErrorMessage';
 import ButtonWrapper from '../atoms/ButtonWrapper';
 import Button from '../atoms/Button';
 import DialogContext from '../../contexts/DialogContext';
+import UsersContext from '../../contexts/UsersContext';
 
 const StyledAnswerForm = styled.form`
 	display: flex;
@@ -24,24 +25,30 @@ const StyledAnswerForm = styled.form`
 const EditAnswerForm = () => {
 	const {
 		editAnswer,
+		addAnswer,
 		error,
-		state: { editingAnswer: answer }
+		state: { editingAnswer: answer, reply }
 	} = useContext(AnswersContext);
+	const {
+		state: { user }
+	} = useContext(UsersContext);
 	const { hideAnswerForm } = useContext(DialogContext);
 
 	const formik = useFormik({
 		initialValues: {
-			text: answer ? answer.text : ''
+			text: answer ? answer.text : '',
+			type: answer ? 'answer' : 'reply'
 		},
 		validationSchema: Yup.object({
 			text: Yup.string()
 				.required('Answer must not be empty')
-				.min(10, 'Description must be at least 10 symbols long')
 				.max(1000, 'Description must be at most 1000 symbols long')
 				.trim()
 		}),
 		onSubmit: values => {
-			editAnswer(values, answer.id);
+			answer
+				? editAnswer(values, answer.id)
+				: addAnswer(values, reply.questionId, user.id, reply.id);
 			formik.resetForm();
 			hideAnswerForm();
 		},
@@ -56,7 +63,11 @@ const EditAnswerForm = () => {
 				onChangeF={formik.handleChange}
 				onBlurF={formik.handleBlur}
 				value={formik.values.text}
-				placeholder='Type your wise suggestion here...'
+				placeholder={
+					answer
+						? 'Type your wise suggestion here...'
+						: 'Type your reply here...'
+				}
 				label={false}
 				error={{
 					touched: formik.touched.text,

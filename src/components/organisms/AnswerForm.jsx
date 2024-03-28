@@ -6,14 +6,15 @@ import * as Yup from 'yup';
 import InputField from '../molecules/InputField';
 import SubmitButton from '../atoms/form/SubmitButton';
 import FormErrorMessage from '../atoms/form/FormErrorMessage';
-import { v4 as uuidv4 } from 'uuid';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const StyledAnswerForm = styled.form`
 	display: flex;
 	flex-direction: column;
-
+	> textarea {
+		height: 3lh;
+	}
 	button {
 		align-self: center;
 		width: 10rem;
@@ -27,26 +28,18 @@ const AnswerForm = ({ questionId, user }) => {
 
 	const formik = useFormik({
 		initialValues: {
-			answer: ''
+			text: '',
+			type: 'answer'
 		},
 		validationSchema: Yup.object({
-			answer: Yup.string()
+			text: Yup.string()
 				.required('Answer must not be empty')
 				.min(10, 'Description must be at least 10 symbols long')
 				.max(1000, 'Description must be at most 1000 symbols long')
 				.trim()
 		}),
 		onSubmit: values => {
-			const newAnswer = {
-				id: uuidv4(),
-				creatorId: user.id,
-				questionId: questionId,
-				text: values.answer,
-				likes: 0,
-				edited: false,
-				created: new Date().toISOString()
-			};
-			addAnswer(newAnswer);
+			addAnswer(values, questionId, user.id);
 			formik.resetForm();
 		}
 	});
@@ -59,16 +52,16 @@ const AnswerForm = ({ questionId, user }) => {
 	return (
 		<StyledAnswerForm onSubmit={formik.handleSubmit}>
 			<InputField
-				id='answer'
+				id='text'
 				type='textarea'
 				onChangeF={formik.handleChange}
 				onBlurF={formik.handleBlur}
-				value={formik.values.answer}
+				value={formik.values.text}
 				placeholder='Type your wise suggestion here...'
 				label={false}
 				error={{
-					touched: formik.touched.answer,
-					message: formik.errors.answer
+					touched: formik.touched.text,
+					message: formik.errors.text
 				}}
 			/>
 			<SubmitButton text='Submit' icon={true} />

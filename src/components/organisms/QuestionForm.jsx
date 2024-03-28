@@ -50,8 +50,11 @@ const QuestionForm = () => {
 			photo: Yup.string()
 				.url('Invalid URL')
 				.test('fileFormat', 'Image must end in .png or .jpg', value =>
-					['.png', '.jpg'].some(extension => (value || '').endsWith(extension))
+					value
+						? ['.png', '.jpg'].some(extension => value.endsWith(extension))
+						: true
 				)
+				.nullable()
 		}),
 		onSubmit: values => {
 			question ? editQuestion(values, question.id) : addQuestion(values);

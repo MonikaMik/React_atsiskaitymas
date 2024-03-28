@@ -5,11 +5,17 @@ import CardWrapper from '../atoms/CardWrapper';
 import { FaintText, ThinText } from '../atoms/Typography';
 import Divider from '../atoms/Divider';
 import AnswerCardMetadata from '../molecules/Card/AnswerCardMetadata';
+import AnswersContext from '../../contexts/AnswersContext';
+import { useContext } from 'react';
+import Icon from '../atoms/Icon';
 
 const StyledAnswerCard = styled(CardWrapper)`
+	border-radius: 0;
 	flex-direction: column;
 	gap: 0;
 	padding-bottom: 0;
+	margin-left: ${props => props.$type === 'reply' && '2rem'};
+	margin-top: ${props => props.$type === 'reply' && '1.5rem'};
 	&:hover {
 		.bold-text {
 			color: var(--accent-blue);
@@ -20,7 +26,15 @@ const StyledAnswerCard = styled(CardWrapper)`
 			? '7px solid var(--accent-orange-faint)'
 			: props.$likes < 0
 			? '7px solid var(--accent-blue-faint)'
-			: '1px solid var(--body-bg)'};
+			: '7px solid var(--body-bg)'};
+	> .bi-arrow-return-right {
+		margin-left: -3.4rem;
+		margin-top: -1.7rem;
+		&:hover {
+			cursor: default;
+			transform: none;
+		}
+	}
 `;
 const InfoContainer = styled.div`
 	flex-grow: 1;
@@ -44,9 +58,19 @@ const CardDivider = styled(Divider)`
 
 const AnswerCard = ({ answer, users, user }) => {
 	const creator = users.find(user => user.id === answer.creatorId);
+	const {
+		state: { answers }
+	} = useContext(AnswersContext);
 
 	return (
-		<StyledAnswerCard $likes={answer.likes}>
+		<StyledAnswerCard $likes={answer.likes} $type={answer.type}>
+			{answer.type === 'reply' && (
+				<Icon
+					iconClass='bi bi-arrow-return-right'
+					size='1.6rem'
+					color='var(--accent-orange)'
+				/>
+			)}
 			<InfoContainer>
 				<UserInfo creator={creator} created={answer.created} />
 				{answer.edited && (
@@ -61,15 +85,21 @@ const AnswerCard = ({ answer, users, user }) => {
 					</i>
 				)}
 			</InfoContainer>
-			<ThinText>{answer.text}</ThinText>
+			<ThinText>
+				{answer.type === 'reply' &&
+					answers.map(a => {
+						if (a.id === answer.replyTo) {
+							const user = users.find(user => user.id === a.creatorId);
+							return user ? <b key={a.id}>@{user.username} </b> : null;
+						}
+						return null;
+					})}
+				{answer.text}
+			</ThinText>
 			<CardDivider />
 			<IconContainer>
 				<AnswerCardMetadata answer={answer} user={user} />
-				{user && creator.id === user.id ? (
-					<CardActions answer={answer} />
-				) : (
-					<div></div>
-				)}
+				<CardActions answer={answer} creatorId={creator.id} />
 			</IconContainer>
 		</StyledAnswerCard>
 	);

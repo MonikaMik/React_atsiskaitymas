@@ -1,11 +1,13 @@
 import { createContext, useReducer, useEffect, useContext } from 'react';
 import ToastContext from './ToastContext';
+import { v4 as uuidv4 } from 'uuid';
 
 const InitialState = {
 	loading: true,
 	answers: [],
 	error: null,
-	editingAnswer: null
+	editingAnswer: null,
+	reply: null
 };
 
 const AnswersContext = createContext();
@@ -18,7 +20,8 @@ const answersActionTypes = {
 	REQUEST: 'REQUEST',
 	FAILURE: 'FAILURE',
 	CHANGE_LIKES: 'CHANGE_LIKES',
-	SET_EDITING_ANSWER: 'SET_EDITING_ANSWER'
+	SET_EDITING_ANSWER: 'SET_EDITING_ANSWER',
+	SET_REPLY: 'SET_REPLY'
 };
 
 const reducer = (state, action) => {
@@ -45,6 +48,7 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				answers: [...state.answers, action.payload],
+				reply: null,
 				loading: false,
 				error: null
 			};
@@ -88,6 +92,11 @@ const reducer = (state, action) => {
 				...state,
 				editingAnswer: action.payload
 			};
+		case answersActionTypes.SET_REPLY:
+			return {
+				...state,
+				reply: action.payload
+			};
 		default:
 			return state;
 	}
@@ -112,7 +121,19 @@ const AnswersContextProvider = ({ children }) => {
 			});
 	}, []);
 
-	const addAnswer = newAnswer => {
+	const addAnswer = (values, questionId, userId, replyTo) => {
+		const newAnswer = {
+			id: uuidv4(),
+			creatorId: userId,
+			questionId: questionId,
+			text: values.text,
+			likes: 0,
+			edited: false,
+			created: new Date().toISOString(),
+			type: values.type,
+			...(replyTo && { replyTo: replyTo })
+		};
+
 		fetch('http://localhost:8080/answers', {
 			method: 'POST',
 			headers: {

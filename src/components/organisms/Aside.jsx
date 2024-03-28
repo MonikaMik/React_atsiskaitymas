@@ -9,6 +9,7 @@ import AsideLink from '../molecules/AsideLink';
 
 const StyledAside = styled.aside`
 	width: 20%;
+	min-width: 25rem;
 	padding-block: 4rem;
 	box-sizing: border-box;
 	background-color: white;

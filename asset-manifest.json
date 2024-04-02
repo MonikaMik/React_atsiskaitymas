@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/React_atsiskaitymas/static/css/main.696f057e.css",
+    "main.js": "/React_atsiskaitymas/static/js/main.a48a0b9a.js",
+    "index.html": "/React_atsiskaitymas/index.html",
+    "main.a48a0b9a.js.map": "/React_atsiskaitymas/static/js/main.a48a0b9a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.696f057e.css",
+    "static/js/main.a48a0b9a.js"
+  ]
+}

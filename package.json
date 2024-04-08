@@ -25,7 +25,9 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"server": "json-server --port 8080 ./src/data.json"
+		"server": "json-server --port 8080 ./src/data.json",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -44,5 +46,9 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"homepage": "https://monikamik.github.io/React_atsiskaitymas",
+	"devDependencies": {
+		"gh-pages": "^6.1.1"
 	}
 }

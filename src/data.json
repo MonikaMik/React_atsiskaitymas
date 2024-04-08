@@ -14,7 +14,7 @@
       "creatorId": "user2",
       "text": "What are some good training techniques for teaching a dog to sit? What are some good training techniques for teaching a dog to sit? What are some good training techniques for teaching a dog to sit?",
       "title": "Training a dog to sit",
-      "likes": 8,
+      "likes": 10,
       "edited": "2022-01-05T00:00:00",
       "created": "2024-03-05T12:00:00"
     },
@@ -32,7 +32,7 @@
       "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
       "text": "Every time i leave the house my dog cant stop barking. When i return he is super excited, which i love, but it seems as if i was gone for months. He is just too attached to me. What would you advise to help him enjoy being alone more? Also, i have two dogs and the other one is ok\n",
       "title": "My dog has separation anxiety",
-      "likes": 3,
+      "likes": 2,
       "edited": "2024-03-28T14:40:05.935Z",
       "created": "2024-03-26T16:38:28.102Z"
     },
@@ -157,6 +157,16 @@
       "edited": false,
       "created": "2024-03-28T14:41:48.833Z",
       "photo": "https://i.ytimg.com/vi/hvwaH3HH-AU/maxresdefault.jpg"
+    },
+    {
+      "id": "4c512cb8-344f-44f2-886e-e6c3fffa12c3",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "text": "sddiuehfoiehf",
+      "title": "smthsssss",
+      "likes": 0,
+      "edited": "2024-03-29T08:36:41.899Z",
+      "created": "2024-03-29T08:35:47.271Z",
+      "photo": ""
     }
   ],
   "answers": [
@@ -400,6 +410,27 @@
       "edited": false,
       "created": "2024-03-28T14:39:17.143Z",
       "type": "answer"
+    },
+    {
+      "id": "9b1d52a4-069e-4c6c-909f-7b5ba1c2c8e8",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "4c512cb8-344f-44f2-886e-e6c3fffa12c3",
+      "text": "dfgreg",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-29T08:37:45.975Z",
+      "type": "answer"
+    },
+    {
+      "id": "996cf749-2176-4ba9-9527-af42a073e549",
+      "creatorId": "d05e92cb-e4a0-4def-aadd-f8db958226b1",
+      "questionId": "4c512cb8-344f-44f2-886e-e6c3fffa12c3",
+      "text": "ashfhsie",
+      "likes": 0,
+      "edited": false,
+      "created": "2024-03-29T08:38:05.365Z",
+      "type": "reply",
+      "replyTo": "9b1d52a4-069e-4c6c-909f-7b5ba1c2c8e8"
     }
   ],
   "users": [
@@ -481,19 +512,20 @@
       "likedQuestions": [
         "4",
         "f5ff9a81-b0fe-414b-b55f-abe1ec082abf",
-        "08f75078-de7f-4112-ace6-664b015d63fe"
+        "08f75078-de7f-4112-ace6-664b015d63fe",
+        "5"
       ],
       "dislikedQuestions": [
         "1",
         "6",
         "ec6e1d72-3ae7-4e85-bdfb-4fdbc77d048e",
-        "5",
         "2",
         "945f131f-36c9-443a-b3e5-56cce83a8137"
       ],
       "likedAnswers": [
         "3",
-        "a3b78570-d3d1-42ab-9b55-8542ff72a689"
+        "a3b78570-d3d1-42ab-9b55-8542ff72a689",
+        "d5e8c7a3-4ce8-4faf-998c-cf9e15ca874a"
       ],
       "dislikedAnswers": [
         "4"
@@ -583,6 +615,17 @@
       "username": "TestUser",
       "email": "test@testas",
       "password": "$2a$10$zWi6bhiFfC0DDLAK63HeRe0PBdUfLgNbDYA2aFdxYfT.GFA2IADZq",
+      "photoUrl": "https://cdn-icons-png.freepik.com/256/1144/1144760.png",
+      "likedAnswers": [],
+      "dislikedAnswers": [],
+      "likedQuestions": [],
+      "dislikedQuestions": []
+    },
+    {
+      "id": "5a33c0e2-33b5-45c5-b245-9e3cc6fbd4e6",
+      "username": "Monikaaaaaaa",
+      "email": "monikacibirauskaite@yahoo.com",
+      "password": "$2a$10$UVg7VO.PhM4NQINAFJmMYerQvo92KFeM/3rTRMKNjU7aorRReW4B6",
       "photoUrl": "https://cdn-icons-png.freepik.com/256/1144/1144760.png",
       "likedAnswers": [],
       "dislikedAnswers": [],

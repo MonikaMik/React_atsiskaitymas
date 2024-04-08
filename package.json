@@ -18,10 +18,11 @@
 		"react-scripts": "5.0.1",
 		"styled-components": "^6.1.8",
 		"web-vitals": "^2.1.4",
-		"yup": "^1.4.0"
+		"yup": "^1.4.0",
+		"concurrently": "^x.x.x"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "concurrently \"json-server data.json --port 8080\" \"react-scripts start\"",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
@@ -47,8 +48,5 @@
 			"last 1 safari version"
 		]
 	},
-	"homepage": "https://monikamik.github.io/React_atsiskaitymas",
-	"devDependencies": {
-		"gh-pages": "^6.1.1"
-	}
+	"homepage": "https://monikamik.github.io/React_atsiskaitymas"
 }
